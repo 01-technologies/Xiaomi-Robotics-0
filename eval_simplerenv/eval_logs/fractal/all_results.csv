@@ -1,0 +1,11 @@
+exp_name,dataset_name,task_suite_name,success_episodes,total_episodes,success_rate
+debug,fractal,variant_aggregation/close_drawer,145,189,0.7671957671957672
+debug,fractal,variant_aggregation/move_near,461,600,0.7683333333333333
+debug,fractal,variant_aggregation/open_drawer,109,189,0.5767195767195767
+debug,fractal,variant_aggregation/pick_coke_can,728,825,0.8824242424242424
+debug,fractal,variant_aggregation/put_in_drawer,126,189,0.6666666666666666
+debug,fractal,visual_matching/close_drawer,95,108,0.8796296296296297
+debug,fractal,visual_matching/move_near,213,240,0.8875
+debug,fractal,visual_matching/open_drawer,77,108,0.7129629629629629
+debug,fractal,visual_matching/pick_coke_can,296,300,0.9866666666666667
+debug,fractal,visual_matching/put_in_drawer,81,108,0.75

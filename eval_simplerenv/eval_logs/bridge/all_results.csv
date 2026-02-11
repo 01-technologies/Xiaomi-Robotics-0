@@ -1,0 +1,5 @@
+exp_name,dataset_name,task_suite_name,success_episodes,total_episodes,success_rate
+debug,bridge,bridge/put_carrot_on_plate,90,144,0.625
+debug,bridge,bridge/put_eggplant_in_basket,120,144,0.8333333333333334
+debug,bridge,bridge/put_spoon_on_table_cloth,138,144,0.9583333333333334
+debug,bridge,bridge/stack_green_cube_on_yellow_cube,108,144,0.75

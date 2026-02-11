@@ -1,0 +1,228 @@
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Running dataset: bridge with 8 workers
+Worker ID: 6
+Client connected to server at 0.0.0.0:10092.
+[2026-02-10 17:06:20.825] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:20.825] [svulkan2] [warning] Continue without GLFW.
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.get_language_instruction to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.get_language_instruction` for environment variables or `env.get_wrapper_attr('get_language_instruction')` that will search the reminding wrappers.[0m
+  logger.warn(
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.robot_uid to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.robot_uid` for environment variables or `env.get_wrapper_attr('robot_uid')` that will search the reminding wrappers.[0m
+  logger.warn(
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 6/576, success: True, time elapsed: 5.04s, time remaining: 409.85s
+[2026-02-10 17:06:25.852] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:25.852] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 14/576, success: True, time elapsed: 8.93s, time remaining: 334.01s
+[2026-02-10 17:06:29.742] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:29.742] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 22/576, success: True, time elapsed: 13.24s, time remaining: 318.34s
+[2026-02-10 17:06:34.055] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:34.055] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 30/576, success: True, time elapsed: 17.28s, time remaining: 303.71s
+[2026-02-10 17:06:38.086] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:38.086] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 38/576, success: True, time elapsed: 21.19s, time remaining: 291.74s
+[2026-02-10 17:06:41.998] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:41.998] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 46/576, success: True, time elapsed: 24.96s, time remaining: 280.88s
+[2026-02-10 17:06:45.768] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:45.768] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 54/576, success: True, time elapsed: 29.01s, time remaining: 274.81s
+[2026-02-10 17:06:49.822] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:49.822] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 62/576, success: True, time elapsed: 33.32s, time remaining: 271.28s
+[2026-02-10 17:06:54.126] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:54.126] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 70/576, success: True, time elapsed: 37.28s, time remaining: 265.19s
+[2026-02-10 17:06:58.095] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:06:58.095] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 78/576, success: True, time elapsed: 41.23s, time remaining: 259.41s
+[2026-02-10 17:07:02.045] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:02.045] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 86/576, success: True, time elapsed: 45.16s, time remaining: 253.83s
+[2026-02-10 17:07:05.971] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:05.971] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 94/576, success: True, time elapsed: 49.59s, time remaining: 251.07s
+[2026-02-10 17:07:10.400] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:10.400] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 102/576, success: True, time elapsed: 53.43s, time remaining: 245.37s
+[2026-02-10 17:07:14.243] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:14.243] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 110/576, success: True, time elapsed: 57.55s, time remaining: 241.08s
+[2026-02-10 17:07:18.359] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:18.359] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 118/576, success: True, time elapsed: 61.30s, time remaining: 235.39s
+[2026-02-10 17:07:22.107] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:22.107] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 126/576, success: True, time elapsed: 65.61s, time remaining: 231.95s
+[2026-02-10 17:07:26.419] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:26.419] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 134/576, success: True, time elapsed: 69.73s, time remaining: 227.78s
+[2026-02-10 17:07:30.540] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:30.540] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 142/576, success: True, time elapsed: 73.80s, time remaining: 223.47s
+[2026-02-10 17:07:34.612] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:34.612] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 150/576, success: True, time elapsed: 77.87s, time remaining: 219.18s
+[2026-02-10 17:07:38.685] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:38.686] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 158/576, success: True, time elapsed: 81.83s, time remaining: 214.62s
+[2026-02-10 17:07:42.643] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:42.643] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 166/576, success: True, time elapsed: 86.50s, time remaining: 211.86s
+[2026-02-10 17:07:47.315] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:47.315] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 174/576, success: True, time elapsed: 90.52s, time remaining: 207.41s
+[2026-02-10 17:07:51.328] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:51.328] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 182/576, success: True, time elapsed: 94.45s, time remaining: 202.83s
+[2026-02-10 17:07:55.261] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:55.261] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 190/576, success: True, time elapsed: 97.97s, time remaining: 197.48s
+[2026-02-10 17:07:58.783] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:07:58.783] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 198/576, success: True, time elapsed: 101.97s, time remaining: 193.17s
+[2026-02-10 17:08:02.777] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:02.777] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 206/576, success: True, time elapsed: 105.87s, time remaining: 188.72s
+[2026-02-10 17:08:06.682] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:06.682] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 214/576, success: True, time elapsed: 109.76s, time remaining: 184.29s
+[2026-02-10 17:08:10.571] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:10.571] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 222/576, success: True, time elapsed: 113.88s, time remaining: 180.27s
+[2026-02-10 17:08:14.691] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:14.691] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 230/576, success: True, time elapsed: 117.88s, time remaining: 176.05s
+[2026-02-10 17:08:18.688] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:18.688] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 238/576, success: True, time elapsed: 122.17s, time remaining: 172.27s
+[2026-02-10 17:08:22.980] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:22.981] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 246/576, success: True, time elapsed: 126.13s, time remaining: 168.00s
+[2026-02-10 17:08:26.939] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:26.939] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 254/576, success: True, time elapsed: 130.04s, time remaining: 163.69s
+[2026-02-10 17:08:30.848] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:30.848] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 262/576, success: True, time elapsed: 133.42s, time remaining: 158.79s
+[2026-02-10 17:08:34.233] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:34.233] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 270/576, success: True, time elapsed: 137.38s, time remaining: 154.61s
+[2026-02-10 17:08:38.186] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:38.186] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 278/576, success: True, time elapsed: 141.32s, time remaining: 150.44s
+[2026-02-10 17:08:42.130] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:42.130] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 286/576, success: True, time elapsed: 145.54s, time remaining: 146.55s
+[2026-02-10 17:08:46.350] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:46.350] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 294/576, success: True, time elapsed: 149.41s, time remaining: 142.32s
+[2026-02-10 17:08:50.221] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:50.221] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 302/576, success: True, time elapsed: 153.22s, time remaining: 138.05s
+[2026-02-10 17:08:54.029] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:54.029] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 310/576, success: True, time elapsed: 157.41s, time remaining: 134.13s
+[2026-02-10 17:08:58.226] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:08:58.226] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 318/576, success: True, time elapsed: 161.22s, time remaining: 129.89s
+[2026-02-10 17:09:02.035] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:02.035] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 326/576, success: True, time elapsed: 165.18s, time remaining: 125.78s
+[2026-02-10 17:09:05.993] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:05.993] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 334/576, success: True, time elapsed: 168.62s, time remaining: 121.31s
+[2026-02-10 17:09:09.435] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:09.435] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 342/576, success: True, time elapsed: 172.49s, time remaining: 117.17s
+[2026-02-10 17:09:13.304] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:13.304] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 350/576, success: True, time elapsed: 176.29s, time remaining: 113.01s
+[2026-02-10 17:09:17.104] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:17.104] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 358/576, success: True, time elapsed: 180.46s, time remaining: 109.08s
+[2026-02-10 17:09:21.274] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:21.274] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 366/576, success: True, time elapsed: 184.32s, time remaining: 104.97s
+[2026-02-10 17:09:25.135] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:25.135] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 374/576, success: True, time elapsed: 188.31s, time remaining: 100.93s
+[2026-02-10 17:09:29.119] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:29.119] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/stack_green_cube_on_yellow_cube - 382/576, success: True, time elapsed: 192.79s, time remaining: 97.15s
+[2026-02-10 17:09:33.602] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:33.602] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 390/576, success: True, time elapsed: 196.72s, time remaining: 93.08s
+[2026-02-10 17:09:37.535] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:37.535] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 398/576, success: True, time elapsed: 200.67s, time remaining: 89.02s
+[2026-02-10 17:09:41.480] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:41.480] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_carrot_on_plate - 406/576, success: True, time elapsed: 204.17s, time remaining: 84.78s
+[2026-02-10 17:09:44.979] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:44.979] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 414/576, success: True, time elapsed: 208.36s, time remaining: 80.83s
+[2026-02-10 17:09:49.172] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:49.172] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 422/576, success: True, time elapsed: 212.67s, time remaining: 76.92s
+[2026-02-10 17:09:53.484] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:53.484] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_spoon_on_table_cloth - 430/576, success: True, time elapsed: 216.78s, time remaining: 72.93s
+[2026-02-10 17:09:57.590] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:09:57.590] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 438/576, success: True, time elapsed: 220.79s, time remaining: 68.90s
+[2026-02-10 17:10:01.599] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:01.599] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 446/576, success: True, time elapsed: 225.45s, time remaining: 65.06s
+[2026-02-10 17:10:06.264] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:06.264] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 454/576, success: False, time elapsed: 239.88s, time remaining: 63.79s
+[2026-02-10 17:10:20.689] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:20.690] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 462/576, success: True, time elapsed: 243.99s, time remaining: 59.55s
+[2026-02-10 17:10:24.803] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:24.803] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 470/576, success: True, time elapsed: 248.24s, time remaining: 55.34s
+[2026-02-10 17:10:29.055] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:29.055] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 478/576, success: False, time elapsed: 262.47s, time remaining: 53.15s
+[2026-02-10 17:10:43.288] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:43.288] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 486/576, success: True, time elapsed: 266.69s, time remaining: 48.74s
+[2026-02-10 17:10:47.502] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:47.502] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 494/576, success: True, time elapsed: 271.11s, time remaining: 44.36s
+[2026-02-10 17:10:51.926] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:10:51.926] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 502/576, success: False, time elapsed: 285.01s, time remaining: 41.36s
+[2026-02-10 17:11:05.823] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:05.823] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 510/576, success: True, time elapsed: 288.82s, time remaining: 36.74s
+[2026-02-10 17:11:09.631] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:09.631] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 518/576, success: True, time elapsed: 293.48s, time remaining: 32.23s
+[2026-02-10 17:11:14.295] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:14.295] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 526/576, success: False, time elapsed: 307.50s, time remaining: 28.59s
+[2026-02-10 17:11:28.314] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:28.314] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 534/576, success: True, time elapsed: 311.30s, time remaining: 23.86s
+[2026-02-10 17:11:32.114] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:32.114] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 542/576, success: True, time elapsed: 315.48s, time remaining: 19.17s
+[2026-02-10 17:11:36.295] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:36.295] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 550/576, success: False, time elapsed: 329.16s, time remaining: 14.93s
+[2026-02-10 17:11:49.977] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:49.977] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 558/576, success: True, time elapsed: 333.20s, time remaining: 10.13s
+[2026-02-10 17:11:54.012] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:54.012] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 566/576, success: True, time elapsed: 337.40s, time remaining: 5.36s
+[2026-02-10 17:11:58.210] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:11:58.210] [svulkan2] [warning] Continue without GLFW.
+[Worker 6 / 8] bridge/put_eggplant_in_basket - 574/576, success: False, time elapsed: 350.91s, time remaining: 0.61s
+[Worker 6 / 8] Waiting for all end files... (0/8) files present. Sleeping for 30 seconds.
+[Worker 6 / 8] Waiting for all end files... (0/8) files present. Sleeping for 30 seconds.
+[Worker 6 / 8] Waiting for all end files... (0/8) files present. Sleeping for 30 seconds.

@@ -1,0 +1,1340 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+pybullet build time: Jan 29 2025 23:16:28
+2026-02-05 16:56:11,081 - __main__ - INFO - Starting evaluation with rank=1, world_size=8, num_workers=8
+Client connected to server at localhost:10087.
+2026-02-05 16:56:11,154 - __main__ - INFO - Rank 1: starting evaluation of 125 sequences.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+2026-02-05 16:57:40,227 - __main__ - INFO - Rank 1 finished local seq 0 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:57:49,655 - __main__ - INFO - Rank 1 finished local seq 1 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:58:03,908 - __main__ - INFO - Rank 1 finished local seq 2 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:58:07,058 - __main__ - INFO - Rank 1 finished local seq 3 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:58:11,278 - __main__ - INFO - Rank 1 finished local seq 4 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:58:19,235 - __main__ - INFO - Rank 1 finished local seq 5 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:58:31,318 - __main__ - INFO - Rank 1 finished local seq 6 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:59:35,478 - __main__ - INFO - Rank 1 finished local seq 7 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+2026-02-05 16:59:35,523 - __main__ - INFO - Rank 1 finished local seq 8 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+EGL device choice: -1 of 9.
+2026-02-05 16:59:35,943 - __main__ - INFO - Rank 1 finished local seq 9 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 100.0% | with avg_len=5.000
+EGL device choice: -1 of 9.
+2026-02-05 16:59:38,189 - __main__ - INFO - Rank 1 finished local seq 10 with success=4 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 90.9% | with avg_len=4.909
+EGL device choice: -1 of 9.
+2026-02-05 16:59:59,221 - __main__ - INFO - Rank 1 finished local seq 11 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 91.7% | with avg_len=4.917
+EGL device choice: -1 of 9.
+2026-02-05 17:00:02,288 - __main__ - INFO - Rank 1 finished local seq 12 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 92.3% | with avg_len=4.923
+EGL device choice: -1 of 9.
+2026-02-05 17:00:30,461 - __main__ - INFO - Rank 1 finished local seq 13 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 92.9% | with avg_len=4.929
+EGL device choice: -1 of 9.
+2026-02-05 17:00:40,108 - __main__ - INFO - Rank 1 finished local seq 14 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 93.3% | with avg_len=4.933
+EGL device choice: -1 of 9.
+2026-02-05 17:01:14,493 - __main__ - INFO - Rank 1 finished local seq 15 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 93.8% | with avg_len=4.938
+EGL device choice: -1 of 9.
+2026-02-05 17:01:25,757 - __main__ - INFO - Rank 1 finished local seq 16 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 94.1% | with avg_len=4.941
+EGL device choice: -1 of 9.
+2026-02-05 17:01:32,458 - __main__ - INFO - Rank 1 finished local seq 17 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 94.4% | with avg_len=4.944
+EGL device choice: -1 of 9.
+2026-02-05 17:02:06,549 - __main__ - INFO - Rank 1 finished local seq 18 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 100.0% | 4/5: 100.0% | 5/5: 94.7% | with avg_len=4.947
+EGL device choice: -1 of 9.
+2026-02-05 17:02:11,945 - __main__ - INFO - Rank 1 finished local seq 19 with success=2 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 95.0% | 4/5: 95.0% | 5/5: 90.0% | with avg_len=4.800
+EGL device choice: -1 of 9.
+2026-02-05 17:02:17,476 - __main__ - INFO - Rank 1 finished local seq 20 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 95.2% | 4/5: 95.2% | 5/5: 90.5% | with avg_len=4.810
+EGL device choice: -1 of 9.
+2026-02-05 17:02:37,479 - __main__ - INFO - Rank 1 finished local seq 21 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 95.5% | 4/5: 95.5% | 5/5: 90.9% | with avg_len=4.818
+EGL device choice: -1 of 9.
+2026-02-05 17:02:58,252 - __main__ - INFO - Rank 1 finished local seq 22 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 95.7% | 4/5: 95.7% | 5/5: 91.3% | with avg_len=4.826
+EGL device choice: -1 of 9.
+2026-02-05 17:03:06,563 - __main__ - INFO - Rank 1 finished local seq 23 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 95.8% | 4/5: 95.8% | 5/5: 91.7% | with avg_len=4.833
+EGL device choice: -1 of 9.
+2026-02-05 17:03:25,871 - __main__ - INFO - Rank 1 finished local seq 24 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.0% | 4/5: 96.0% | 5/5: 92.0% | with avg_len=4.840
+EGL device choice: -1 of 9.
+2026-02-05 17:03:53,034 - __main__ - INFO - Rank 1 finished local seq 25 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.2% | 4/5: 96.2% | 5/5: 92.3% | with avg_len=4.846
+EGL device choice: -1 of 9.
+2026-02-05 17:03:54,879 - __main__ - INFO - Rank 1 finished local seq 26 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.3% | 4/5: 96.3% | 5/5: 92.6% | with avg_len=4.852
+EGL device choice: -1 of 9.
+2026-02-05 17:03:57,154 - __main__ - INFO - Rank 1 finished local seq 27 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.4% | 4/5: 96.4% | 5/5: 92.9% | with avg_len=4.857
+EGL device choice: -1 of 9.
+2026-02-05 17:04:17,390 - __main__ - INFO - Rank 1 finished local seq 28 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.6% | 4/5: 96.6% | 5/5: 93.1% | with avg_len=4.862
+EGL device choice: -1 of 9.
+2026-02-05 17:04:51,193 - __main__ - INFO - Rank 1 finished local seq 29 with success=5 | 1/5: 100.0% | 2/5: 100.0% | 3/5: 96.7% | 4/5: 96.7% | 5/5: 93.3% | with avg_len=4.867
+EGL device choice: -1 of 9.
+2026-02-05 17:04:52,967 - __main__ - INFO - Rank 1 finished local seq 30 with success=1 | 1/5: 100.0% | 2/5: 96.8% | 3/5: 93.5% | 4/5: 93.5% | 5/5: 90.3% | with avg_len=4.742
+EGL device choice: -1 of 9.
+2026-02-05 17:04:58,874 - __main__ - INFO - Rank 1 finished local seq 31 with success=5 | 1/5: 100.0% | 2/5: 96.9% | 3/5: 93.8% | 4/5: 93.8% | 5/5: 90.6% | with avg_len=4.750
+EGL device choice: -1 of 9.
+2026-02-05 17:05:17,880 - __main__ - INFO - Rank 1 finished local seq 32 with success=5 | 1/5: 100.0% | 2/5: 97.0% | 3/5: 93.9% | 4/5: 93.9% | 5/5: 90.9% | with avg_len=4.758
+EGL device choice: -1 of 9.
+2026-02-05 17:05:37,670 - __main__ - INFO - Rank 1 finished local seq 33 with success=5 | 1/5: 100.0% | 2/5: 97.1% | 3/5: 94.1% | 4/5: 94.1% | 5/5: 91.2% | with avg_len=4.765
+EGL device choice: -1 of 9.
+2026-02-05 17:05:43,832 - __main__ - INFO - Rank 1 finished local seq 34 with success=5 | 1/5: 100.0% | 2/5: 97.1% | 3/5: 94.3% | 4/5: 94.3% | 5/5: 91.4% | with avg_len=4.771
+EGL device choice: -1 of 9.
+2026-02-05 17:05:44,155 - __main__ - INFO - Rank 1 finished local seq 35 with success=5 | 1/5: 100.0% | 2/5: 97.2% | 3/5: 94.4% | 4/5: 94.4% | 5/5: 91.7% | with avg_len=4.778
+EGL device choice: -1 of 9.
+2026-02-05 17:06:34,413 - __main__ - INFO - Rank 1 finished local seq 36 with success=5 | 1/5: 100.0% | 2/5: 97.3% | 3/5: 94.6% | 4/5: 94.6% | 5/5: 91.9% | with avg_len=4.784
+EGL device choice: -1 of 9.
+2026-02-05 17:06:40,712 - __main__ - INFO - Rank 1 finished local seq 37 with success=5 | 1/5: 100.0% | 2/5: 97.4% | 3/5: 94.7% | 4/5: 94.7% | 5/5: 92.1% | with avg_len=4.789
+EGL device choice: -1 of 9.
+2026-02-05 17:06:41,323 - __main__ - INFO - Rank 1 finished local seq 38 with success=5 | 1/5: 100.0% | 2/5: 97.4% | 3/5: 94.9% | 4/5: 94.9% | 5/5: 92.3% | with avg_len=4.795
+EGL device choice: -1 of 9.
+2026-02-05 17:07:15,880 - __main__ - INFO - Rank 1 finished local seq 39 with success=5 | 1/5: 100.0% | 2/5: 97.5% | 3/5: 95.0% | 4/5: 95.0% | 5/5: 92.5% | with avg_len=4.800
+EGL device choice: -1 of 9.
+2026-02-05 17:07:20,201 - __main__ - INFO - Rank 1 finished local seq 40 with success=5 | 1/5: 100.0% | 2/5: 97.6% | 3/5: 95.1% | 4/5: 95.1% | 5/5: 92.7% | with avg_len=4.805
+EGL device choice: -1 of 9.
+2026-02-05 17:07:25,591 - __main__ - INFO - Rank 1 finished local seq 41 with success=5 | 1/5: 100.0% | 2/5: 97.6% | 3/5: 95.2% | 4/5: 95.2% | 5/5: 92.9% | with avg_len=4.810
+EGL device choice: -1 of 9.
+2026-02-05 17:07:48,556 - __main__ - INFO - Rank 1 finished local seq 42 with success=5 | 1/5: 100.0% | 2/5: 97.7% | 3/5: 95.3% | 4/5: 95.3% | 5/5: 93.0% | with avg_len=4.814
+EGL device choice: -1 of 9.
+2026-02-05 17:08:18,891 - __main__ - INFO - Rank 1 finished local seq 43 with success=4 | 1/5: 100.0% | 2/5: 97.7% | 3/5: 95.5% | 4/5: 95.5% | 5/5: 90.9% | with avg_len=4.795
+EGL device choice: -1 of 9.
+2026-02-05 17:08:26,401 - __main__ - INFO - Rank 1 finished local seq 44 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 95.6% | 4/5: 95.6% | 5/5: 91.1% | with avg_len=4.800
+EGL device choice: -1 of 9.
+2026-02-05 17:08:32,662 - __main__ - INFO - Rank 1 finished local seq 45 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 95.7% | 4/5: 95.7% | 5/5: 91.3% | with avg_len=4.804
+EGL device choice: -1 of 9.
+2026-02-05 17:08:41,816 - __main__ - INFO - Rank 1 finished local seq 46 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 95.7% | 4/5: 95.7% | 5/5: 91.5% | with avg_len=4.809
+EGL device choice: -1 of 9.
+2026-02-05 17:09:06,719 - __main__ - INFO - Rank 1 finished local seq 47 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 95.8% | 4/5: 95.8% | 5/5: 91.7% | with avg_len=4.812
+EGL device choice: -1 of 9.
+2026-02-05 17:09:18,625 - __main__ - INFO - Rank 1 finished local seq 48 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 95.9% | 4/5: 95.9% | 5/5: 91.8% | with avg_len=4.816
+EGL device choice: -1 of 9.
+2026-02-05 17:09:32,711 - __main__ - INFO - Rank 1 finished local seq 49 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 96.0% | 4/5: 96.0% | 5/5: 92.0% | with avg_len=4.820
+EGL device choice: -1 of 9.
+2026-02-05 17:09:45,065 - __main__ - INFO - Rank 1 finished local seq 50 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 96.1% | 4/5: 96.1% | 5/5: 92.2% | with avg_len=4.824
+EGL device choice: -1 of 9.
+2026-02-05 17:09:54,431 - __main__ - INFO - Rank 1 finished local seq 51 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 96.2% | 4/5: 96.2% | 5/5: 92.3% | with avg_len=4.827
+EGL device choice: -1 of 9.
+2026-02-05 17:10:27,094 - __main__ - INFO - Rank 1 finished local seq 52 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 96.2% | 4/5: 96.2% | 5/5: 92.5% | with avg_len=4.830
+EGL device choice: -1 of 9.
+2026-02-05 17:10:42,612 - __main__ - INFO - Rank 1 finished local seq 53 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 96.3% | 4/5: 96.3% | 5/5: 92.6% | with avg_len=4.833
+EGL device choice: -1 of 9.
+2026-02-05 17:10:56,915 - __main__ - INFO - Rank 1 finished local seq 54 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 96.4% | 4/5: 96.4% | 5/5: 92.7% | with avg_len=4.836
+EGL device choice: -1 of 9.
+2026-02-05 17:11:54,020 - __main__ - INFO - Rank 1 finished local seq 55 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 96.4% | 4/5: 96.4% | 5/5: 92.9% | with avg_len=4.839
+EGL device choice: -1 of 9.
+2026-02-05 17:12:03,043 - __main__ - INFO - Rank 1 finished local seq 56 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 96.5% | 4/5: 96.5% | 5/5: 93.0% | with avg_len=4.842
+EGL device choice: -1 of 9.
+2026-02-05 17:12:10,391 - __main__ - INFO - Rank 1 finished local seq 57 with success=2 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.8% | 4/5: 94.8% | 5/5: 91.4% | with avg_len=4.793
+EGL device choice: -1 of 9.
+2026-02-05 17:12:12,571 - __main__ - INFO - Rank 1 finished local seq 58 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.9% | 4/5: 94.9% | 5/5: 91.5% | with avg_len=4.797
+EGL device choice: -1 of 9.
+2026-02-05 17:12:29,004 - __main__ - INFO - Rank 1 finished local seq 59 with success=4 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 95.0% | 4/5: 95.0% | 5/5: 90.0% | with avg_len=4.783
+EGL device choice: -1 of 9.
+2026-02-05 17:12:29,568 - __main__ - INFO - Rank 1 finished local seq 60 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.1% | 4/5: 95.1% | 5/5: 90.2% | with avg_len=4.787
+EGL device choice: -1 of 9.
+2026-02-05 17:12:54,043 - __main__ - INFO - Rank 1 finished local seq 61 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.2% | 4/5: 95.2% | 5/5: 90.3% | with avg_len=4.790
+EGL device choice: -1 of 9.
+2026-02-05 17:13:37,278 - __main__ - INFO - Rank 1 finished local seq 62 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.2% | 4/5: 95.2% | 5/5: 90.5% | with avg_len=4.794
+EGL device choice: -1 of 9.
+2026-02-05 17:13:37,878 - __main__ - INFO - Rank 1 finished local seq 63 with success=4 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.3% | 4/5: 95.3% | 5/5: 89.1% | with avg_len=4.781
+EGL device choice: -1 of 9.
+2026-02-05 17:14:06,855 - __main__ - INFO - Rank 1 finished local seq 64 with success=5 | 1/5: 100.0% | 2/5: 98.5% | 3/5: 95.4% | 4/5: 95.4% | 5/5: 89.2% | with avg_len=4.785
+EGL device choice: -1 of 9.
+2026-02-05 17:14:12,076 - __main__ - INFO - Rank 1 finished local seq 65 with success=5 | 1/5: 100.0% | 2/5: 98.5% | 3/5: 95.5% | 4/5: 95.5% | 5/5: 89.4% | with avg_len=4.788
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:14:33,359 - __main__ - INFO - Rank 1 finished local seq 66 with success=5 | 1/5: 100.0% | 2/5: 98.5% | 3/5: 95.5% | 4/5: 95.5% | 5/5: 89.6% | with avg_len=4.791
+EGL device choice: -1 of 9.
+2026-02-05 17:14:58,898 - __main__ - INFO - Rank 1 finished local seq 67 with success=5 | 1/5: 100.0% | 2/5: 98.5% | 3/5: 95.6% | 4/5: 95.6% | 5/5: 89.7% | with avg_len=4.794
+EGL device choice: -1 of 9.
+2026-02-05 17:15:13,100 - __main__ - INFO - Rank 1 finished local seq 68 with success=5 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.7% | 4/5: 95.7% | 5/5: 89.9% | with avg_len=4.797
+EGL device choice: -1 of 9.
+2026-02-05 17:15:23,944 - __main__ - INFO - Rank 1 finished local seq 69 with success=5 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.7% | 4/5: 95.7% | 5/5: 90.0% | with avg_len=4.800
+EGL device choice: -1 of 9.
+2026-02-05 17:15:48,586 - __main__ - INFO - Rank 1 finished local seq 70 with success=5 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.8% | 4/5: 95.8% | 5/5: 90.1% | with avg_len=4.803
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:15:54,427 - __main__ - INFO - Rank 1 finished local seq 71 with success=3 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.8% | 4/5: 94.4% | 5/5: 88.9% | with avg_len=4.778
+EGL device choice: -1 of 9.
+2026-02-05 17:16:08,778 - __main__ - INFO - Rank 1 finished local seq 72 with success=5 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.9% | 4/5: 94.5% | 5/5: 89.0% | with avg_len=4.781
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:16:40,437 - __main__ - INFO - Rank 1 finished local seq 73 with success=5 | 1/5: 100.0% | 2/5: 98.6% | 3/5: 95.9% | 4/5: 94.6% | 5/5: 89.2% | with avg_len=4.784
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:17:08,771 - __main__ - INFO - Rank 1 finished local seq 74 with success=5 | 1/5: 100.0% | 2/5: 98.7% | 3/5: 96.0% | 4/5: 94.7% | 5/5: 89.3% | with avg_len=4.787
+EGL device choice: -1 of 9.
+2026-02-05 17:17:11,018 - __main__ - INFO - Rank 1 finished local seq 75 with success=2 | 1/5: 100.0% | 2/5: 98.7% | 3/5: 94.7% | 4/5: 93.4% | 5/5: 88.2% | with avg_len=4.750
+EGL device choice: -1 of 9.
+2026-02-05 17:17:23,578 - __main__ - INFO - Rank 1 finished local seq 76 with success=5 | 1/5: 100.0% | 2/5: 98.7% | 3/5: 94.8% | 4/5: 93.5% | 5/5: 88.3% | with avg_len=4.753
+EGL device choice: -1 of 9.
+2026-02-05 17:17:55,051 - __main__ - INFO - Rank 1 finished local seq 77 with success=4 | 1/5: 100.0% | 2/5: 98.7% | 3/5: 94.9% | 4/5: 93.6% | 5/5: 87.2% | with avg_len=4.744
+EGL device choice: -1 of 9.
+2026-02-05 17:18:01,064 - __main__ - INFO - Rank 1 finished local seq 78 with success=5 | 1/5: 100.0% | 2/5: 98.7% | 3/5: 94.9% | 4/5: 93.7% | 5/5: 87.3% | with avg_len=4.747
+EGL device choice: -1 of 9.
+2026-02-05 17:18:19,758 - __main__ - INFO - Rank 1 finished local seq 79 with success=2 | 1/5: 100.0% | 2/5: 98.8% | 3/5: 93.8% | 4/5: 92.5% | 5/5: 86.2% | with avg_len=4.713
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:18:30,357 - __main__ - INFO - Rank 1 finished local seq 80 with success=5 | 1/5: 100.0% | 2/5: 98.8% | 3/5: 93.8% | 4/5: 92.6% | 5/5: 86.4% | with avg_len=4.716
+EGL device choice: -1 of 9.
+2026-02-05 17:18:52,399 - __main__ - INFO - Rank 1 finished local seq 81 with success=5 | 1/5: 100.0% | 2/5: 98.8% | 3/5: 93.9% | 4/5: 92.7% | 5/5: 86.6% | with avg_len=4.720
+EGL device choice: -1 of 9.
+2026-02-05 17:18:55,402 - __main__ - INFO - Rank 1 finished local seq 82 with success=5 | 1/5: 100.0% | 2/5: 98.8% | 3/5: 94.0% | 4/5: 92.8% | 5/5: 86.7% | with avg_len=4.723
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:19:26,210 - __main__ - INFO - Rank 1 finished local seq 83 with success=4 | 1/5: 100.0% | 2/5: 98.8% | 3/5: 94.0% | 4/5: 92.9% | 5/5: 85.7% | with avg_len=4.714
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:19:38,534 - __main__ - INFO - Rank 1 finished local seq 84 with success=1 | 1/5: 100.0% | 2/5: 97.6% | 3/5: 92.9% | 4/5: 91.8% | 5/5: 84.7% | with avg_len=4.671
+EGL device choice: -1 of 9.
+2026-02-05 17:19:57,458 - __main__ - INFO - Rank 1 finished local seq 85 with success=5 | 1/5: 100.0% | 2/5: 97.7% | 3/5: 93.0% | 4/5: 91.9% | 5/5: 84.9% | with avg_len=4.674
+EGL device choice: -1 of 9.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_VERSION=3.3.0 NVIDIA 570.148.08
+GL_SHADING_LANGUAGE_VERSION=3.30 NVIDIA via Cg compiler
+Version = 3.3.0 NVIDIA 570.148.08
+Vendor = NVIDIA Corporation
+Renderer = NVIDIA L20X/PCIe/SSE2
+ven = NVIDIA Corporation
+ven = NVIDIA Corporation
+Destroy EGL OpenGL window.
+argv[0]=--width=200
+argv[1]=--height=200
+Loaded EGL 1.5 after reload.
+GL_VENDOR=NVIDIA Corporation
+GL_RENDERER=NVIDIA L20X/PCIe/SSE2
+GL_2026-02-05 17:20:28,093 - __main__ - INFO - Rank 1 finished local seq 86 with success=5 | 1/5: 100.0% | 2/5: 97.7% | 3/5: 93.1% | 4/5: 92.0% | 5/5: 85.1% | with avg_len=4.678
+EGL device choice: -1 of 9.
+2026-02-05 17:20:30,159 - __main__ - INFO - Rank 1 finished local seq 87 with success=5 | 1/5: 100.0% | 2/5: 97.7% | 3/5: 93.2% | 4/5: 92.0% | 5/5: 85.2% | with avg_len=4.682
+EGL device choice: -1 of 9.
+2026-02-05 17:20:44,451 - __main__ - INFO - Rank 1 finished local seq 88 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 93.3% | 4/5: 92.1% | 5/5: 85.4% | with avg_len=4.685
+EGL device choice: -1 of 9.
+2026-02-05 17:20:48,774 - __main__ - INFO - Rank 1 finished local seq 89 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 93.3% | 4/5: 92.2% | 5/5: 85.6% | with avg_len=4.689
+EGL device choice: -1 of 9.
+2026-02-05 17:20:59,126 - __main__ - INFO - Rank 1 finished local seq 90 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 93.4% | 4/5: 92.3% | 5/5: 85.7% | with avg_len=4.692
+EGL device choice: -1 of 9.
+2026-02-05 17:21:35,076 - __main__ - INFO - Rank 1 finished local seq 91 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 93.5% | 4/5: 92.4% | 5/5: 85.9% | with avg_len=4.696
+EGL device choice: -1 of 9.
+2026-02-05 17:21:44,282 - __main__ - INFO - Rank 1 finished local seq 92 with success=5 | 1/5: 100.0% | 2/5: 97.8% | 3/5: 93.5% | 4/5: 92.5% | 5/5: 86.0% | with avg_len=4.699
+EGL device choice: -1 of 9.
+2026-02-05 17:22:12,269 - __main__ - INFO - Rank 1 finished local seq 93 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 93.6% | 4/5: 92.6% | 5/5: 86.2% | with avg_len=4.702
+EGL device choice: -1 of 9.
+2026-02-05 17:22:21,642 - __main__ - INFO - Rank 1 finished local seq 94 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 93.7% | 4/5: 92.6% | 5/5: 86.3% | with avg_len=4.705
+EGL device choice: -1 of 9.
+2026-02-05 17:22:41,416 - __main__ - INFO - Rank 1 finished local seq 95 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 93.8% | 4/5: 92.7% | 5/5: 86.5% | with avg_len=4.708
+EGL device choice: -1 of 9.
+2026-02-05 17:22:53,464 - __main__ - INFO - Rank 1 finished local seq 96 with success=5 | 1/5: 100.0% | 2/5: 97.9% | 3/5: 93.8% | 4/5: 92.8% | 5/5: 86.6% | with avg_len=4.711
+EGL device choice: -1 of 9.
+2026-02-05 17:23:11,695 - __main__ - INFO - Rank 1 finished local seq 97 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 93.9% | 4/5: 92.9% | 5/5: 86.7% | with avg_len=4.714
+EGL device choice: -1 of 9.
+2026-02-05 17:23:20,222 - __main__ - INFO - Rank 1 finished local seq 98 with success=3 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 93.9% | 4/5: 91.9% | 5/5: 85.9% | with avg_len=4.697
+EGL device choice: -1 of 9.
+2026-02-05 17:23:20,547 - __main__ - INFO - Rank 1 finished local seq 99 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 94.0% | 4/5: 92.0% | 5/5: 86.0% | with avg_len=4.700
+EGL device choice: -1 of 9.
+2026-02-05 17:23:47,048 - __main__ - INFO - Rank 1 finished local seq 100 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 94.1% | 4/5: 92.1% | 5/5: 86.1% | with avg_len=4.703
+EGL device choice: -1 of 9.
+2026-02-05 17:23:52,574 - __main__ - INFO - Rank 1 finished local seq 101 with success=5 | 1/5: 100.0% | 2/5: 98.0% | 3/5: 94.1% | 4/5: 92.2% | 5/5: 86.3% | with avg_len=4.706
+EGL device choice: -1 of 9.
+2026-02-05 17:24:10,392 - __main__ - INFO - Rank 1 finished local seq 102 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.2% | 4/5: 92.2% | 5/5: 86.4% | with avg_len=4.709
+EGL device choice: -1 of 9.
+2026-02-05 17:25:02,165 - __main__ - INFO - Rank 1 finished local seq 103 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.2% | 4/5: 92.3% | 5/5: 86.5% | with avg_len=4.712
+EGL device choice: -1 of 9.
+2026-02-05 17:25:22,791 - __main__ - INFO - Rank 1 finished local seq 104 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.3% | 4/5: 92.4% | 5/5: 86.7% | with avg_len=4.714
+EGL device choice: -1 of 9.
+2026-02-05 17:25:47,841 - __main__ - INFO - Rank 1 finished local seq 105 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.3% | 4/5: 92.5% | 5/5: 86.8% | with avg_len=4.717
+EGL device choice: -1 of 9.
+2026-02-05 17:25:52,595 - __main__ - INFO - Rank 1 finished local seq 106 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.4% | 4/5: 92.5% | 5/5: 86.9% | with avg_len=4.720
+EGL device choice: -1 of 9.
+2026-02-05 17:26:08,157 - __main__ - INFO - Rank 1 finished local seq 107 with success=5 | 1/5: 100.0% | 2/5: 98.1% | 3/5: 94.4% | 4/5: 92.6% | 5/5: 87.0% | with avg_len=4.722
+EGL device choice: -1 of 9.
+2026-02-05 17:26:08,694 - __main__ - INFO - Rank 1 finished local seq 108 with success=4 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.5% | 4/5: 92.7% | 5/5: 86.2% | with avg_len=4.716
+EGL device choice: -1 of 9.
+2026-02-05 17:26:11,131 - __main__ - INFO - Rank 1 finished local seq 109 with success=4 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.5% | 4/5: 92.7% | 5/5: 85.5% | with avg_len=4.709
+EGL device choice: -1 of 9.
+2026-02-05 17:26:19,444 - __main__ - INFO - Rank 1 finished local seq 110 with success=3 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.6% | 4/5: 91.9% | 5/5: 84.7% | with avg_len=4.694
+EGL device choice: -1 of 9.
+2026-02-05 17:26:58,376 - __main__ - INFO - Rank 1 finished local seq 111 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.6% | 4/5: 92.0% | 5/5: 84.8% | with avg_len=4.696
+EGL device choice: -1 of 9.
+2026-02-05 17:27:12,342 - __main__ - INFO - Rank 1 finished local seq 112 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.7% | 4/5: 92.0% | 5/5: 85.0% | with avg_len=4.699
+EGL device choice: -1 of 9.
+2026-02-05 17:27:21,444 - __main__ - INFO - Rank 1 finished local seq 113 with success=5 | 1/5: 100.0% | 2/5: 98.2% | 3/5: 94.7% | 4/5: 92.1% | 5/5: 85.1% | with avg_len=4.702
+EGL device choice: -1 of 9.
+2026-02-05 17:27:48,411 - __main__ - INFO - Rank 1 finished local seq 114 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.8% | 4/5: 92.2% | 5/5: 85.2% | with avg_len=4.704
+EGL device choice: -1 of 9.
+2026-02-05 17:27:48,740 - __main__ - INFO - Rank 1 finished local seq 115 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.8% | 4/5: 92.2% | 5/5: 85.3% | with avg_len=4.707
+EGL device choice: -1 of 9.
+2026-02-05 17:28:10,146 - __main__ - INFO - Rank 1 finished local seq 116 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.9% | 4/5: 92.3% | 5/5: 85.5% | with avg_len=4.709
+EGL device choice: -1 of 9.
+2026-02-05 17:28:33,802 - __main__ - INFO - Rank 1 finished local seq 117 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 94.9% | 4/5: 92.4% | 5/5: 85.6% | with avg_len=4.712
+2026-02-05 17:28:34,259 - __main__ - INFO - Rank 1 finished local seq 118 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 95.0% | 4/5: 92.4% | 5/5: 85.7% | with avg_len=4.714
+2026-02-05 17:28:57,038 - __main__ - INFO - Rank 1 finished local seq 119 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 95.0% | 4/5: 92.5% | 5/5: 85.8% | with avg_len=4.717
+2026-02-05 17:29:05,389 - __main__ - INFO - Rank 1 finished local seq 120 with success=5 | 1/5: 100.0% | 2/5: 98.3% | 3/5: 95.0% | 4/5: 92.6% | 5/5: 86.0% | with avg_len=4.719
+2026-02-05 17:29:14,063 - __main__ - INFO - Rank 1 finished local seq 121 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.1% | 4/5: 92.6% | 5/5: 86.1% | with avg_len=4.721
+2026-02-05 17:29:23,951 - __main__ - INFO - Rank 1 finished local seq 122 with success=4 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.1% | 4/5: 92.7% | 5/5: 85.4% | with avg_len=4.715
+2026-02-05 17:29:30,775 - __main__ - INFO - Rank 1 finished local seq 123 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.2% | 4/5: 92.7% | 5/5: 85.5% | with avg_len=4.718
+2026-02-05 17:29:39,085 - __main__ - INFO - Rank 1 finished local seq 124 with success=5 | 1/5: 100.0% | 2/5: 98.4% | 3/5: 95.2% | 4/5: 92.8% | 5/5: 85.6% | with avg_len=4.720
+2026-02-05 17:29:39,755 - __main__ - INFO - Rank 1: finished evaluation of 125 sequences (shared_results_len=125).
+2026-02-05 17:29:39,774 - __main__ - INFO - Rank 1: evaluation finished, got 125 result entries.

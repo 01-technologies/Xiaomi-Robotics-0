@@ -1,0 +1,1084 @@
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Running dataset: fractal with 8 workers
+Worker ID: 3
+Client connected to server at 0.0.0.0:10089.
+[2026-02-10 17:47:19.972] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:19.972] [svulkan2] [warning] Continue without GLFW.
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.get_language_instruction to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.get_language_instruction` for environment variables or `env.get_wrapper_attr('get_language_instruction')` that will search the reminding wrappers.[0m
+  logger.warn(
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.robot_uid to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.robot_uid` for environment variables or `env.get_wrapper_attr('robot_uid')` that will search the reminding wrappers.[0m
+  logger.warn(
+[Worker 3 / 8] visual_matching/pick_coke_can - 3/2856, success: True, time elapsed: 4.86s, time remaining: 3462.59s
+[2026-02-10 17:47:24.828] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:24.828] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 11/2856, success: True, time elapsed: 8.84s, time remaining: 2094.71s
+[2026-02-10 17:47:28.810] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:28.810] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 19/2856, success: True, time elapsed: 12.20s, time remaining: 1729.40s
+[2026-02-10 17:47:32.167] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:32.167] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 27/2856, success: True, time elapsed: 16.54s, time remaining: 1670.27s
+[2026-02-10 17:47:36.509] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:36.509] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 35/2856, success: True, time elapsed: 20.43s, time remaining: 1600.30s
+[2026-02-10 17:47:40.401] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:40.401] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 43/2856, success: True, time elapsed: 23.52s, time remaining: 1503.26s
+[2026-02-10 17:47:43.493] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:43.493] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 51/2856, success: True, time elapsed: 27.89s, time remaining: 1503.65s
+[2026-02-10 17:47:47.857] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:47.857] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 59/2856, success: True, time elapsed: 31.70s, time remaining: 1477.34s
+[2026-02-10 17:47:51.675] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:51.675] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 67/2856, success: True, time elapsed: 35.77s, time remaining: 1466.71s
+[2026-02-10 17:47:55.745] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:47:55.746] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 75/2856, success: True, time elapsed: 40.07s, time remaining: 1465.87s
+[2026-02-10 17:48:00.046] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:00.046] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 83/2856, success: True, time elapsed: 43.77s, time remaining: 1444.47s
+[2026-02-10 17:48:03.744] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:03.744] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 91/2856, success: True, time elapsed: 47.45s, time remaining: 1425.58s
+[2026-02-10 17:48:07.422] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:07.422] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 99/2856, success: True, time elapsed: 51.27s, time remaining: 1413.01s
+[2026-02-10 17:48:11.242] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:11.242] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 107/2856, success: True, time elapsed: 55.18s, time remaining: 1404.00s
+[2026-02-10 17:48:15.152] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:15.152] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 115/2856, success: True, time elapsed: 59.27s, time remaining: 1400.10s
+[2026-02-10 17:48:19.247] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:19.247] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 123/2856, success: True, time elapsed: 62.38s, time remaining: 1374.28s
+[2026-02-10 17:48:22.348] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:22.348] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 131/2856, success: True, time elapsed: 66.70s, time remaining: 1376.52s
+[2026-02-10 17:48:26.676] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:26.676] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 139/2856, success: True, time elapsed: 70.74s, time remaining: 1372.37s
+[2026-02-10 17:48:30.713] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:30.713] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 147/2856, success: True, time elapsed: 74.29s, time remaining: 1359.37s
+[2026-02-10 17:48:34.265] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:34.265] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 155/2856, success: True, time elapsed: 78.33s, time remaining: 1355.80s
+[2026-02-10 17:48:38.307] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:38.307] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 163/2856, success: True, time elapsed: 81.76s, time remaining: 1342.07s
+[2026-02-10 17:48:41.733] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:41.733] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 171/2856, success: True, time elapsed: 85.54s, time remaining: 1334.87s
+[2026-02-10 17:48:45.515] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:45.515] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 179/2856, success: True, time elapsed: 89.68s, time remaining: 1333.28s
+[2026-02-10 17:48:49.655] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:49.656] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 187/2856, success: True, time elapsed: 93.72s, time remaining: 1330.03s
+[2026-02-10 17:48:53.693] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:53.693] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 195/2856, success: True, time elapsed: 97.66s, time remaining: 1325.33s
+[2026-02-10 17:48:57.629] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:48:57.629] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 203/2856, success: True, time elapsed: 101.33s, time remaining: 1317.33s
+[2026-02-10 17:49:01.305] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:01.305] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 211/2856, success: True, time elapsed: 105.17s, time remaining: 1311.71s
+[2026-02-10 17:49:05.147] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:05.147] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 219/2856, success: True, time elapsed: 109.53s, time remaining: 1312.35s
+[2026-02-10 17:49:09.501] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:09.501] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 227/2856, success: True, time elapsed: 113.28s, time remaining: 1305.72s
+[2026-02-10 17:49:13.253] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:13.253] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 235/2856, success: True, time elapsed: 117.26s, time remaining: 1301.81s
+[2026-02-10 17:49:17.235] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:17.235] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 243/2856, success: True, time elapsed: 120.73s, time remaining: 1292.43s
+[2026-02-10 17:49:20.704] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:20.704] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 251/2856, success: True, time elapsed: 125.33s, time remaining: 1295.04s
+[2026-02-10 17:49:25.299] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:25.299] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 259/2856, success: True, time elapsed: 129.44s, time remaining: 1292.45s
+[2026-02-10 17:49:29.417] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:29.417] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 267/2856, success: True, time elapsed: 132.91s, time remaining: 1283.47s
+[2026-02-10 17:49:32.882] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:32.882] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 275/2856, success: True, time elapsed: 137.20s, time remaining: 1282.55s
+[2026-02-10 17:49:37.175] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:37.175] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 283/2856, success: True, time elapsed: 141.35s, time remaining: 1280.07s
+[2026-02-10 17:49:41.318] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:41.318] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 291/2856, success: True, time elapsed: 147.95s, time remaining: 1299.11s
+[2026-02-10 17:49:47.921] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:47.921] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/pick_coke_can - 299/2856, success: True, time elapsed: 152.10s, time remaining: 1295.88s
+/root/miniconda3/envs/simplerenv/lib/python3.10/site-packages/gymnasium/envs/registration.py:513: DeprecationWarning: [33mWARN: The environment MoveNearGoogleBakedTexInScene-v0 is out of date. You should consider upgrading to version `v1`.[0m
+  logger.deprecation(
+[2026-02-10 17:49:52.071] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:52.071] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 307/2856, success: True, time elapsed: 157.95s, time remaining: 1306.70s
+[2026-02-10 17:49:57.925] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:49:57.925] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 315/2856, success: True, time elapsed: 162.05s, time remaining: 1302.53s
+[2026-02-10 17:50:02.019] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:02.019] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 323/2856, success: True, time elapsed: 166.09s, time remaining: 1297.98s
+[2026-02-10 17:50:06.064] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:06.064] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 331/2856, success: True, time elapsed: 171.26s, time remaining: 1301.96s
+[2026-02-10 17:50:11.229] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:11.229] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 339/2856, success: True, time elapsed: 176.51s, time remaining: 1306.18s
+[2026-02-10 17:50:16.483] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:16.483] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 347/2856, success: True, time elapsed: 180.76s, time remaining: 1302.69s
+[2026-02-10 17:50:20.728] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:20.728] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 355/2856, success: False, time elapsed: 192.65s, time remaining: 1352.91s
+[2026-02-10 17:50:32.627] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:32.627] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 363/2856, success: True, time elapsed: 197.71s, time remaining: 1353.53s
+[2026-02-10 17:50:37.678] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:37.678] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 371/2856, success: True, time elapsed: 201.88s, time remaining: 1348.05s
+[2026-02-10 17:50:41.854] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:41.854] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 379/2856, success: True, time elapsed: 207.62s, time remaining: 1352.83s
+[2026-02-10 17:50:47.596] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:47.596] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 387/2856, success: True, time elapsed: 211.91s, time remaining: 1347.93s
+[2026-02-10 17:50:51.884] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:51.884] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 395/2856, success: True, time elapsed: 215.64s, time remaining: 1339.58s
+[2026-02-10 17:50:55.613] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:50:55.613] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 403/2856, success: False, time elapsed: 226.98s, time remaining: 1377.60s
+[2026-02-10 17:51:06.966] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:06.966] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 411/2856, success: True, time elapsed: 231.22s, time remaining: 1371.63s
+[2026-02-10 17:51:11.197] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:11.197] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 419/2856, success: True, time elapsed: 235.31s, time remaining: 1364.79s
+[2026-02-10 17:51:15.282] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:15.282] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 427/2856, success: False, time elapsed: 247.56s, time remaining: 1404.38s
+[2026-02-10 17:51:27.532] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:27.532] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 435/2856, success: True, time elapsed: 251.67s, time remaining: 1396.86s
+[2026-02-10 17:51:31.638] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:31.638] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 443/2856, success: True, time elapsed: 255.58s, time remaining: 1388.43s
+[2026-02-10 17:51:35.555] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:35.555] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 451/2856, success: False, time elapsed: 266.71s, time remaining: 1418.50s
+[2026-02-10 17:51:46.679] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:46.679] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 459/2856, success: True, time elapsed: 271.84s, time remaining: 1415.92s
+[2026-02-10 17:51:51.811] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:51.811] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 467/2856, success: True, time elapsed: 276.20s, time remaining: 1409.31s
+[2026-02-10 17:51:56.168] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:51:56.168] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 475/2856, success: False, time elapsed: 287.67s, time remaining: 1438.36s
+[2026-02-10 17:52:07.644] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:07.644] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 483/2856, success: True, time elapsed: 292.83s, time remaining: 1435.10s
+[2026-02-10 17:52:12.801] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:12.801] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 491/2856, success: True, time elapsed: 297.49s, time remaining: 1429.41s
+[2026-02-10 17:52:17.465] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:17.465] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 499/2856, success: False, time elapsed: 308.76s, time remaining: 1454.87s
+[2026-02-10 17:52:28.730] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:28.730] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 507/2856, success: True, time elapsed: 312.90s, time remaining: 1446.25s
+[2026-02-10 17:52:32.876] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:32.876] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 515/2856, success: True, time elapsed: 316.84s, time remaining: 1436.85s
+[2026-02-10 17:52:36.816] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:36.817] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 523/2856, success: False, time elapsed: 328.68s, time remaining: 1462.74s
+[2026-02-10 17:52:48.651] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:48.651] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 531/2856, success: True, time elapsed: 333.00s, time remaining: 1454.68s
+[2026-02-10 17:52:52.972] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:52.972] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/move_near - 539/2856, success: True, time elapsed: 337.40s, time remaining: 1447.06s
+[2026-02-10 17:52:57.369] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:52:57.369] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 547/2856, success: True, time elapsed: 353.30s, time remaining: 1487.99s
+[2026-02-10 17:53:13.274] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:53:13.274] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 555/2856, success: True, time elapsed: 361.36s, time remaining: 1494.86s
+[2026-02-10 17:53:21.338] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:53:21.338] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 563/2856, success: True, time elapsed: 385.17s, time remaining: 1565.26s
+[2026-02-10 17:53:45.142] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:53:45.142] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 571/2856, success: True, time elapsed: 390.50s, time remaining: 1559.25s
+[2026-02-10 17:53:50.469] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:53:50.469] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 579/2856, success: True, time elapsed: 396.64s, time remaining: 1556.49s
+[2026-02-10 17:53:56.617] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:53:56.617] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 587/2856, success: False, time elapsed: 420.29s, time remaining: 1621.14s
+[2026-02-10 17:54:20.268] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:54:20.268] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 595/2856, success: True, time elapsed: 431.67s, time remaining: 1636.86s
+[2026-02-10 17:54:31.641] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:54:31.641] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 603/2856, success: True, time elapsed: 444.42s, time remaining: 1657.01s
+[2026-02-10 17:54:44.394] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:54:44.394] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 611/2856, success: False, time elapsed: 467.02s, time remaining: 1712.40s
+[2026-02-10 17:55:07.014] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:07.014] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 619/2856, success: True, time elapsed: 478.08s, time remaining: 1724.16s
+[2026-02-10 17:55:18.049] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:18.049] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 627/2856, success: True, time elapsed: 486.02s, time remaining: 1724.27s
+[2026-02-10 17:55:25.989] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:25.989] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 635/2856, success: True, time elapsed: 492.60s, time remaining: 1719.47s
+[2026-02-10 17:55:32.577] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:32.577] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 643/2856, success: True, time elapsed: 499.33s, time remaining: 1715.10s
+[2026-02-10 17:55:39.305] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:39.305] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 651/2856, success: True, time elapsed: 509.35s, time remaining: 1721.79s
+[2026-02-10 17:55:49.323] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:55:49.323] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 659/2856, success: False, time elapsed: 531.56s, time remaining: 1768.66s
+[2026-02-10 17:56:11.537] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:56:11.537] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 667/2856, success: True, time elapsed: 546.22s, time remaining: 1789.10s
+[2026-02-10 17:56:26.191] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:56:26.192] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 675/2856, success: True, time elapsed: 552.09s, time remaining: 1780.41s
+[2026-02-10 17:56:32.062] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:56:32.063] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 683/2856, success: False, time elapsed: 576.24s, time remaining: 1829.81s
+[2026-02-10 17:56:56.212] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:56:56.212] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 691/2856, success: True, time elapsed: 583.20s, time remaining: 1823.77s
+[2026-02-10 17:57:03.177] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:57:03.177] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 699/2856, success: True, time elapsed: 592.14s, time remaining: 1823.79s
+[2026-02-10 17:57:12.112] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:57:12.112] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 707/2856, success: True, time elapsed: 612.01s, time remaining: 1856.77s
+[2026-02-10 17:57:31.980] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:57:31.980] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 715/2856, success: True, time elapsed: 620.92s, time remaining: 1855.83s
+[2026-02-10 17:57:40.896] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:57:40.896] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/open_drawer - 723/2856, success: True, time elapsed: 632.74s, time remaining: 1863.26s
+[2026-02-10 17:57:52.714] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:57:52.714] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 731/2856, success: True, time elapsed: 642.37s, time remaining: 1863.92s
+[2026-02-10 17:58:02.342] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:58:02.342] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 739/2856, success: True, time elapsed: 648.13s, time remaining: 1853.31s
+[2026-02-10 17:58:08.106] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:58:08.106] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 747/2856, success: True, time elapsed: 657.62s, time remaining: 1853.30s
+[2026-02-10 17:58:17.597] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:58:17.597] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/close_drawer - 755/2856, success: True, time elapsed: 667.87s, time remaining: 1855.18s
+[2026-02-10 17:58:27.839] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:58:27.839] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 763/2856, success: False, time elapsed: 708.68s, time remaining: 1940.53s
+[2026-02-10 17:59:08.658] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:59:08.658] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 771/2856, success: True, time elapsed: 737.32s, time remaining: 1990.37s
+[2026-02-10 17:59:37.288] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 17:59:37.288] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 779/2856, success: True, time elapsed: 766.37s, time remaining: 2039.72s
+[2026-02-10 18:00:06.341] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:00:06.341] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 787/2856, success: True, time elapsed: 802.99s, time remaining: 2107.35s
+[2026-02-10 18:00:42.968] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:00:42.968] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 795/2856, success: True, time elapsed: 832.17s, time remaining: 2153.62s
+[2026-02-10 18:01:12.147] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:01:12.147] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 803/2856, success: True, time elapsed: 865.47s, time remaining: 2208.87s
+[2026-02-10 18:01:45.438] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:01:45.438] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 811/2856, success: True, time elapsed: 905.61s, time remaining: 2279.63s
+[2026-02-10 18:02:25.580] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:02:25.580] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 819/2856, success: True, time elapsed: 934.63s, time remaining: 2320.62s
+[2026-02-10 18:02:54.603] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:02:54.603] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 827/2856, success: True, time elapsed: 965.23s, time remaining: 2364.10s
+[2026-02-10 18:03:25.198] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:03:25.198] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 835/2856, success: True, time elapsed: 995.63s, time remaining: 2405.70s
+[2026-02-10 18:03:55.600] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:03:55.601] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 843/2856, success: True, time elapsed: 1027.50s, time remaining: 2449.45s
+[2026-02-10 18:04:27.475] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:04:27.475] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 851/2856, success: True, time elapsed: 1061.35s, time remaining: 2496.42s
+[2026-02-10 18:05:01.326] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:01.326] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] visual_matching/put_in_drawer - 859/2856, success: False, time elapsed: 1101.25s, time remaining: 2555.93s
+[2026-02-10 18:05:41.223] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:41.223] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 867/2856, success: True, time elapsed: 1105.09s, time remaining: 2531.01s
+[2026-02-10 18:05:45.057] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:45.057] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 875/2856, success: True, time elapsed: 1109.16s, time remaining: 2507.01s
+[2026-02-10 18:05:49.131] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:49.131] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 883/2856, success: True, time elapsed: 1112.67s, time remaining: 2482.12s
+[2026-02-10 18:05:52.643] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:52.643] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 891/2856, success: True, time elapsed: 1116.65s, time remaining: 2458.64s
+[2026-02-10 18:05:56.622] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:05:56.622] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 899/2856, success: True, time elapsed: 1121.68s, time remaining: 2437.77s
+[2026-02-10 18:06:01.645] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:01.645] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 907/2856, success: True, time elapsed: 1125.35s, time remaining: 2414.29s
+[2026-02-10 18:06:05.317] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:05.317] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 915/2856, success: True, time elapsed: 1129.69s, time remaining: 2392.59s
+[2026-02-10 18:06:09.665] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:09.665] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 923/2856, success: True, time elapsed: 1133.60s, time remaining: 2370.25s
+[2026-02-10 18:06:13.566] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:13.566] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 931/2856, success: True, time elapsed: 1137.57s, time remaining: 2348.37s
+[2026-02-10 18:06:17.536] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:17.536] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 939/2856, success: True, time elapsed: 1141.41s, time remaining: 2326.54s
+[2026-02-10 18:06:21.382] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:21.382] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 947/2856, success: True, time elapsed: 1144.88s, time remaining: 2304.26s
+[2026-02-10 18:06:24.859] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:24.859] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 955/2856, success: True, time elapsed: 1148.32s, time remaining: 2282.23s
+[2026-02-10 18:06:28.290] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:28.290] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 963/2856, success: True, time elapsed: 1151.40s, time remaining: 2259.80s
+[2026-02-10 18:06:31.367] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:31.367] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 971/2856, success: True, time elapsed: 1155.35s, time remaining: 2239.37s
+[2026-02-10 18:06:35.316] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:35.316] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 979/2856, success: True, time elapsed: 1159.58s, time remaining: 2219.78s
+[2026-02-10 18:06:39.554] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:39.554] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 987/2856, success: True, time elapsed: 1163.44s, time remaining: 2199.70s
+[2026-02-10 18:06:43.425] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:43.425] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 995/2856, success: True, time elapsed: 1167.21s, time remaining: 2179.72s
+[2026-02-10 18:06:47.175] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:47.175] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1003/2856, success: True, time elapsed: 1170.70s, time remaining: 2159.49s
+[2026-02-10 18:06:50.668] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:50.668] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1011/2856, success: True, time elapsed: 1174.11s, time remaining: 2139.38s
+[2026-02-10 18:06:54.076] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:54.076] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1019/2856, success: True, time elapsed: 1178.89s, time remaining: 2122.00s
+[2026-02-10 18:06:58.859] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:06:58.859] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1027/2856, success: True, time elapsed: 1182.97s, time remaining: 2103.58s
+[2026-02-10 18:07:02.944] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:02.944] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1035/2856, success: True, time elapsed: 1187.27s, time remaining: 2085.74s
+[2026-02-10 18:07:07.239] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:07.239] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1043/2856, success: True, time elapsed: 1191.01s, time remaining: 2067.16s
+[2026-02-10 18:07:10.981] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:10.981] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1051/2856, success: True, time elapsed: 1194.69s, time remaining: 2048.70s
+[2026-02-10 18:07:14.664] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:14.664] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1059/2856, success: True, time elapsed: 1198.80s, time remaining: 2031.17s
+[2026-02-10 18:07:18.766] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:18.766] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1067/2856, success: True, time elapsed: 1203.20s, time remaining: 2014.35s
+[2026-02-10 18:07:23.172] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:23.172] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1075/2856, success: True, time elapsed: 1208.14s, time remaining: 1998.59s
+[2026-02-10 18:07:28.107] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:28.107] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1083/2856, success: True, time elapsed: 1212.64s, time remaining: 1982.28s
+[2026-02-10 18:07:32.607] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:32.607] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1091/2856, success: True, time elapsed: 1217.89s, time remaining: 1967.35s
+[2026-02-10 18:07:37.855] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:37.855] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1099/2856, success: True, time elapsed: 1223.53s, time remaining: 1953.20s
+[2026-02-10 18:07:43.499] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:43.499] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1107/2856, success: True, time elapsed: 1228.77s, time remaining: 1938.53s
+[2026-02-10 18:07:48.740] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:48.740] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1115/2856, success: True, time elapsed: 1234.32s, time remaining: 1924.48s
+[2026-02-10 18:07:54.292] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:54.292] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1123/2856, success: True, time elapsed: 1239.48s, time remaining: 1909.94s
+[2026-02-10 18:07:59.448] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:07:59.448] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1131/2856, success: True, time elapsed: 1244.77s, time remaining: 1895.75s
+[2026-02-10 18:08:04.740] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:04.740] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1139/2856, success: True, time elapsed: 1250.69s, time remaining: 1882.62s
+[2026-02-10 18:08:10.664] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:10.664] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1147/2856, success: True, time elapsed: 1255.90s, time remaining: 1868.53s
+[2026-02-10 18:08:15.869] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:15.869] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1155/2856, success: True, time elapsed: 1261.21s, time remaining: 1854.72s
+[2026-02-10 18:08:21.177] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:21.177] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1163/2856, success: True, time elapsed: 1266.63s, time remaining: 1841.18s
+[2026-02-10 18:08:26.599] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:26.599] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1171/2856, success: True, time elapsed: 1272.26s, time remaining: 1828.07s
+[2026-02-10 18:08:32.234] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:32.234] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1179/2856, success: False, time elapsed: 1284.52s, time remaining: 1824.45s
+[2026-02-10 18:08:44.489] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:44.489] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1187/2856, success: True, time elapsed: 1289.17s, time remaining: 1810.04s
+[2026-02-10 18:08:49.136] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:49.136] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1195/2856, success: True, time elapsed: 1295.29s, time remaining: 1797.82s
+[2026-02-10 18:08:55.264] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:08:55.264] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1203/2856, success: True, time elapsed: 1300.86s, time remaining: 1784.89s
+[2026-02-10 18:09:00.825] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:00.825] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1211/2856, success: True, time elapsed: 1306.51s, time remaining: 1772.19s
+[2026-02-10 18:09:06.476] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:06.476] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1219/2856, success: True, time elapsed: 1312.57s, time remaining: 1760.13s
+[2026-02-10 18:09:12.536] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:12.536] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1227/2856, success: True, time elapsed: 1317.88s, time remaining: 1747.15s
+[2026-02-10 18:09:17.846] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:17.846] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1235/2856, success: True, time elapsed: 1323.10s, time remaining: 1734.16s
+[2026-02-10 18:09:23.073] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:23.073] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1243/2856, success: True, time elapsed: 1327.05s, time remaining: 1719.62s
+[2026-02-10 18:09:27.021] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:27.021] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1251/2856, success: True, time elapsed: 1330.69s, time remaining: 1704.81s
+[2026-02-10 18:09:30.657] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:30.657] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1259/2856, success: True, time elapsed: 1334.75s, time remaining: 1690.69s
+[2026-02-10 18:09:34.723] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:34.723] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1267/2856, success: True, time elapsed: 1338.77s, time remaining: 1676.63s
+[2026-02-10 18:09:38.741] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:38.741] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1275/2856, success: True, time elapsed: 1343.10s, time remaining: 1663.08s
+[2026-02-10 18:09:43.066] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:43.066] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1283/2856, success: True, time elapsed: 1346.74s, time remaining: 1648.81s
+[2026-02-10 18:09:46.711] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:46.711] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1291/2856, success: True, time elapsed: 1351.09s, time remaining: 1635.53s
+[2026-02-10 18:09:51.059] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:51.059] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1299/2856, success: True, time elapsed: 1355.50s, time remaining: 1622.43s
+[2026-02-10 18:09:55.470] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:55.470] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1307/2856, success: True, time elapsed: 1359.03s, time remaining: 1608.39s
+[2026-02-10 18:09:58.998] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:09:58.998] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1315/2856, success: True, time elapsed: 1364.21s, time remaining: 1596.42s
+[2026-02-10 18:10:04.186] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:04.186] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1323/2856, success: True, time elapsed: 1368.29s, time remaining: 1583.25s
+[2026-02-10 18:10:08.260] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:08.260] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1331/2856, success: True, time elapsed: 1372.19s, time remaining: 1569.98s
+[2026-02-10 18:10:12.157] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:12.158] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1339/2856, success: True, time elapsed: 1376.69s, time remaining: 1557.51s
+[2026-02-10 18:10:16.658] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:16.658] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1347/2856, success: True, time elapsed: 1380.37s, time remaining: 1544.22s
+[2026-02-10 18:10:20.342] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:20.342] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1355/2856, success: True, time elapsed: 1386.27s, time remaining: 1533.48s
+[2026-02-10 18:10:26.237] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:26.237] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1363/2856, success: True, time elapsed: 1390.45s, time remaining: 1520.94s
+[2026-02-10 18:10:30.423] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:30.423] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1371/2856, success: True, time elapsed: 1394.80s, time remaining: 1508.66s
+[2026-02-10 18:10:34.771] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:34.771] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1379/2856, success: True, time elapsed: 1399.75s, time remaining: 1497.12s
+[2026-02-10 18:10:39.717] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:39.717] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1387/2856, success: False, time elapsed: 1410.03s, time remaining: 1491.30s
+[2026-02-10 18:10:50.000] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:50.000] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1395/2856, success: True, time elapsed: 1414.31s, time remaining: 1479.15s
+[2026-02-10 18:10:54.282] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:54.282] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1403/2856, success: True, time elapsed: 1417.93s, time remaining: 1466.40s
+[2026-02-10 18:10:57.895] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:10:57.895] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1411/2856, success: True, time elapsed: 1421.58s, time remaining: 1453.80s
+[2026-02-10 18:11:01.552] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:01.552] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1419/2856, success: True, time elapsed: 1425.95s, time remaining: 1442.02s
+[2026-02-10 18:11:05.920] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:05.920] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1427/2856, success: True, time elapsed: 1429.63s, time remaining: 1429.63s
+[2026-02-10 18:11:09.605] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:09.605] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1435/2856, success: True, time elapsed: 1433.38s, time remaining: 1417.41s
+[2026-02-10 18:11:13.350] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:13.350] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1443/2856, success: True, time elapsed: 1438.02s, time remaining: 1406.16s
+[2026-02-10 18:11:17.994] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:17.994] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1451/2856, success: True, time elapsed: 1442.44s, time remaining: 1394.76s
+[2026-02-10 18:11:22.413] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:22.413] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1459/2856, success: True, time elapsed: 1447.30s, time remaining: 1383.86s
+[2026-02-10 18:11:27.272] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:27.272] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1467/2856, success: True, time elapsed: 1451.07s, time remaining: 1371.99s
+[2026-02-10 18:11:31.041] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:31.041] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1475/2856, success: True, time elapsed: 1455.16s, time remaining: 1360.51s
+[2026-02-10 18:11:35.126] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:35.126] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1483/2856, success: True, time elapsed: 1458.55s, time remaining: 1348.47s
+[2026-02-10 18:11:38.516] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:38.516] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1491/2856, success: True, time elapsed: 1462.86s, time remaining: 1337.36s
+[2026-02-10 18:11:42.827] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:42.827] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1499/2856, success: True, time elapsed: 1467.21s, time remaining: 1326.36s
+[2026-02-10 18:11:47.180] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:47.180] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1507/2856, success: True, time elapsed: 1471.21s, time remaining: 1315.12s
+[2026-02-10 18:11:51.182] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:51.182] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1515/2856, success: True, time elapsed: 1475.54s, time remaining: 1304.24s
+[2026-02-10 18:11:55.511] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:55.511] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1523/2856, success: True, time elapsed: 1479.46s, time remaining: 1293.07s
+[2026-02-10 18:11:59.426] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:11:59.426] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1531/2856, success: True, time elapsed: 1483.13s, time remaining: 1281.77s
+[2026-02-10 18:12:03.102] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:03.102] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1539/2856, success: False, time elapsed: 1493.25s, time remaining: 1276.05s
+[2026-02-10 18:12:13.217] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:13.217] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1547/2856, success: False, time elapsed: 1503.41s, time remaining: 1270.32s
+[2026-02-10 18:12:23.379] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:23.379] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1555/2856, success: False, time elapsed: 1514.10s, time remaining: 1265.00s
+[2026-02-10 18:12:34.072] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:34.072] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1563/2856, success: False, time elapsed: 1524.67s, time remaining: 1259.51s
+[2026-02-10 18:12:44.644] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:44.644] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1571/2856, success: True, time elapsed: 1528.67s, time remaining: 1248.61s
+[2026-02-10 18:12:48.652] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:48.652] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1579/2856, success: True, time elapsed: 1532.47s, time remaining: 1237.62s
+[2026-02-10 18:12:52.444] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:52.444] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1587/2856, success: True, time elapsed: 1535.87s, time remaining: 1226.38s
+[2026-02-10 18:12:55.843] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:12:55.843] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1595/2856, success: False, time elapsed: 1545.67s, time remaining: 1220.27s
+[2026-02-10 18:13:05.640] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:05.640] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1603/2856, success: False, time elapsed: 1556.27s, time remaining: 1214.75s
+[2026-02-10 18:13:16.243] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:16.243] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1611/2856, success: True, time elapsed: 1566.36s, time remaining: 1208.78s
+[2026-02-10 18:13:26.332] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:26.332] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1619/2856, success: True, time elapsed: 1570.58s, time remaining: 1198.29s
+[2026-02-10 18:13:30.548] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:30.548] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1627/2856, success: True, time elapsed: 1574.01s, time remaining: 1187.27s
+[2026-02-10 18:13:33.977] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:33.977] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1635/2856, success: True, time elapsed: 1577.99s, time remaining: 1176.74s
+[2026-02-10 18:13:37.960] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:37.960] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1643/2856, success: False, time elapsed: 1588.77s, time remaining: 1171.29s
+[2026-02-10 18:13:48.744] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:48.744] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1651/2856, success: False, time elapsed: 1598.50s, time remaining: 1165.01s
+[2026-02-10 18:13:58.467] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:13:58.467] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1659/2856, success: False, time elapsed: 1608.39s, time remaining: 1158.82s
+[2026-02-10 18:14:08.365] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:08.365] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1667/2856, success: False, time elapsed: 1618.73s, time remaining: 1152.91s
+[2026-02-10 18:14:18.709] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:18.709] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1675/2856, success: True, time elapsed: 1622.61s, time remaining: 1142.41s
+[2026-02-10 18:14:22.580] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:22.580] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/pick_coke_can - 1683/2856, success: True, time elapsed: 1627.06s, time remaining: 1132.37s
+[2026-02-10 18:14:27.026] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:27.026] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1691/2856, success: True, time elapsed: 1632.15s, time remaining: 1122.83s
+[2026-02-10 18:14:32.122] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:32.122] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1699/2856, success: True, time elapsed: 1637.09s, time remaining: 1113.22s
+[2026-02-10 18:14:37.056] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:37.056] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1707/2856, success: True, time elapsed: 1641.49s, time remaining: 1103.30s
+[2026-02-10 18:14:41.462] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:41.462] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1715/2856, success: True, time elapsed: 1646.29s, time remaining: 1093.69s
+[2026-02-10 18:14:46.260] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:46.260] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1723/2856, success: True, time elapsed: 1650.63s, time remaining: 1083.82s
+[2026-02-10 18:14:50.600] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:50.600] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1731/2856, success: True, time elapsed: 1655.51s, time remaining: 1074.36s
+[2026-02-10 18:14:55.482] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:14:55.482] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1739/2856, success: True, time elapsed: 1660.56s, time remaining: 1065.05s
+[2026-02-10 18:15:00.530] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:00.530] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1747/2856, success: True, time elapsed: 1664.60s, time remaining: 1055.14s
+[2026-02-10 18:15:04.574] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:04.574] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1755/2856, success: True, time elapsed: 1669.35s, time remaining: 1045.72s
+[2026-02-10 18:15:09.319] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:09.319] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1763/2856, success: True, time elapsed: 1674.01s, time remaining: 1036.29s
+[2026-02-10 18:15:13.981] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:13.981] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1771/2856, success: True, time elapsed: 1678.18s, time remaining: 1026.61s
+[2026-02-10 18:15:18.152] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:18.153] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1779/2856, success: True, time elapsed: 1686.16s, time remaining: 1019.28s
+[2026-02-10 18:15:26.132] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:26.132] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1787/2856, success: True, time elapsed: 1690.77s, time remaining: 1009.92s
+[2026-02-10 18:15:30.736] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:30.736] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1795/2856, success: True, time elapsed: 1694.85s, time remaining: 1000.30s
+[2026-02-10 18:15:34.824] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:34.824] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1803/2856, success: True, time elapsed: 1699.80s, time remaining: 991.24s
+[2026-02-10 18:15:39.775] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:39.775] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1811/2856, success: True, time elapsed: 1704.76s, time remaining: 982.21s
+[2026-02-10 18:15:44.726] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:44.726] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1819/2856, success: True, time elapsed: 1709.87s, time remaining: 973.31s
+[2026-02-10 18:15:49.837] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:49.837] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1827/2856, success: True, time elapsed: 1714.84s, time remaining: 964.36s
+[2026-02-10 18:15:54.807] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:54.807] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1835/2856, success: True, time elapsed: 1719.43s, time remaining: 955.24s
+[2026-02-10 18:15:59.398] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:15:59.398] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1843/2856, success: True, time elapsed: 1724.05s, time remaining: 946.17s
+[2026-02-10 18:16:04.025] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:04.025] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1851/2856, success: True, time elapsed: 1728.96s, time remaining: 937.30s
+[2026-02-10 18:16:08.934] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:08.934] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1859/2856, success: True, time elapsed: 1734.22s, time remaining: 928.64s
+[2026-02-10 18:16:14.185] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:14.185] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1867/2856, success: True, time elapsed: 1739.11s, time remaining: 919.83s
+[2026-02-10 18:16:19.083] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:19.083] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1875/2856, success: True, time elapsed: 1744.61s, time remaining: 911.36s
+[2026-02-10 18:16:24.581] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:24.581] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1883/2856, success: True, time elapsed: 1749.80s, time remaining: 902.76s
+[2026-02-10 18:16:29.766] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:29.766] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1891/2856, success: True, time elapsed: 1754.81s, time remaining: 894.10s
+[2026-02-10 18:16:34.784] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:34.784] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1899/2856, success: True, time elapsed: 1760.09s, time remaining: 885.60s
+[2026-02-10 18:16:40.062] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:40.062] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1907/2856, success: True, time elapsed: 1766.02s, time remaining: 877.46s
+[2026-02-10 18:16:45.988] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:45.988] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1915/2856, success: True, time elapsed: 1770.82s, time remaining: 868.78s
+[2026-02-10 18:16:50.794] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:50.794] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1923/2856, success: True, time elapsed: 1775.61s, time remaining: 860.12s
+[2026-02-10 18:16:55.584] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:16:55.584] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1931/2856, success: True, time elapsed: 1781.07s, time remaining: 851.82s
+[2026-02-10 18:17:01.042] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:01.042] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1939/2856, success: True, time elapsed: 1786.10s, time remaining: 843.34s
+[2026-02-10 18:17:06.074] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:06.074] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1947/2856, success: True, time elapsed: 1790.56s, time remaining: 834.61s
+[2026-02-10 18:17:10.527] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:10.527] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1955/2856, success: True, time elapsed: 1795.20s, time remaining: 826.01s
+[2026-02-10 18:17:15.166] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:15.166] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1963/2856, success: True, time elapsed: 1799.24s, time remaining: 817.17s
+[2026-02-10 18:17:19.210] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:19.210] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1971/2856, success: True, time elapsed: 1805.24s, time remaining: 809.25s
+[2026-02-10 18:17:25.212] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:25.212] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1979/2856, success: True, time elapsed: 1809.71s, time remaining: 800.66s
+[2026-02-10 18:17:29.683] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:29.683] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1987/2856, success: True, time elapsed: 1813.66s, time remaining: 791.88s
+[2026-02-10 18:17:33.633] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:33.633] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 1995/2856, success: True, time elapsed: 1818.97s, time remaining: 783.73s
+[2026-02-10 18:17:38.944] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:38.944] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2003/2856, success: True, time elapsed: 1823.52s, time remaining: 775.27s
+[2026-02-10 18:17:43.494] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:43.494] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2011/2856, success: True, time elapsed: 1827.64s, time remaining: 766.66s
+[2026-02-10 18:17:47.611] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:47.611] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2019/2856, success: True, time elapsed: 1831.98s, time remaining: 758.19s
+[2026-02-10 18:17:51.951] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:51.951] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2027/2856, success: True, time elapsed: 1836.79s, time remaining: 749.93s
+[2026-02-10 18:17:56.759] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:17:56.759] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2035/2856, success: True, time elapsed: 1840.98s, time remaining: 741.46s
+[2026-02-10 18:18:00.950] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:00.950] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2043/2856, success: True, time elapsed: 1845.79s, time remaining: 733.26s
+[2026-02-10 18:18:05.763] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:05.763] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2051/2856, success: True, time elapsed: 1850.53s, time remaining: 725.06s
+[2026-02-10 18:18:10.502] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:10.502] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2059/2856, success: True, time elapsed: 1854.94s, time remaining: 716.76s
+[2026-02-10 18:18:14.909] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:14.909] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2067/2856, success: False, time elapsed: 1865.69s, time remaining: 710.91s
+[2026-02-10 18:18:25.662] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:25.662] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2075/2856, success: True, time elapsed: 1870.02s, time remaining: 702.61s
+[2026-02-10 18:18:29.988] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:29.989] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2083/2856, success: True, time elapsed: 1874.37s, time remaining: 694.34s
+[2026-02-10 18:18:34.341] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:34.341] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2091/2856, success: True, time elapsed: 1878.99s, time remaining: 686.21s
+[2026-02-10 18:18:38.959] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:38.959] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2099/2856, success: True, time elapsed: 1883.49s, time remaining: 678.06s
+[2026-02-10 18:18:43.464] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:43.464] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2107/2856, success: True, time elapsed: 1887.66s, time remaining: 669.81s
+[2026-02-10 18:18:47.631] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:47.631] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2115/2856, success: True, time elapsed: 1893.30s, time remaining: 662.12s
+[2026-02-10 18:18:53.270] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:53.270] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2123/2856, success: True, time elapsed: 1898.27s, time remaining: 654.21s
+[2026-02-10 18:18:58.239] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:18:58.239] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2131/2856, success: True, time elapsed: 1902.99s, time remaining: 646.23s
+[2026-02-10 18:19:02.956] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:02.956] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2139/2856, success: True, time elapsed: 1907.33s, time remaining: 638.15s
+[2026-02-10 18:19:07.297] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:07.297] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2147/2856, success: True, time elapsed: 1912.29s, time remaining: 630.31s
+[2026-02-10 18:19:12.260] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:12.260] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2155/2856, success: True, time elapsed: 1916.79s, time remaining: 622.33s
+[2026-02-10 18:19:16.760] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:16.760] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2163/2856, success: True, time elapsed: 1921.88s, time remaining: 614.58s
+[2026-02-10 18:19:21.851] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:21.851] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2171/2856, success: False, time elapsed: 1932.94s, time remaining: 608.72s
+[2026-02-10 18:19:32.911] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:32.911] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2179/2856, success: False, time elapsed: 1943.80s, time remaining: 602.76s
+[2026-02-10 18:19:43.766] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:43.766] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2187/2856, success: False, time elapsed: 1954.30s, time remaining: 596.65s
+[2026-02-10 18:19:54.270] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:19:54.270] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2195/2856, success: False, time elapsed: 1964.95s, time remaining: 590.56s
+[2026-02-10 18:20:04.918] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:04.919] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2203/2856, success: True, time elapsed: 1971.56s, time remaining: 583.24s
+[2026-02-10 18:20:11.527] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:11.527] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2211/2856, success: False, time elapsed: 1982.63s, time remaining: 577.22s
+[2026-02-10 18:20:22.599] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:22.599] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2219/2856, success: False, time elapsed: 1993.09s, time remaining: 570.99s
+[2026-02-10 18:20:33.059] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:33.059] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2227/2856, success: False, time elapsed: 2003.83s, time remaining: 564.81s
+[2026-02-10 18:20:43.798] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:43.798] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2235/2856, success: True, time elapsed: 2008.91s, time remaining: 557.03s
+[2026-02-10 18:20:48.881] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:48.881] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2243/2856, success: True, time elapsed: 2012.78s, time remaining: 548.94s
+[2026-02-10 18:20:52.751] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:52.751] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2251/2856, success: True, time elapsed: 2016.72s, time remaining: 540.90s
+[2026-02-10 18:20:56.690] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:20:56.690] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2259/2856, success: True, time elapsed: 2020.72s, time remaining: 532.90s
+[2026-02-10 18:21:00.694] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:00.694] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2267/2856, success: True, time elapsed: 2024.67s, time remaining: 524.91s
+[2026-02-10 18:21:04.640] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:04.640] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2275/2856, success: True, time elapsed: 2028.24s, time remaining: 516.86s
+[2026-02-10 18:21:08.210] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:08.210] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/move_near - 2283/2856, success: True, time elapsed: 2032.50s, time remaining: 509.02s
+[2026-02-10 18:21:12.471] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:12.471] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2291/2856, success: True, time elapsed: 2047.23s, time remaining: 503.77s
+[2026-02-10 18:21:27.204] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:27.204] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2299/2856, success: True, time elapsed: 2064.30s, time remaining: 499.02s
+[2026-02-10 18:21:44.275] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:21:44.275] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2307/2856, success: False, time elapsed: 2109.79s, time remaining: 500.94s
+[2026-02-10 18:22:29.758] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:22:29.758] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2315/2856, success: False, time elapsed: 2149.31s, time remaining: 501.14s
+[2026-02-10 18:23:09.283] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:23:09.283] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2323/2856, success: True, time elapsed: 2159.92s, time remaining: 494.44s
+[2026-02-10 18:23:19.890] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:23:19.890] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2331/2856, success: False, time elapsed: 2202.36s, time remaining: 494.87s
+[2026-02-10 18:24:02.334] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:24:02.334] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2339/2856, success: True, time elapsed: 2236.47s, time remaining: 493.17s
+[2026-02-10 18:24:36.444] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:24:36.444] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2347/2856, success: True, time elapsed: 2255.38s, time remaining: 487.96s
+[2026-02-10 18:24:55.348] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:24:55.348] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2355/2856, success: False, time elapsed: 2296.83s, time remaining: 487.44s
+[2026-02-10 18:25:36.802] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:25:36.802] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2363/2856, success: True, time elapsed: 2316.69s, time remaining: 482.15s
+[2026-02-10 18:25:56.657] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:25:56.657] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2371/2856, success: True, time elapsed: 2329.36s, time remaining: 475.30s
+[2026-02-10 18:26:09.327] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:26:09.327] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2379/2856, success: False, time elapsed: 2374.31s, time remaining: 474.86s
+[2026-02-10 18:26:54.278] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:26:54.278] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2387/2856, success: False, time elapsed: 2414.18s, time remaining: 473.13s
+[2026-02-10 18:27:34.147] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:27:34.147] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2395/2856, success: False, time elapsed: 2454.21s, time remaining: 471.17s
+[2026-02-10 18:28:14.176] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:28:14.176] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2403/2856, success: False, time elapsed: 2486.31s, time remaining: 467.48s
+[2026-02-10 18:28:46.285] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:28:46.285] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2411/2856, success: True, time elapsed: 2503.23s, time remaining: 460.79s
+[2026-02-10 18:29:03.195] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:29:03.195] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2419/2856, success: False, time elapsed: 2540.33s, time remaining: 457.68s
+[2026-02-10 18:29:40.305] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:29:40.305] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2427/2856, success: True, time elapsed: 2559.86s, time remaining: 451.24s
+[2026-02-10 18:29:59.829] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:29:59.829] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2435/2856, success: True, time elapsed: 2576.85s, time remaining: 444.28s
+[2026-02-10 18:30:16.816] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:30:16.816] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2443/2856, success: True, time elapsed: 2591.26s, time remaining: 436.83s
+[2026-02-10 18:30:31.235] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:30:31.235] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2451/2856, success: False, time elapsed: 2634.96s, time remaining: 434.15s
+[2026-02-10 18:31:14.932] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:31:14.932] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2459/2856, success: True, time elapsed: 2658.06s, time remaining: 427.88s
+[2026-02-10 18:31:38.028] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:31:38.028] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2467/2856, success: False, time elapsed: 2698.41s, time remaining: 424.22s
+[2026-02-10 18:32:18.381] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:32:18.381] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2475/2856, success: False, time elapsed: 2739.67s, time remaining: 420.47s
+[2026-02-10 18:32:59.642] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:32:59.642] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2483/2856, success: True, time elapsed: 2753.88s, time remaining: 412.42s
+[2026-02-10 18:33:13.852] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:33:13.852] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2491/2856, success: True, time elapsed: 2769.10s, time remaining: 404.48s
+[2026-02-10 18:33:29.074] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:33:29.074] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2499/2856, success: False, time elapsed: 2812.36s, time remaining: 400.48s
+[2026-02-10 18:34:12.330] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:34:12.330] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2507/2856, success: True, time elapsed: 2825.53s, time remaining: 392.06s
+[2026-02-10 18:34:25.498] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:34:25.498] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2515/2856, success: True, time elapsed: 2836.19s, time remaining: 383.27s
+[2026-02-10 18:34:36.161] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:34:36.161] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2523/2856, success: True, time elapsed: 2854.24s, time remaining: 375.44s
+[2026-02-10 18:34:54.209] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:34:54.209] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2531/2856, success: False, time elapsed: 2895.36s, time remaining: 370.50s
+[2026-02-10 18:35:35.328] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:35:35.328] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2539/2856, success: False, time elapsed: 2936.85s, time remaining: 365.37s
+[2026-02-10 18:36:16.822] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:36:16.822] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2547/2856, success: False, time elapsed: 2980.72s, time remaining: 360.31s
+[2026-02-10 18:37:00.689] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:37:00.689] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2555/2856, success: True, time elapsed: 2997.08s, time remaining: 351.77s
+[2026-02-10 18:37:17.048] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:37:17.048] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2563/2856, success: True, time elapsed: 3010.01s, time remaining: 342.79s
+[2026-02-10 18:37:29.978] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:37:29.978] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2571/2856, success: True, time elapsed: 3035.24s, time remaining: 335.15s
+[2026-02-10 18:37:55.215] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:37:55.215] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2579/2856, success: True, time elapsed: 3053.28s, time remaining: 326.63s
+[2026-02-10 18:38:13.247] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:38:13.247] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2587/2856, success: True, time elapsed: 3087.46s, time remaining: 319.72s
+[2026-02-10 18:38:47.427] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:38:47.427] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2595/2856, success: True, time elapsed: 3126.99s, time remaining: 313.18s
+[2026-02-10 18:39:26.965] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:39:26.965] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2603/2856, success: False, time elapsed: 3166.33s, time remaining: 306.42s
+[2026-02-10 18:40:06.299] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:40:06.299] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/open_drawer - 2611/2856, success: False, time elapsed: 3207.20s, time remaining: 299.60s
+[2026-02-10 18:40:47.170] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:40:47.170] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2619/2856, success: True, time elapsed: 3222.25s, time remaining: 290.25s
+[2026-02-10 18:41:02.216] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:41:02.216] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2627/2856, success: True, time elapsed: 3233.92s, time remaining: 280.57s
+[2026-02-10 18:41:13.894] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:41:13.894] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2635/2856, success: True, time elapsed: 3245.12s, time remaining: 270.84s
+[2026-02-10 18:41:25.094] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:41:25.094] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2643/2856, success: True, time elapsed: 3257.06s, time remaining: 261.16s
+[2026-02-10 18:41:37.029] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:41:37.029] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2651/2856, success: True, time elapsed: 3273.42s, time remaining: 251.80s
+[2026-02-10 18:41:53.389] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:41:53.390] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/close_drawer - 2659/2856, success: True, time elapsed: 3290.67s, time remaining: 242.47s
+[2026-02-10 18:42:10.635] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:42:10.636] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2667/2856, success: False, time elapsed: 3366.67s, time remaining: 237.23s
+[2026-02-10 18:43:26.643] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:43:26.643] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2675/2856, success: False, time elapsed: 3441.20s, time remaining: 231.47s
+[2026-02-10 18:44:41.170] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:44:41.170] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2683/2856, success: True, time elapsed: 3492.22s, time remaining: 223.79s
+[2026-02-10 18:45:32.190] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:45:32.190] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2691/2856, success: True, time elapsed: 3547.33s, time remaining: 216.11s
+[2026-02-10 18:46:27.296] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:46:27.296] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2699/2856, success: False, time elapsed: 3620.44s, time remaining: 209.18s
+[2026-02-10 18:47:40.407] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:47:40.407] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2707/2856, success: True, time elapsed: 3681.41s, time remaining: 201.20s
+[2026-02-10 18:48:41.376] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:48:41.376] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2715/2856, success: True, time elapsed: 3729.47s, time remaining: 192.24s
+[2026-02-10 18:49:29.441] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:49:29.441] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2723/2856, success: True, time elapsed: 3777.08s, time remaining: 183.03s
+[2026-02-10 18:50:17.050] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:50:17.050] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2731/2856, success: True, time elapsed: 3832.36s, time remaining: 173.94s
+[2026-02-10 18:51:12.335] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:51:12.335] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2739/2856, success: True, time elapsed: 3879.38s, time remaining: 164.24s
+[2026-02-10 18:51:59.350] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:51:59.350] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2747/2856, success: True, time elapsed: 3929.16s, time remaining: 154.42s
+[2026-02-10 18:52:49.130] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:52:49.130] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2755/2856, success: False, time elapsed: 4004.43s, time remaining: 145.30s
+[2026-02-10 18:54:04.397] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:54:04.397] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2763/2856, success: False, time elapsed: 4073.89s, time remaining: 135.60s
+[2026-02-10 18:55:13.862] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:55:13.862] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2771/2856, success: True, time elapsed: 4143.32s, time remaining: 125.56s
+[2026-02-10 18:56:23.291] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:56:23.291] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2779/2856, success: False, time elapsed: 4217.01s, time remaining: 115.29s
+[2026-02-10 18:57:36.978] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:57:36.978] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2787/2856, success: True, time elapsed: 4266.36s, time remaining: 104.06s
+[2026-02-10 18:58:26.333] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:58:26.333] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2795/2856, success: True, time elapsed: 4316.39s, time remaining: 92.63s
+[2026-02-10 18:59:16.362] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 18:59:16.362] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2803/2856, success: False, time elapsed: 4391.34s, time remaining: 81.44s
+[2026-02-10 19:00:31.306] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:00:31.306] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2811/2856, success: True, time elapsed: 4457.40s, time remaining: 69.75s
+[2026-02-10 19:01:37.369] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:01:37.369] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2819/2856, success: True, time elapsed: 4515.61s, time remaining: 57.65s
+[2026-02-10 19:02:35.584] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:02:35.584] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2827/2856, success: True, time elapsed: 4568.84s, time remaining: 45.24s
+[2026-02-10 19:03:28.814] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:03:28.814] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2835/2856, success: True, time elapsed: 4636.00s, time remaining: 32.69s
+[2026-02-10 19:04:35.972] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:04:35.972] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2843/2856, success: True, time elapsed: 4684.90s, time remaining: 19.77s
+[2026-02-10 19:05:24.871] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-02-10 19:05:24.871] [svulkan2] [warning] Continue without GLFW.
+[Worker 3 / 8] variant_aggregation/put_in_drawer - 2851/2856, success: True, time elapsed: 4735.57s, time remaining: 6.64s
+[Worker 3 / 8] Waiting for all end files... (0/8) files present. Sleeping for 30 seconds.
+[Worker 3 / 8] Waiting for all end files... (0/8) files present. Sleeping for 30 seconds.
