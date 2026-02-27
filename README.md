@@ -121,7 +121,8 @@ inputs = processor(
 ).to(model.device)
 
 # Add proprioceptive state and action mask
-robot_type = "libero"
+robot_type = "libero_all"
+inputs["seed"] = 42 
 inputs["state"] = torch.from_numpy(proprio_state).to(model.device, model.dtype).view(1, 1, -1)
 inputs["action_mask"] = processor.get_action_mask(robot_type).to(model.device, model.dtype)
 
