@@ -22,7 +22,7 @@ import math
 import threading
 import time
 from dataclasses import dataclass
-from typing import Optional
+from typing import Literal, Optional
 
 import numpy as np
 from PIL import Image
@@ -67,6 +67,53 @@ def _as_numpy(x) -> np.ndarray:
     return np.asarray(x)
 
 
+PROFILE_DEFAULT_TASK_ID: dict[str, str] = {
+    "calvin": "calvin_abcd_orig",
+    "libero": "libero_all",
+}
+
+
+def _normalize_profile(profile: str) -> Literal["calvin", "libero"]:
+    value = profile.strip().lower()
+    if value not in PROFILE_DEFAULT_TASK_ID:
+        expected = ", ".join(sorted(PROFILE_DEFAULT_TASK_ID))
+        raise ValueError(
+            f"Unsupported profile '{profile}'. Expected one of: {expected}."
+        )
+    return value  # type: ignore[return-value]
+
+
+def _euler_xyz_to_quat_xyzw(roll: float, pitch: float, yaw: float) -> np.ndarray:
+    """Convert XYZ Euler angles (rad) to quaternion (x, y, z, w)."""
+    cr = math.cos(roll * 0.5)
+    sr = math.sin(roll * 0.5)
+    cp = math.cos(pitch * 0.5)
+    sp = math.sin(pitch * 0.5)
+    cy = math.cos(yaw * 0.5)
+    sy = math.sin(yaw * 0.5)
+
+    qx = sr * cp * cy - cr * sp * sy
+    qy = cr * sp * cy + sr * cp * sy
+    qz = cr * cp * sy - sr * sp * cy
+    qw = cr * cp * cy + sr * sp * sy
+    return np.array([qx, qy, qz, qw], dtype=np.float64)
+
+
+def _quat_xyzw_to_axis_angle(quat_xyzw: np.ndarray) -> np.ndarray:
+    """Convert quaternion (x, y, z, w) to axis-angle vector."""
+    quat = np.asarray(quat_xyzw, dtype=np.float64).reshape(4)
+    norm = float(np.linalg.norm(quat))
+    if norm <= 1e-12:
+        return np.zeros(3, dtype=np.float64)
+
+    quat = quat / norm
+    w = _clip(float(quat[3]), -1.0, 1.0)
+    den = math.sqrt(max(0.0, 1.0 - w * w))
+    if math.isclose(den, 0.0):
+        return np.zeros(3, dtype=np.float64)
+    return quat[:3] * (2.0 * math.acos(w) / den)
+
+
 def _open_camera(index: int, width: int, height: int, fps: int):
     import cv2
 
@@ -89,6 +136,52 @@ def _bgr_frame_to_pil(frame_bgr: np.ndarray) -> Image.Image:
     import cv2
 
     return Image.fromarray(cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB))
+
+
+class _OpenCvImagePairReader:
+    def __init__(
+        self,
+        base_index: int,
+        wrist_index: int,
+        width: int,
+        height: int,
+        fps: int,
+    ) -> None:
+        self._cap_base = _open_camera(base_index, width, height, fps)
+        self._shared_capture = int(base_index) == int(wrist_index)
+        if self._shared_capture:
+            self._cap_wrist = self._cap_base
+        else:
+            try:
+                self._cap_wrist = _open_camera(wrist_index, width, height, fps)
+            except Exception:
+                self._cap_base.release()
+                raise
+
+    @staticmethod
+    def _read_frame(cap, timeout_s: float, label: str) -> np.ndarray:
+        deadline = time.time() + max(0.01, timeout_s)
+        while time.time() < deadline:
+            ok, frame = cap.read()
+            if ok and frame is not None:
+                return frame
+            time.sleep(0.01)
+
+        raise TimeoutError(f"Timed out waiting for OpenCV {label} frame.")
+
+    def get_latest_pil(self, timeout_s: float) -> tuple[Image.Image, Image.Image]:
+        base_bgr = self._read_frame(self._cap_base, timeout_s=timeout_s, label="base")
+        wrist_bgr = (
+            base_bgr.copy()
+            if self._shared_capture
+            else self._read_frame(self._cap_wrist, timeout_s=timeout_s, label="wrist")
+        )
+        return _bgr_frame_to_pil(base_bgr), _bgr_frame_to_pil(wrist_bgr)
+
+    def close(self) -> None:
+        self._cap_base.release()
+        if not self._shared_capture:
+            self._cap_wrist.release()
 
 
 class _RosImagePairSubscriber:
@@ -262,6 +355,30 @@ class PiperSDKAdapter:
         )
         return np.concatenate([state7, np.zeros(25, dtype=np.float32)], axis=0)
 
+    def build_libero_state32(self) -> np.ndarray:
+        pose = self.read_end_pose_m_rad()
+        gripper_width = self.read_gripper_m()
+
+        quat_xyzw = _euler_xyz_to_quat_xyzw(pose[3], pose[4], pose[5])
+        axis_angle = _quat_xyzw_to_axis_angle(quat_xyzw)
+
+        # LIBERO state uses two finger qpos values; map opening width to symmetric fingers.
+        finger_qpos = 0.5 * gripper_width
+        state8 = np.array(
+            [
+                pose[0],
+                pose[1],
+                pose[2],
+                axis_angle[0],
+                axis_angle[1],
+                axis_angle[2],
+                finger_qpos,
+                finger_qpos,
+            ],
+            dtype=np.float32,
+        )
+        return np.concatenate([state8, np.zeros(24, dtype=np.float32)], axis=0)
+
     def apply_delta_action(self, action7: np.ndarray) -> None:
         a = np.asarray(action7, dtype=np.float64).reshape(-1)
         if a.size < 7:
@@ -286,7 +403,7 @@ class PiperSDKAdapter:
         self._target_pose[4] = _wrap_pi(self._target_pose[4])
         self._target_pose[5] = _wrap_pi(self._target_pose[5])
 
-        # CALVIN eval binarizes gripper sign (>0 open, <=0 close).
+        # Interpret gripper channel as open/close by sign around threshold.
         self._target_gripper_m = (
             self.gripper_open_m
             if a[6] > self.gripper_threshold
@@ -336,11 +453,33 @@ class XiaomiPiperController:
         model_host: str,
         model_port: int,
         piper_adapter: PiperSDKAdapter,
-        task_id: str = "calvin_abcd_orig",
+        profile: Literal["calvin", "libero"] = "calvin",
+        task_id: Optional[str] = None,
     ) -> None:
         self.model = XiaomiModelClient(host=model_host, port=model_port)
         self.piper = piper_adapter
-        self.task_id = task_id
+        self.profile = _normalize_profile(profile)
+        self.task_id = (
+            task_id if task_id is not None else PROFILE_DEFAULT_TASK_ID[self.profile]
+        )
+
+    def _build_state32(self) -> np.ndarray:
+        if self.profile == "libero":
+            return self.piper.build_libero_state32()
+        return self.piper.build_calvin_state32()
+
+    def _postprocess_gripper(self, chunk: np.ndarray) -> np.ndarray:
+        if chunk.ndim != 2 or chunk.shape[1] < 7:
+            raise ValueError(f"Expected [T, >=7] action chunk, got {chunk.shape}")
+
+        chunk = chunk.copy()
+        if self.profile == "calvin":
+            # Match eval_calvin behavior.
+            chunk[:, 6] = np.where(chunk[:, 6] > 0.0, 1.0, -1.0)
+        else:
+            # Keep LIBERO gripper output continuous in [-1, 1].
+            chunk[:, 6] = np.clip(chunk[:, 6], -1.0, 1.0)
+        return chunk
 
     def infer_action_chunk(
         self, base_img: Image.Image, wrist_img: Image.Image, instruction: str
@@ -350,7 +489,7 @@ class XiaomiPiperController:
 
         model_inputs = {
             "task_id": self.task_id,
-            "state": self.piper.build_calvin_state32(),
+            "state": self._build_state32(),
             "base": base_img,
             "wrist_left": wrist_img,
             "language": _normalize_instruction(instruction),
@@ -372,9 +511,9 @@ class XiaomiPiperController:
         replan_steps: int = 4,
         dt_s: float = 0.08,
     ) -> None:
-        chunk = self.infer_action_chunk(base_img, wrist_img, instruction)
-        # Follow eval_calvin behavior for gripper sign.
-        chunk[:, 6] = np.where(chunk[:, 6] > 0.0, 1.0, -1.0)
+        chunk = self._postprocess_gripper(
+            self.infer_action_chunk(base_img, wrist_img, instruction)
+        )
         self.piper.execute_chunk(chunk, replan_steps=replan_steps, dt_s=dt_s)
 
     def close(self) -> None:
@@ -388,7 +527,17 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--model-host", default="127.0.0.1")
     p.add_argument("--model-port", type=int, default=10086)
     p.add_argument("--can-port", default="can0")
-    p.add_argument("--task-id", default="calvin_abcd_orig")
+    p.add_argument(
+        "--profile",
+        choices=sorted(PROFILE_DEFAULT_TASK_ID),
+        default="calvin",
+        help="Model profile for state packing and gripper postprocess.",
+    )
+    p.add_argument(
+        "--task-id",
+        default=None,
+        help="Optional override. Defaults to profile task id: calvin_abcd_orig/libero_all.",
+    )
     p.add_argument("--instruction", required=True)
     p.add_argument("--base-image", default=None, help="Path to RGB base camera image")
     p.add_argument("--wrist-image", default=None, help="Path to RGB wrist camera image")
@@ -407,7 +556,17 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--camera-width", type=int, default=640)
     p.add_argument("--camera-height", type=int, default=480)
     p.add_argument("--camera-fps", type=int, default=30)
-    p.add_argument("--ros-camera-mode", action="store_true", help="Use ROS image topics instead of OpenCV device indices")
+    p.add_argument(
+        "--camera-frame-timeout",
+        type=float,
+        default=0.5,
+        help="Timeout in seconds when reading OpenCV camera frames",
+    )
+    p.add_argument(
+        "--ros-camera-mode",
+        action="store_true",
+        help="Use ROS image topics instead of OpenCV device indices",
+    )
     p.add_argument("--ros-base-topic", default="/camera/base/image_raw")
     p.add_argument("--ros-wrist-topic", default="/camera/wrist/image_raw")
     p.add_argument("--ros-sync-queue", type=int, default=10)
@@ -452,6 +611,7 @@ def main() -> None:
         model_host=args.model_host,
         model_port=args.model_port,
         piper_adapter=adapter,
+        profile=args.profile,
         task_id=args.task_id,
     )
 
@@ -506,29 +666,31 @@ def main() -> None:
             return
 
         wrist_index = (
-            args.wrist_cam_index if args.wrist_cam_index is not None else args.base_cam_index
+            args.wrist_cam_index
+            if args.wrist_cam_index is not None
+            else args.base_cam_index
         )
         if args.wrist_cam_index is None:
             print(
                 "[WARN] --wrist-cam-index not provided. Reusing base camera as wrist view."
             )
 
-        cap_base = _open_camera(
-            args.base_cam_index, args.camera_width, args.camera_height, args.camera_fps
-        )
-        cap_wrist = _open_camera(
-            wrist_index, args.camera_width, args.camera_height, args.camera_fps
+        opencv_images = _OpenCvImagePairReader(
+            base_index=args.base_cam_index,
+            wrist_index=wrist_index,
+            width=args.camera_width,
+            height=args.camera_height,
+            fps=args.camera_fps,
         )
         try:
             while args.max_loops <= 0 or loops < args.max_loops:
-                ok_base, frame_base = cap_base.read()
-                ok_wrist, frame_wrist = cap_wrist.read()
-                if not ok_base or not ok_wrist:
+                try:
+                    base_img, wrist_img = opencv_images.get_latest_pil(
+                        timeout_s=args.camera_frame_timeout
+                    )
+                except TimeoutError:
                     time.sleep(0.01)
                     continue
-
-                base_img = _bgr_frame_to_pil(frame_base)
-                wrist_img = _bgr_frame_to_pil(frame_wrist)
 
                 bridge.run_once(
                     base_img=base_img,
@@ -542,8 +704,7 @@ def main() -> None:
                 if args.loop_sleep > 0:
                     time.sleep(args.loop_sleep)
         finally:
-            cap_base.release()
-            cap_wrist.release()
+            opencv_images.close()
 
     finally:
         bridge.close()
