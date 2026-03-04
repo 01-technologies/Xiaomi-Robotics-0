@@ -16,6 +16,9 @@ Server options:
   --model PATH_OR_HF_ID      Model to load for deploy/server.py (required unless --no-server).
   --server-host HOST         Host for server bind. Default: 127.0.0.1
   --server-port PORT         Server port and adapter model port. Default: 10086
+  --server-ready-timeout SECONDS
+                             How long to wait for the server to become reachable.
+                             Use 0 to wait forever. Default: 1800
   --no-server                Do not launch server (connect adapter to an existing server).
   --server-log PATH          Optional server log file path.
 
@@ -69,6 +72,7 @@ SERVER_HOST="127.0.0.1"
 SERVER_PORT="10086"
 MODEL_HOST="127.0.0.1"
 SERVER_LOG=""
+SERVER_READY_TIMEOUT_S="1800"
 SOURCE_ROCM_ENV=0
 START_SERVER=1
 RUN_CLIENT_CHECK=1
@@ -90,6 +94,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --server-port)
       SERVER_PORT="$2"
+      shift 2
+      ;;
+    --server-ready-timeout)
+      SERVER_READY_TIMEOUT_S="$2"
       shift 2
       ;;
     --model-host)
@@ -149,6 +157,11 @@ if ! [[ "$SERVER_PORT" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
+if ! [[ "$SERVER_READY_TIMEOUT_S" =~ ^[0-9]+$ ]]; then
+  echo "Error: --server-ready-timeout must be a non-negative integer seconds value, got '$SERVER_READY_TIMEOUT_S'."
+  exit 1
+fi
+
 if ! command -v uv >/dev/null 2>&1; then
   echo "Error: uv is required but was not found in PATH."
   exit 1
@@ -184,8 +197,12 @@ wait_for_server() {
   local host="$1"
   local port="$2"
   local timeout_s="$3"
+  local server_pid="${4:-}"
+  local server_log="${5:-}"
 
-  uv run python - "$host" "$port" "$timeout_s" <<'PY'
+  uv run python - "$host" "$port" "$timeout_s" "$server_pid" "$server_log" <<'PY'
+import os
+import pathlib
 import socket
 import sys
 import time
@@ -193,23 +210,97 @@ import time
 host = sys.argv[1]
 port = int(sys.argv[2])
 timeout_s = float(sys.argv[3])
-deadline = time.time() + timeout_s
+server_pid = sys.argv[4].strip() if len(sys.argv) > 4 else ""
+server_log = sys.argv[5].strip() if len(sys.argv) > 5 else ""
 
-while time.time() < deadline:
+
+def _pid_is_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    return True
+
+
+def _tail_text(path: str, max_lines: int = 80) -> str:
+    if not path:
+        return ""
+    try:
+        p = pathlib.Path(path)
+        if not p.exists():
+            return ""
+        lines = p.read_text(errors="replace").splitlines()
+        if not lines:
+            return ""
+        return "\n".join(lines[-max_lines:])
+    except Exception:
+        return ""
+
+
+start = time.time()
+deadline = None if timeout_s <= 0 else start + timeout_s
+next_status = 0.0
+
+if timeout_s <= 0:
+    print(f"Waiting for server at {host}:{port} (no timeout).")
+else:
+    print(f"Waiting for server at {host}:{port} (timeout: {int(timeout_s)}s).")
+if server_log:
+    print(f"Server log: {server_log}")
+print("First startup can take a while if the model needs to download.")
+
+while deadline is None or time.time() < deadline:
+    if server_pid:
+        try:
+            pid_int = int(server_pid)
+        except ValueError:
+            pid_int = -1
+        if pid_int > 0 and not _pid_is_alive(pid_int):
+            print(
+                f"Server process (pid={pid_int}) exited while waiting for {host}:{port}.",
+                file=sys.stderr,
+            )
+            tail = _tail_text(server_log)
+            if tail:
+                print(f"--- Last lines of {server_log} ---", file=sys.stderr)
+                print(tail, file=sys.stderr)
+            else:
+                if server_log:
+                    print(f"No readable output from {server_log}.", file=sys.stderr)
+            sys.exit(1)
+
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.settimeout(1.0)
         try:
             sock.connect((host, port))
         except OSError:
+            now = time.time()
+            if now >= next_status:
+                elapsed_s = int(now - start)
+                if deadline is None:
+                    print(f"... still waiting ({elapsed_s}s elapsed)")
+                else:
+                    remaining_s = max(0, int(deadline - now))
+                    print(
+                        f"... still waiting ({elapsed_s}s elapsed, {remaining_s}s remaining)"
+                    )
+                next_status = now + 10.0
             time.sleep(0.2)
         else:
             print(f"Server reachable at {host}:{port}")
             sys.exit(0)
 
-print(f"Timed out waiting for server at {host}:{port}", file=sys.stderr)
+msg = f"Timed out waiting for server at {host}:{port}"
+if timeout_s > 0:
+    msg = f"{msg} after {int(timeout_s)}s"
+print(msg, file=sys.stderr)
+tail = _tail_text(server_log)
+if tail:
+    print(f"--- Last lines of {server_log} ---", file=sys.stderr)
+    print(tail, file=sys.stderr)
 sys.exit(1)
 PY
-}
+  }
 
 client_probe() {
   local host="$1"
@@ -256,13 +347,13 @@ if [[ "$START_SERVER" -eq 1 ]]; then
   echo "Starting model server on ${SERVER_HOST}:${SERVER_PORT}"
   echo "Model: ${MODEL_PATH}"
   echo "Server log: ${SERVER_LOG}"
-  uv run python -m deploy.server \
+  uv run python -u -m deploy.server \
     --model "$MODEL_PATH" \
     --host "$SERVER_HOST" \
     --port "$SERVER_PORT" >"$SERVER_LOG" 2>&1 &
   SERVER_PID="$!"
 
-  wait_for_server "$MODEL_HOST" "$SERVER_PORT" 60
+  wait_for_server "$MODEL_HOST" "$SERVER_PORT" "$SERVER_READY_TIMEOUT_S" "$SERVER_PID" "$SERVER_LOG"
 fi
 
 if [[ "$RUN_CLIENT_CHECK" -eq 1 ]]; then
