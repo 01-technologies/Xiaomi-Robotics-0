@@ -7,6 +7,10 @@ This module bridges:
 to
   PiPER SDK end-pose + gripper commands.
 
+Note: For LIBERO-style policies, the rotation delta is commonly represented as an axis-angle
+vector (so(3) rotation vector). This adapter supports both Euler-delta and axis-angle-delta
+rotation updates (see `PiperSDKAdapter.rotation_delta_mode`).
+
 It uses the CALVIN-style task id by default:
   task_id = "calvin_abcd_orig"
 
@@ -18,11 +22,13 @@ References:
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import math
 import threading
 import time
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 
 import numpy as np
 from PIL import Image
@@ -67,6 +73,50 @@ def _as_numpy(x) -> np.ndarray:
     return np.asarray(x)
 
 
+def hash_data_to_seed(data: dict[str, Any], max_bytes: int = 4) -> int:
+    """Compute a stable seed for model inputs.
+
+    Mirrors the hashing approach used by the benchmark eval clients in this repo.
+    """
+
+    def custom_encoder(obj: Any):
+        if isinstance(obj, np.ndarray):
+            return {
+                "__type__": "numpy",
+                "dtype": str(obj.dtype),
+                "shape": obj.shape,
+                "data": obj.tobytes().hex(),
+            }
+
+        if isinstance(obj, Image.Image):
+            img_hash = hashlib.md5(obj.tobytes()).hexdigest()
+            return {
+                "__type__": "PIL.Image",
+                "mode": obj.mode,
+                "size": obj.size,
+                "content_hash": img_hash,
+            }
+
+        if isinstance(obj, set):
+            return sorted(list(obj))
+
+        raise TypeError(f"Type {type(obj)} is not JSON serializable")
+
+    json_str = json.dumps(
+        data,
+        default=custom_encoder,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    )
+    hex_hash = hashlib.sha256(json_str.encode("utf-8")).hexdigest()
+
+    seed_int = int(hex_hash, 16)
+    if max_bytes > 0:
+        seed_int = seed_int % (2 ** (8 * max_bytes))
+    return seed_int
+
+
 PROFILE_DEFAULT_TASK_ID: dict[str, str] = {
     "calvin": "calvin_abcd_orig",
     "libero": "libero_all",
@@ -97,6 +147,58 @@ def _euler_xyz_to_quat_xyzw(roll: float, pitch: float, yaw: float) -> np.ndarray
     qz = cr * cp * sy - sr * sp * cy
     qw = cr * cp * cy + sr * sp * sy
     return np.array([qx, qy, qz, qw], dtype=np.float64)
+
+
+def _axis_angle_to_quat_xyzw(axis_angle: np.ndarray) -> np.ndarray:
+    """Convert axis-angle vector to quaternion (x, y, z, w)."""
+    vec = np.asarray(axis_angle, dtype=np.float64).reshape(3)
+    theta = float(np.linalg.norm(vec))
+    if theta <= 1e-12:
+        return np.array([0.0, 0.0, 0.0, 1.0], dtype=np.float64)
+    axis = vec / theta
+    half = 0.5 * theta
+    s = math.sin(half)
+    return np.array(
+        [axis[0] * s, axis[1] * s, axis[2] * s, math.cos(half)], dtype=np.float64
+    )
+
+
+def _quat_mul_xyzw(q1: np.ndarray, q2: np.ndarray) -> np.ndarray:
+    """Hamilton product for quaternions (x, y, z, w)."""
+    a = np.asarray(q1, dtype=np.float64).reshape(4)
+    b = np.asarray(q2, dtype=np.float64).reshape(4)
+    x1, y1, z1, w1 = (float(a[0]), float(a[1]), float(a[2]), float(a[3]))
+    x2, y2, z2, w2 = (float(b[0]), float(b[1]), float(b[2]), float(b[3]))
+
+    x = w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2
+    y = w1 * y2 - x1 * z2 + y1 * w2 + z1 * x2
+    z = w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2
+    w = w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2
+    return np.array([x, y, z, w], dtype=np.float64)
+
+
+def _quat_xyzw_to_euler_xyz(quat_xyzw: np.ndarray) -> np.ndarray:
+    """Convert quaternion (x, y, z, w) to XYZ Euler angles (rad)."""
+    quat = np.asarray(quat_xyzw, dtype=np.float64).reshape(4)
+    norm = float(np.linalg.norm(quat))
+    if norm <= 1e-12:
+        return np.zeros(3, dtype=np.float64)
+    quat = quat / norm
+    x, y, z, w = (float(quat[0]), float(quat[1]), float(quat[2]), float(quat[3]))
+
+    sinr_cosp = 2.0 * (w * x + y * z)
+    cosr_cosp = 1.0 - 2.0 * (x * x + y * y)
+    roll = math.atan2(sinr_cosp, cosr_cosp)
+
+    sinp = 2.0 * (w * y - z * x)
+    sinp = _clip(sinp, -1.0, 1.0)
+    pitch = math.asin(sinp)
+
+    siny_cosp = 2.0 * (w * z + x * y)
+    cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+    yaw = math.atan2(siny_cosp, cosy_cosp)
+
+    return np.array([roll, pitch, yaw], dtype=np.float64)
 
 
 def _quat_xyzw_to_axis_angle(quat_xyzw: np.ndarray) -> np.ndarray:
@@ -265,6 +367,7 @@ class PiperSDKAdapter:
         move_speed_percent: int = 30,
         linear_step_m: float = 0.01,
         angular_step_rad: float = 0.12,
+        rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = "euler_xyz",
         gripper_open_m: float = 0.08,
         gripper_close_m: float = 0.0,
         gripper_effort: int = 1000,
@@ -275,6 +378,11 @@ class PiperSDKAdapter:
         self.move_speed_percent = int(_clip(move_speed_percent, 1, 100))
         self.linear_step_m = float(linear_step_m)
         self.angular_step_rad = float(angular_step_rad)
+        if rotation_delta_mode not in {"euler_xyz", "axis_angle"}:
+            raise ValueError(
+                f"Unsupported rotation_delta_mode '{rotation_delta_mode}'. Expected 'euler_xyz' or 'axis_angle'."
+            )
+        self.rotation_delta_mode = rotation_delta_mode
         self.gripper_open_m = float(gripper_open_m)
         self.gripper_close_m = float(gripper_close_m)
         self.gripper_effort = int(_clip(gripper_effort, 0, 5000))
@@ -385,10 +493,22 @@ class PiperSDKAdapter:
             raise ValueError(f"Expected at least 7 values, got {a.size}")
 
         delta_xyz = np.clip(a[:3], -1.0, 1.0) * self.linear_step_m
-        delta_rpy = np.clip(a[3:6], -1.0, 1.0) * self.angular_step_rad
+        delta_rot = np.clip(a[3:6], -1.0, 1.0) * self.angular_step_rad
 
         self._target_pose[:3] = self._target_pose[:3] + delta_xyz
-        self._target_pose[3:] = self._target_pose[3:] + delta_rpy
+
+        if self.rotation_delta_mode == "axis_angle":
+            current_quat = _euler_xyz_to_quat_xyzw(
+                float(self._target_pose[3]),
+                float(self._target_pose[4]),
+                float(self._target_pose[5]),
+            )
+            delta_quat = _axis_angle_to_quat_xyzw(delta_rot)
+            new_quat = _quat_mul_xyzw(delta_quat, current_quat)
+            self._target_pose[3:] = _quat_xyzw_to_euler_xyz(new_quat)
+        else:
+            # Preserve CALVIN-style semantics: treat rotation channels as Euler deltas.
+            self._target_pose[3:] = self._target_pose[3:] + delta_rot
 
         self._target_pose[0] = _clip(
             self._target_pose[0], self.safety.x_min_m, self.safety.x_max_m
@@ -487,14 +607,14 @@ class XiaomiPiperController:
         base_img = _center_crop_keep_size(base_img.convert("RGB"), crop_ratio=0.95)
         wrist_img = _center_crop_keep_size(wrist_img.convert("RGB"), crop_ratio=0.95)
 
-        model_inputs = {
+        model_inputs: dict[str, Any] = {
             "task_id": self.task_id,
             "state": self._build_state32(),
             "base": base_img,
             "wrist_left": wrist_img,
             "language": _normalize_instruction(instruction),
-            "seed": int(time.time() * 1000) & 0xFFFFFFFF,
         }
+        model_inputs["seed"] = hash_data_to_seed(model_inputs)
 
         raw = self.model(**model_inputs)
         arr = _as_numpy(raw)
@@ -604,7 +724,13 @@ def main() -> None:
             "Image-path mode requires both --base-image and --wrist-image."
         )
 
-    adapter = PiperSDKAdapter(can_port=args.can_port)
+    rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = (
+        "axis_angle" if args.profile == "libero" else "euler_xyz"
+    )
+    adapter = PiperSDKAdapter(
+        can_port=args.can_port,
+        rotation_delta_mode=rotation_delta_mode,
+    )
     adapter.connect()
 
     bridge = XiaomiPiperController(
