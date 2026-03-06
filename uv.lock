@@ -241,6 +241,20 @@ wheels = [
 ]
 
 [[package]]
+name = "piper-control"
+version = "1.3.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "piper-sdk" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/60/d6/bed5a1e5add92ed52b7f6e6aadebcdc4b8d120c4ce7a7790972bdb1d5469/piper_control-1.3.7.tar.gz", hash = "sha256:a03a9e8fef8f8697b9104ccd365a1f8d40aa6bb515a3208718e8747e4aff2993", size = 32269, upload-time = "2026-02-24T09:56:30.148Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/92/40/54d3c8eadf39a96af4921e23421bbae9fb595274800977328c63b235913e/piper_control-1.3.7-py3-none-any.whl", hash = "sha256:f717c7ceef649e1d197b1e0b4ef9884633ead47466bbea934dc93e8d8711bd2e", size = 32472, upload-time = "2026-02-24T09:56:28.509Z" },
+]
+
+[[package]]
 name = "piper-sdk"
 version = "0.6.1"
 source = { registry = "https://pypi.org/simple" }
@@ -571,6 +585,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "flash-attn" },
     { name = "opencv-python" },
+    { name = "piper-control" },
     { name = "piper-sdk" },
     { name = "torch" },
     { name = "torchaudio" },
@@ -583,6 +598,7 @@ dependencies = [
 requires-dist = [
     { name = "flash-attn", specifier = "==2.8.3" },
     { name = "opencv-python", specifier = ">=4.13.0.92" },
+    { name = "piper-control", specifier = "==1.3.7" },
     { name = "piper-sdk", specifier = ">=0.6.1" },
     { name = "torch", url = "https://repo.radeon.com/rocm/manylinux/rocm-rel-7.2/torch-2.8.0%2Brocm7.2.0.lw.gitbf943426-cp312-cp312-linux_x86_64.whl" },
     { name = "torchaudio", url = "https://repo.radeon.com/rocm/manylinux/rocm-rel-7.2/torchaudio-2.8.0%2Brocm7.2.0.git6e1c7fe9-cp312-cp312-linux_x86_64.whl" },

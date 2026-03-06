@@ -7,6 +7,7 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "flash-attn==2.8.3",
     "opencv-python>=4.13.0.92",
+    "piper-control==1.3.7",
     "piper-sdk>=0.6.1",
     "torch==2.8.0",
     "torchaudio==2.8.0",
