@@ -5,6 +5,13 @@
 import time
 from piper_sdk import *
 
+
+# 测试代码
+if __name__ == "__main__":
+    piper = C_PiperInterface_V2()
+    piper.ConnectPort()
+    piper.MotionCtrl_1(0x02,0,0)#恢复
+
 if __name__ == "__main__":
     piper = C_PiperInterface_V2("can0")
     piper.ConnectPort()
