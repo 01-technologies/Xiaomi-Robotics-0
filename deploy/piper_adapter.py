@@ -261,14 +261,27 @@ def _force_enable_sdk_arm(arm: Any, timeout_s: float) -> None:
     deadline = time.time() + timeout_s
     while time.time() < deadline:
         if hasattr(arm, "EnableArm"):
-            try:
-                arm.EnableArm(7, 0x02)
-            except TypeError:
+            enabled_any_joint = False
+            for joint_index in range(1, 7):
                 try:
-                    arm.EnableArm(7)
+                    arm.EnableArm(joint_index)
+                    enabled_any_joint = True
                 except TypeError:
-                    for joint_index in range(1, 7):
-                        arm.EnableArm(joint_index)
+                    try:
+                        arm.EnableArm(joint_index, 0x02)
+                        enabled_any_joint = True
+                    except TypeError:
+                        continue
+
+            if not enabled_any_joint:
+                try:
+                    arm.EnableArm(7, 0x02)
+                except TypeError:
+                    try:
+                        arm.EnableArm(7)
+                    except TypeError:
+                        for joint_index in range(1, 7):
+                            arm.EnableArm(joint_index)
         elif hasattr(arm, "EnablePiper"):
             arm.EnablePiper()
 
@@ -284,6 +297,15 @@ def _force_enable_sdk_arm(arm: Any, timeout_s: float) -> None:
         "PiPER enable timeout. Check CAN wiring/power and try again.\n"
         f"{format_piper_diagnostic_report(collect_piper_diagnostic_report(arm))}"
     )
+
+
+def _ensure_arm_enabled_or_raise(arm: Any, backend_name: str) -> None:
+    enabled = _arm_enable_feedback_ok(arm)
+    if enabled is False:
+        raise RuntimeError(
+            f"PiPER {backend_name} backend finished setup with arm drivers still disabled.\n"
+            f"{format_piper_diagnostic_report(collect_piper_diagnostic_report(arm))}"
+        )
 
 
 def collect_piper_diagnostic_report(arm: Any) -> PiperDiagnosticReport:
@@ -1305,6 +1327,7 @@ class PiperSDKAdapter(PiperAdapterBase):
         self._set_pose_mode()
         self.arm.GripperCtrl(0, self.gripper_effort, 0x01, 0)
         self._sync_targets_from_feedback()
+        _ensure_arm_enabled_or_raise(self.arm, self.backend_name)
 
     def _enable_arm(self, timeout_s: float) -> None:
         _force_enable_sdk_arm(self.arm, timeout_s)
@@ -1431,6 +1454,7 @@ class PiperControlAdapter(PiperAdapterBase):
             _force_enable_sdk_arm(self.arm, enable_timeout_s)
             self._set_pose_mode()
             self._sync_targets_from_feedback()
+            _ensure_arm_enabled_or_raise(self.arm, self.backend_name)
         except Exception as exc:
             raise RuntimeError(
                 "Failed to initialize PiPER via piper_control.\n"
@@ -1727,7 +1751,30 @@ def main() -> None:
         piper_control_src=args.piper_control_src,
     )
     print(f"[INFO] Using PiPER backend: {selected_backend}")
-    adapter.connect()
+    try:
+        adapter.connect()
+    except Exception as exc:
+        if args.piper_backend == "auto" and selected_backend == "piper_control":
+            LOGGER.warning(
+                "PiPER piper_control backend failed to initialize cleanly; falling back to piper_sdk: %s",
+                exc,
+            )
+            selected_backend, adapter = _build_piper_adapter(
+                backend="piper_sdk",
+                can_port=args.can_port,
+                rotation_delta_mode=rotation_delta_mode,
+                judge_flag=args.judge_flag,
+                dh_is_offset=args.dh_is_offset,
+                sdk_joint_limit=args.sdk_joint_limit,
+                sdk_gripper_limit=args.sdk_gripper_limit,
+                force_slave_mode=args.force_slave_mode,
+                installation_pos=args.installation_pos,
+                piper_control_src=args.piper_control_src,
+            )
+            print(f"[INFO] Falling back to PiPER backend: {selected_backend}")
+            adapter.connect()
+        else:
+            raise
 
     bridge = XiaomiPiperController(
         model_host=args.model_host,
