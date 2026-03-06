@@ -32,13 +32,17 @@ Client probe options:
   --no-client-check          Skip client connectivity probe (enabled by default).
 
 Common adapter passthrough args (after '--'):
+  --piper-backend {auto,piper_control,piper_sdk}
+                            Backend selection. Default: auto (prefers piper_control).
+  --installation-pos {left,right,upright}
+                            Arm mounting pose. Default: upright.
   --profile {calvin,libero}  Select state/task profile (default: calvin).
   --task-id TEXT             Optional explicit task_id override.
 
 Defaults:
   - This script uses `uv run` for all Python commands (no conda activation path).
   - If no image/camera/ROS input mode is passed, OpenCV mode is selected with `--base-cam-index 0`.
-  - ROS mode is optional and not default; OpenCV + piper_sdk is the expected baseline.
+  - ROS mode is optional and not default; OpenCV + the adapter's default PiPER backend is the expected baseline.
 
 Examples:
   # OpenCV mode by default (base camera index 0)

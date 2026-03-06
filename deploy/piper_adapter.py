@@ -5,7 +5,7 @@ AgileX PiPER adapter for Xiaomi-Robotics-0 action chunks.
 This module bridges:
   Xiaomi model output: [dx, dy, dz, droll, dpitch, dyaw, gripper]
 to
-  PiPER SDK end-pose + gripper commands.
+  PiPER backend end-pose + gripper commands.
 
 Note: For LIBERO-style policies, the rotation delta is commonly represented as an axis-angle
 vector (so(3) rotation vector). This adapter supports both Euler-delta and axis-angle-delta
@@ -17,6 +17,7 @@ It uses the CALVIN-style task id by default:
 References:
   - https://github.com/agilexrobotics/piper_sdk
   - https://github.com/agilexrobotics/piper_ros
+  - https://github.com/Reimagine-Robotics/piper_control
 """
 
 from __future__ import annotations
@@ -35,11 +36,13 @@ import numpy as np
 from PIL import Image
 
 from deploy.client import Client as XiaomiModelClient
-
-try:
-    from piper_sdk import C_PiperInterface_V2 as PiperInterface
-except Exception:
-    from piper_sdk import C_PiperInterface as PiperInterface
+from deploy.piper_backend_support import (
+    PIPER_BACKEND_CHOICES,
+    PiperBackendName,
+    build_piper_control_interface,
+    build_piper_sdk_interface,
+    resolve_piper_backend,
+)
 
 
 LOGGER = logging.getLogger(__name__)
@@ -84,6 +87,12 @@ ARM_STATUS_NAMES: dict[int, str] = {
 MOTION_STATUS_NAMES: dict[int, str] = {
     0x00: "arrived",
     0x01: "moving",
+}
+
+INSTALLATION_POS_CODES: dict[str, int] = {
+    "upright": 0x01,
+    "left": 0x02,
+    "right": 0x03,
 }
 
 
@@ -199,6 +208,36 @@ def _get_joint_driver_msg(msg: Any, joint_index: int) -> Any:
         if candidate is not None:
             return candidate
     return None
+
+
+def _build_piper_interface(
+    can_port: str,
+    judge_flag: bool = True,
+    dh_is_offset: Optional[int] = None,
+    sdk_joint_limit: Optional[bool] = None,
+    sdk_gripper_limit: Optional[bool] = None,
+) -> Any:
+    return build_piper_sdk_interface(
+        can_port=can_port,
+        judge_flag=judge_flag,
+        dh_is_offset=dh_is_offset,
+        sdk_joint_limit=sdk_joint_limit,
+        sdk_gripper_limit=sdk_gripper_limit,
+    )
+
+
+def _try_set_sdk_installation_pos(arm: Any, installation_pos: str) -> bool:
+    code = INSTALLATION_POS_CODES[installation_pos]
+    motion_ctrl = getattr(arm, "MotionCtrl_2", None)
+    if motion_ctrl is None:
+        return False
+
+    try:
+        motion_ctrl(0x01, 0x01, 0, 0, 0, code)
+    except TypeError:
+        return False
+    time.sleep(0.1)
+    return True
 
 
 def collect_piper_diagnostic_report(arm: Any) -> PiperDiagnosticReport:
@@ -873,14 +912,18 @@ class PiperSafety:
     y_max_m: float = 0.35
     z_min_m: float = 0.05
     z_max_m: float = 0.45
+    resync_position_threshold_m: float = 0.08
+    resync_rotation_threshold_rad: float = 0.75
+    resync_gripper_threshold_m: float = 0.03
 
 
-class PiperSDKAdapter:
-    """Translate model delta actions into PiPER SDK commands."""
+class PiperAdapterBase:
+    """Translate model delta actions into PiPER motion commands."""
+
+    backend_name: PiperBackendName = "piper_sdk"
 
     def __init__(
         self,
-        can_port: str = "can0",
         move_speed_percent: int = 30,
         linear_step_m: float = 0.01,
         angular_step_rad: float = 0.12,
@@ -891,7 +934,6 @@ class PiperSDKAdapter:
         gripper_threshold: float = 0.0,
         safety: Optional[PiperSafety] = None,
     ) -> None:
-        self.arm = PiperInterface(can_port)
         self.move_speed_percent = int(_clip(move_speed_percent, 1, 100))
         self.linear_step_m = float(linear_step_m)
         self.angular_step_rad = float(angular_step_rad)
@@ -906,21 +948,290 @@ class PiperSDKAdapter:
         self.gripper_threshold = float(gripper_threshold)
         self.safety = safety if safety is not None else PiperSafety()
 
-        self._target_pose = np.zeros(
-            6, dtype=np.float64
-        )  # x,y,z,roll,pitch,yaw (m,rad)
+        self._target_pose = np.zeros(6, dtype=np.float64)
         self._target_gripper_m = self.gripper_close_m
         self._last_motion_diag_at = 0.0
         self._last_motion_diag_key: tuple[str, ...] = ()
 
     def connect(self, enable_timeout_s: float = 5.0) -> None:
+        raise NotImplementedError
+
+    def get_diagnostic_report(self) -> PiperDiagnosticReport:
+        raise NotImplementedError
+
+    def read_end_pose_m_rad(self) -> np.ndarray:
+        raise NotImplementedError
+
+    def read_gripper_m(self) -> float:
+        raise NotImplementedError
+
+    def _send_pose_command(self, pose6_m_rad: np.ndarray) -> None:
+        raise NotImplementedError
+
+    def _send_gripper_command(self, gripper_m: float) -> None:
+        raise NotImplementedError
+
+    def _prepare_motion_command(self, motion_requested: bool) -> None:
+        self._maybe_warn_motion_blocked(motion_requested)
+
+    def _sync_targets_from_feedback(self) -> None:
+        self._target_pose = self.read_end_pose_m_rad()
+        self._target_gripper_m = self.read_gripper_m()
+
+    def _maybe_resync_targets_from_feedback(self) -> None:
+        try:
+            actual_pose = self.read_end_pose_m_rad()
+            actual_gripper = self.read_gripper_m()
+        except Exception as exc:
+            LOGGER.warning(
+                "Failed to read PiPER feedback before applying action; keeping previous target: %s",
+                exc,
+            )
+            return
+
+        pos_error = float(np.max(np.abs(actual_pose[:3] - self._target_pose[:3])))
+        rot_error = float(
+            np.max(
+                np.abs(
+                    [
+                        _wrap_pi(float(actual_pose[idx] - self._target_pose[idx]))
+                        for idx in range(3, 6)
+                    ]
+                )
+            )
+        )
+        gripper_error = abs(float(actual_gripper) - float(self._target_gripper_m))
+
+        if (
+            pos_error <= self.safety.resync_position_threshold_m
+            and rot_error <= self.safety.resync_rotation_threshold_rad
+            and gripper_error <= self.safety.resync_gripper_threshold_m
+        ):
+            return
+
+        LOGGER.warning(
+            "Resyncing PiPER target to live feedback for safety (%s): position_error=%.3fm, rotation_error=%.3frad, gripper_error=%.3fm",
+            self.backend_name,
+            pos_error,
+            rot_error,
+            gripper_error,
+        )
+        self._target_pose = actual_pose
+        self._target_gripper_m = float(actual_gripper)
+
+    def _maybe_warn_motion_blocked(self, motion_requested: bool) -> None:
+        if not motion_requested:
+            return
+
+        now = time.time()
+        if now - self._last_motion_diag_at < 1.0:
+            return
+
+        report = self.get_diagnostic_report()
+        blockers = summarize_motion_blockers(report)
+        if not blockers:
+            self._last_motion_diag_at = now
+            self._last_motion_diag_key = ()
+            return
+
+        if (
+            blockers == self._last_motion_diag_key
+            and now - self._last_motion_diag_at < 3.0
+        ):
+            return
+
+        self._last_motion_diag_at = now
+        self._last_motion_diag_key = blockers
+        LOGGER.warning(
+            "PiPER arm motion may be blocked (%s): %s\n%s",
+            self.backend_name,
+            "; ".join(blockers),
+            format_piper_diagnostic_report(report),
+        )
+
+    def build_calvin_state32(self) -> np.ndarray:
+        pose = self.read_end_pose_m_rad()
+        gripper = self.read_gripper_m()
+        state7 = np.array(
+            [pose[0], pose[1], pose[2], pose[3], pose[4], pose[5], gripper],
+            dtype=np.float32,
+        )
+        return np.concatenate([state7, np.zeros(25, dtype=np.float32)], axis=0)
+
+    def build_libero_state32(self) -> np.ndarray:
+        pose = self.read_end_pose_m_rad()
+        gripper_width = self.read_gripper_m()
+
+        quat_xyzw = _euler_xyz_to_quat_xyzw(pose[3], pose[4], pose[5])
+        axis_angle = _quat_xyzw_to_axis_angle(quat_xyzw)
+
+        finger_qpos = 0.5 * gripper_width
+        state8 = np.array(
+            [
+                pose[0],
+                pose[1],
+                pose[2],
+                axis_angle[0],
+                axis_angle[1],
+                axis_angle[2],
+                finger_qpos,
+                finger_qpos,
+            ],
+            dtype=np.float32,
+        )
+        return np.concatenate([state8, np.zeros(24, dtype=np.float32)], axis=0)
+
+    def apply_delta_action(self, action7: np.ndarray) -> None:
+        a = np.asarray(action7, dtype=np.float64).reshape(-1)
+        if a.size < 7:
+            raise ValueError(f"Expected at least 7 values, got {a.size}")
+
+        self._maybe_resync_targets_from_feedback()
+        prev_target_pose = self._target_pose.copy()
+        delta_xyz = np.clip(a[:3], -1.0, 1.0) * self.linear_step_m
+        delta_rot = np.clip(a[3:6], -1.0, 1.0) * self.angular_step_rad
+
+        self._target_pose[:3] = self._target_pose[:3] + delta_xyz
+
+        if self.rotation_delta_mode == "axis_angle":
+            current_quat = _euler_xyz_to_quat_xyzw(
+                float(self._target_pose[3]),
+                float(self._target_pose[4]),
+                float(self._target_pose[5]),
+            )
+            delta_quat = _axis_angle_to_quat_xyzw(delta_rot)
+            new_quat = _quat_mul_xyzw(delta_quat, current_quat)
+            self._target_pose[3:] = _quat_xyzw_to_euler_xyz(new_quat)
+        else:
+            self._target_pose[3:] = self._target_pose[3:] + delta_rot
+
+        self._target_pose[0] = _clip(
+            self._target_pose[0], self.safety.x_min_m, self.safety.x_max_m
+        )
+        self._target_pose[1] = _clip(
+            self._target_pose[1], self.safety.y_min_m, self.safety.y_max_m
+        )
+        self._target_pose[2] = _clip(
+            self._target_pose[2], self.safety.z_min_m, self.safety.z_max_m
+        )
+        self._target_pose[3] = _wrap_pi(self._target_pose[3])
+        self._target_pose[4] = _wrap_pi(self._target_pose[4])
+        self._target_pose[5] = _wrap_pi(self._target_pose[5])
+
+        self._target_gripper_m = (
+            self.gripper_open_m
+            if a[6] > self.gripper_threshold
+            else self.gripper_close_m
+        )
+        self._target_gripper_m = _clip(
+            self._target_gripper_m,
+            min(self.gripper_close_m, self.gripper_open_m),
+            max(self.gripper_close_m, self.gripper_open_m),
+        )
+
+        motion_requested = bool(
+            np.linalg.norm(self._target_pose - prev_target_pose) > 1e-9
+        )
+        self._send_pose_and_gripper(
+            self._target_pose,
+            self._target_gripper_m,
+            motion_requested=motion_requested,
+        )
+
+    def _send_pose_and_gripper(
+        self, pose6_m_rad: np.ndarray, gripper_m: float, motion_requested: bool = True
+    ) -> None:
+        self._prepare_motion_command(motion_requested)
+
+        try:
+            self._send_pose_command(pose6_m_rad)
+        except Exception as exc:
+            raise RuntimeError(
+                f"Failed to send PiPER {self.backend_name} pose command.\n"
+                f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
+            ) from exc
+
+        try:
+            self._send_gripper_command(gripper_m)
+        except Exception as exc:
+            raise RuntimeError(
+                f"Failed to send PiPER {self.backend_name} gripper command.\n"
+                f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
+            ) from exc
+
+    def execute_chunk(
+        self, action_chunk: np.ndarray, replan_steps: int = 4, dt_s: float = 0.08
+    ) -> None:
+        chunk = np.asarray(action_chunk)
+        if chunk.ndim != 2 or chunk.shape[1] < 7:
+            raise ValueError(f"Expected shape [T, >=7], got {chunk.shape}")
+
+        steps = int(min(replan_steps, chunk.shape[0]))
+        for i in range(steps):
+            self.apply_delta_action(chunk[i, :7])
+            time.sleep(dt_s)
+
+
+class PiperSDKAdapter(PiperAdapterBase):
+    """Translate model delta actions into PiPER SDK commands."""
+
+    backend_name: PiperBackendName = "piper_sdk"
+
+    def __init__(
+        self,
+        can_port: str = "can0",
+        move_speed_percent: int = 30,
+        linear_step_m: float = 0.01,
+        angular_step_rad: float = 0.12,
+        rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = "euler_xyz",
+        gripper_open_m: float = 0.08,
+        gripper_close_m: float = 0.0,
+        gripper_effort: int = 1000,
+        gripper_threshold: float = 0.0,
+        safety: Optional[PiperSafety] = None,
+        judge_flag: bool = True,
+        dh_is_offset: Optional[int] = None,
+        sdk_joint_limit: Optional[bool] = None,
+        sdk_gripper_limit: Optional[bool] = None,
+        force_slave_mode: bool = False,
+        installation_pos: Literal["upright", "left", "right"] = "upright",
+    ) -> None:
+        self.arm = _build_piper_interface(
+            can_port,
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+        )
+        self.force_slave_mode = bool(force_slave_mode)
+        self.installation_pos = installation_pos
+        super().__init__(
+            move_speed_percent=move_speed_percent,
+            linear_step_m=linear_step_m,
+            angular_step_rad=angular_step_rad,
+            rotation_delta_mode=rotation_delta_mode,
+            gripper_open_m=gripper_open_m,
+            gripper_close_m=gripper_close_m,
+            gripper_effort=gripper_effort,
+            gripper_threshold=gripper_threshold,
+            safety=safety,
+        )
+
+    def connect(self, enable_timeout_s: float = 5.0) -> None:
         self.arm.ConnectPort()
         time.sleep(0.2)
+        if not _try_set_sdk_installation_pos(self.arm, self.installation_pos):
+            LOGGER.warning(
+                "PiPER SDK backend could not confirm installation position '%s'; continuing without explicit install-pose config.",
+                self.installation_pos,
+            )
+        if self.force_slave_mode and hasattr(self.arm, "MasterSlaveConfig"):
+            self.arm.MasterSlaveConfig(0xFC, 0, 0, 0)
+            time.sleep(0.1)
         self._enable_arm(enable_timeout_s)
         self._set_pose_mode()
         self.arm.GripperCtrl(0, self.gripper_effort, 0x01, 0)
-        self._target_pose = self.read_end_pose_m_rad()
-        self._target_gripper_m = self.read_gripper_m()
+        self._sync_targets_from_feedback()
 
     def _enable_arm(self, timeout_s: float) -> None:
         deadline = time.time() + timeout_s
@@ -962,35 +1273,6 @@ class PiperSDKAdapter:
     def get_diagnostic_report(self) -> PiperDiagnosticReport:
         return collect_piper_diagnostic_report(self.arm)
 
-    def _maybe_warn_motion_blocked(self, motion_requested: bool) -> None:
-        if not motion_requested:
-            return
-
-        now = time.time()
-        if now - self._last_motion_diag_at < 1.0:
-            return
-
-        report = self.get_diagnostic_report()
-        blockers = summarize_motion_blockers(report)
-        if not blockers:
-            self._last_motion_diag_at = now
-            self._last_motion_diag_key = ()
-            return
-
-        if (
-            blockers == self._last_motion_diag_key
-            and now - self._last_motion_diag_at < 3.0
-        ):
-            return
-
-        self._last_motion_diag_at = now
-        self._last_motion_diag_key = blockers
-        LOGGER.warning(
-            "PiPER arm motion may be blocked: %s\n%s",
-            "; ".join(blockers),
-            format_piper_diagnostic_report(report),
-        )
-
     def read_end_pose_m_rad(self) -> np.ndarray:
         msg = self.arm.GetArmEndPoseMsgs()
         ep = msg.end_pose
@@ -1006,138 +1288,172 @@ class PiperSDKAdapter:
         msg = self.arm.GetArmGripperMsgs()
         return float(msg.gripper_state.grippers_angle) / 1_000_000.0
 
-    def build_calvin_state32(self) -> np.ndarray:
-        pose = self.read_end_pose_m_rad()
-        gripper = self.read_gripper_m()
-        state7 = np.array(
-            [pose[0], pose[1], pose[2], pose[3], pose[4], pose[5], gripper],
-            dtype=np.float32,
-        )
-        return np.concatenate([state7, np.zeros(25, dtype=np.float32)], axis=0)
-
-    def build_libero_state32(self) -> np.ndarray:
-        pose = self.read_end_pose_m_rad()
-        gripper_width = self.read_gripper_m()
-
-        quat_xyzw = _euler_xyz_to_quat_xyzw(pose[3], pose[4], pose[5])
-        axis_angle = _quat_xyzw_to_axis_angle(quat_xyzw)
-
-        # LIBERO state uses two finger qpos values; map opening width to symmetric fingers.
-        finger_qpos = 0.5 * gripper_width
-        state8 = np.array(
-            [
-                pose[0],
-                pose[1],
-                pose[2],
-                axis_angle[0],
-                axis_angle[1],
-                axis_angle[2],
-                finger_qpos,
-                finger_qpos,
-            ],
-            dtype=np.float32,
-        )
-        return np.concatenate([state8, np.zeros(24, dtype=np.float32)], axis=0)
-
-    def apply_delta_action(self, action7: np.ndarray) -> None:
-        a = np.asarray(action7, dtype=np.float64).reshape(-1)
-        if a.size < 7:
-            raise ValueError(f"Expected at least 7 values, got {a.size}")
-
-        prev_target_pose = self._target_pose.copy()
-        delta_xyz = np.clip(a[:3], -1.0, 1.0) * self.linear_step_m
-        delta_rot = np.clip(a[3:6], -1.0, 1.0) * self.angular_step_rad
-
-        self._target_pose[:3] = self._target_pose[:3] + delta_xyz
-
-        if self.rotation_delta_mode == "axis_angle":
-            current_quat = _euler_xyz_to_quat_xyzw(
-                float(self._target_pose[3]),
-                float(self._target_pose[4]),
-                float(self._target_pose[5]),
-            )
-            delta_quat = _axis_angle_to_quat_xyzw(delta_rot)
-            new_quat = _quat_mul_xyzw(delta_quat, current_quat)
-            self._target_pose[3:] = _quat_xyzw_to_euler_xyz(new_quat)
-        else:
-            # Preserve CALVIN-style semantics: treat rotation channels as Euler deltas.
-            self._target_pose[3:] = self._target_pose[3:] + delta_rot
-
-        self._target_pose[0] = _clip(
-            self._target_pose[0], self.safety.x_min_m, self.safety.x_max_m
-        )
-        self._target_pose[1] = _clip(
-            self._target_pose[1], self.safety.y_min_m, self.safety.y_max_m
-        )
-        self._target_pose[2] = _clip(
-            self._target_pose[2], self.safety.z_min_m, self.safety.z_max_m
-        )
-        self._target_pose[3] = _wrap_pi(self._target_pose[3])
-        self._target_pose[4] = _wrap_pi(self._target_pose[4])
-        self._target_pose[5] = _wrap_pi(self._target_pose[5])
-
-        # Interpret gripper channel as open/close by sign around threshold.
-        self._target_gripper_m = (
-            self.gripper_open_m
-            if a[6] > self.gripper_threshold
-            else self.gripper_close_m
-        )
-        self._target_gripper_m = _clip(
-            self._target_gripper_m,
-            min(self.gripper_close_m, self.gripper_open_m),
-            max(self.gripper_close_m, self.gripper_open_m),
-        )
-
-        motion_requested = bool(
-            np.linalg.norm(self._target_pose - prev_target_pose) > 1e-9
-        )
-        self._send_pose_and_gripper(
-            self._target_pose,
-            self._target_gripper_m,
-            motion_requested=motion_requested,
-        )
-
-    def _send_pose_and_gripper(
-        self, pose6_m_rad: np.ndarray, gripper_m: float, motion_requested: bool = True
-    ) -> None:
-        self._maybe_warn_motion_blocked(motion_requested)
+    def _prepare_motion_command(self, motion_requested: bool) -> None:
+        super()._prepare_motion_command(motion_requested)
         self._set_pose_mode()
 
+    def _send_pose_command(self, pose6_m_rad: np.ndarray) -> None:
         x = int(round(float(pose6_m_rad[0]) * 1_000_000.0))
         y = int(round(float(pose6_m_rad[1]) * 1_000_000.0))
         z = int(round(float(pose6_m_rad[2]) * 1_000_000.0))
         rx = int(round(math.degrees(float(pose6_m_rad[3])) * 1000.0))
         ry = int(round(math.degrees(float(pose6_m_rad[4])) * 1000.0))
         rz = int(round(math.degrees(float(pose6_m_rad[5])) * 1000.0))
+        self.arm.EndPoseCtrl(x, y, z, rx, ry, rz)
 
-        try:
-            self.arm.EndPoseCtrl(x, y, z, rx, ry, rz)
-        except Exception as exc:
-            raise RuntimeError(
-                "Failed to send PiPER EndPoseCtrl command.\n"
-                f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
-            ) from exc
-
+    def _send_gripper_command(self, gripper_m: float) -> None:
         gripper_val = int(round(abs(float(gripper_m)) * 1_000_000.0))
+        self.arm.GripperCtrl(gripper_val, self.gripper_effort, 0x01, 0)
+
+
+class PiperControlAdapter(PiperAdapterBase):
+    """Translate model delta actions into piper_control commands."""
+
+    backend_name: PiperBackendName = "piper_control"
+
+    def __init__(
+        self,
+        can_port: str = "can0",
+        move_speed_percent: int = 30,
+        linear_step_m: float = 0.01,
+        angular_step_rad: float = 0.12,
+        rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = "euler_xyz",
+        gripper_open_m: float = 0.08,
+        gripper_close_m: float = 0.0,
+        gripper_effort: int = 1000,
+        gripper_threshold: float = 0.0,
+        safety: Optional[PiperSafety] = None,
+        judge_flag: bool = True,
+        dh_is_offset: Optional[int] = None,
+        sdk_joint_limit: Optional[bool] = None,
+        sdk_gripper_limit: Optional[bool] = None,
+        force_slave_mode: bool = False,
+        installation_pos: Literal["upright", "left", "right"] = "upright",
+        piper_control_src: Optional[str] = None,
+    ) -> None:
+        self.robot, modules = build_piper_control_interface(
+            can_port=can_port,
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+            piper_control_src=piper_control_src,
+        )
+        self._piper_init = modules.piper_init
+        self._piper_interface = modules.piper_interface
+        self.arm = self.robot.piper
+        self.force_slave_mode = bool(force_slave_mode)
+        self.installation_pos = installation_pos
+        super().__init__(
+            move_speed_percent=move_speed_percent,
+            linear_step_m=linear_step_m,
+            angular_step_rad=angular_step_rad,
+            rotation_delta_mode=rotation_delta_mode,
+            gripper_open_m=gripper_open_m,
+            gripper_close_m=gripper_close_m,
+            gripper_effort=gripper_effort,
+            gripper_threshold=gripper_threshold,
+            safety=safety,
+        )
+
+    def connect(self, enable_timeout_s: float = 5.0) -> None:
         try:
-            self.arm.GripperCtrl(gripper_val, self.gripper_effort, 0x01, 0)
+            self.robot.set_installation_pos(
+                self._piper_interface.ArmInstallationPos.from_string(
+                    self.installation_pos
+                )
+            )
+            if self.force_slave_mode and hasattr(self.arm, "MasterSlaveConfig"):
+                self.arm.MasterSlaveConfig(0xFC, 0, 0, 0)
+                time.sleep(0.1)
+
+            LOGGER.warning(
+                "Resetting PiPER arm/gripper via piper_control simple_move flow; the arm may depower briefly during reset_arm()."
+            )
+            self._piper_init.reset_arm(
+                self.robot,
+                arm_controller=self._piper_interface.ArmController.MIT,
+                move_mode=self._piper_interface.MoveMode.MIT,
+                timeout_seconds=enable_timeout_s,
+            )
+            self._piper_init.reset_gripper(
+                self.robot,
+                timeout_seconds=enable_timeout_s,
+            )
+            self._set_pose_mode()
+            self._sync_targets_from_feedback()
         except Exception as exc:
             raise RuntimeError(
-                "Failed to send PiPER GripperCtrl command.\n"
+                "Failed to initialize PiPER via piper_control.\n"
                 f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
             ) from exc
 
-    def execute_chunk(
-        self, action_chunk: np.ndarray, replan_steps: int = 4, dt_s: float = 0.08
-    ) -> None:
-        chunk = np.asarray(action_chunk)
-        if chunk.ndim != 2 or chunk.shape[1] < 7:
-            raise ValueError(f"Expected shape [T, >=7], got {chunk.shape}")
+    def _set_pose_mode(self) -> None:
+        self.robot.set_arm_mode(
+            speed=self.move_speed_percent,
+            move_mode=self._piper_interface.MoveMode.POSITION,
+            arm_controller=self._piper_interface.ArmController.POSITION_VELOCITY,
+        )
 
-        steps = int(min(replan_steps, chunk.shape[0]))
-        for i in range(steps):
-            self.apply_delta_action(chunk[i, :7])
-            time.sleep(dt_s)
+    def get_diagnostic_report(self) -> PiperDiagnosticReport:
+        return collect_piper_diagnostic_report(self.arm)
+
+    def read_end_pose_m_rad(self) -> np.ndarray:
+        return np.asarray(self.robot.get_end_effector_pose(), dtype=np.float64)
+
+    def read_gripper_m(self) -> float:
+        position_m, _ = self.robot.get_gripper_state()
+        return float(position_m)
+
+    def _prepare_motion_command(self, motion_requested: bool) -> None:
+        super()._prepare_motion_command(motion_requested)
+        self._set_pose_mode()
+
+    def _send_pose_command(self, pose6_m_rad: np.ndarray) -> None:
+        self.robot.command_cartesian_position(pose6_m_rad.tolist())
+
+    def _send_gripper_command(self, gripper_m: float) -> None:
+        self.robot.command_gripper(
+            position=abs(float(gripper_m)),
+            effort=self.gripper_effort / 1000.0,
+        )
+
+
+def _build_piper_adapter(
+    backend: str,
+    can_port: str,
+    rotation_delta_mode: Literal["euler_xyz", "axis_angle"],
+    judge_flag: bool,
+    dh_is_offset: Optional[int],
+    sdk_joint_limit: Optional[bool],
+    sdk_gripper_limit: Optional[bool],
+    force_slave_mode: bool,
+    installation_pos: Literal["upright", "left", "right"],
+    piper_control_src: Optional[str],
+) -> tuple[PiperBackendName, PiperAdapterBase]:
+    selected_backend = resolve_piper_backend(backend, piper_control_src)
+    if selected_backend == "piper_control":
+        return selected_backend, PiperControlAdapter(
+            can_port=can_port,
+            rotation_delta_mode=rotation_delta_mode,
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+            force_slave_mode=force_slave_mode,
+            installation_pos=installation_pos,
+            piper_control_src=piper_control_src,
+        )
+    return selected_backend, PiperSDKAdapter(
+        can_port=can_port,
+        rotation_delta_mode=rotation_delta_mode,
+        judge_flag=judge_flag,
+        dh_is_offset=dh_is_offset,
+        sdk_joint_limit=sdk_joint_limit,
+        sdk_gripper_limit=sdk_gripper_limit,
+        force_slave_mode=force_slave_mode,
+        installation_pos=installation_pos,
+    )
 
 
 class XiaomiPiperController:
@@ -1147,7 +1463,7 @@ class XiaomiPiperController:
         self,
         model_host: str,
         model_port: int,
-        piper_adapter: PiperSDKAdapter,
+        piper_adapter: PiperAdapterBase,
         profile: Literal["calvin", "libero"] = "calvin",
         task_id: Optional[str] = None,
     ) -> None:
@@ -1222,6 +1538,53 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--model-host", default="127.0.0.1")
     p.add_argument("--model-port", type=int, default=10086)
     p.add_argument("--can-port", default="can0")
+    p.add_argument(
+        "--piper-backend",
+        choices=PIPER_BACKEND_CHOICES,
+        default="auto",
+        help="PiPER control backend. 'auto' prefers piper_control when importable, else falls back to piper_sdk.",
+    )
+    p.add_argument(
+        "--piper-control-src",
+        default=None,
+        help="Optional piper_control checkout root or src dir used when the package is not installed.",
+    )
+    p.add_argument(
+        "--judge-flag",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Pass judge_flag to the underlying piper_sdk interface when supported.",
+    )
+    p.add_argument(
+        "--dh-is-offset",
+        type=int,
+        choices=(0, 1),
+        default=None,
+        help="Override the underlying piper_sdk dh_is_offset when supported. Firmware S-V1.6-3+ typically needs 1.",
+    )
+    p.add_argument(
+        "--sdk-joint-limit",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Override the underlying piper_sdk start_sdk_joint_limit when supported.",
+    )
+    p.add_argument(
+        "--sdk-gripper-limit",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Override the underlying piper_sdk start_sdk_gripper_limit when supported.",
+    )
+    p.add_argument(
+        "--force-slave-mode",
+        action="store_true",
+        help="Force MasterSlaveConfig(0xFC,0,0,0) during connect when supported.",
+    )
+    p.add_argument(
+        "--installation-pos",
+        choices=sorted(INSTALLATION_POS_CODES),
+        default="upright",
+        help="Arm installation pose. Matches piper_control simple_move reset behavior; change for side-mounted arms.",
+    )
     p.add_argument(
         "--profile",
         choices=sorted(PROFILE_DEFAULT_TASK_ID),
@@ -1302,10 +1665,19 @@ def main() -> None:
     rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = (
         "axis_angle" if args.profile == "libero" else "euler_xyz"
     )
-    adapter = PiperSDKAdapter(
+    selected_backend, adapter = _build_piper_adapter(
+        backend=args.piper_backend,
         can_port=args.can_port,
         rotation_delta_mode=rotation_delta_mode,
+        judge_flag=args.judge_flag,
+        dh_is_offset=args.dh_is_offset,
+        sdk_joint_limit=args.sdk_joint_limit,
+        sdk_gripper_limit=args.sdk_gripper_limit,
+        force_slave_mode=args.force_slave_mode,
+        installation_pos=args.installation_pos,
+        piper_control_src=args.piper_control_src,
     )
+    print(f"[INFO] Using PiPER backend: {selected_backend}")
     adapter.connect()
 
     bridge = XiaomiPiperController(

@@ -8,9 +8,14 @@ import time
 from dataclasses import asdict
 from typing import Any, Optional
 
+from deploy.piper_backend_support import (
+    PIPER_BACKEND_CHOICES,
+    build_piper_control_interface,
+    build_piper_sdk_interface,
+    resolve_piper_backend,
+)
 from deploy.piper_support import (
     PiperDiagnosticReport,
-    PiperInterface,
     collect_piper_diagnostic_report,
     format_piper_diagnostic_report,
     suggest_piper_fixes,
@@ -18,31 +23,43 @@ from deploy.piper_support import (
 
 
 def _build_arm(
+    backend: str,
     can_port: str,
     judge_flag: bool,
     dh_is_offset: Optional[int],
     sdk_joint_limit: Optional[bool],
     sdk_gripper_limit: Optional[bool],
-):
-    kwargs: dict[str, Any] = {"judge_flag": judge_flag}
-    if dh_is_offset is not None:
-        kwargs["dh_is_offset"] = dh_is_offset
-    if sdk_joint_limit is not None:
-        kwargs["start_sdk_joint_limit"] = sdk_joint_limit
-    if sdk_gripper_limit is not None:
-        kwargs["start_sdk_gripper_limit"] = sdk_gripper_limit
-    try:
-        return PiperInterface(can_port, **kwargs)
-    except TypeError:
-        try:
-            return PiperInterface(can_port, judge_flag=judge_flag)
-        except TypeError:
-            return PiperInterface(can_port)
+    piper_control_src: Optional[str],
+) -> tuple[str, Any, Any, Any]:
+    selected_backend = resolve_piper_backend(backend, piper_control_src)
+    if selected_backend == "piper_control":
+        robot, modules = build_piper_control_interface(
+            can_port=can_port,
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+            piper_control_src=piper_control_src,
+        )
+        return selected_backend, robot.piper, robot, modules
+    return (
+        selected_backend,
+        build_piper_sdk_interface(
+            can_port=can_port,
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+        ),
+        None,
+        None,
+    )
 
 
-def _connect_arm(arm: Any) -> None:
-    arm.ConnectPort()
-    time.sleep(0.2)
+def _connect_arm(arm: Any, backend: str) -> None:
+    if backend == "piper_sdk":
+        arm.ConnectPort()
+        time.sleep(0.2)
 
 
 def _resume_estop(arm: Any) -> bool:
@@ -106,6 +123,69 @@ def _force_slave_mode(arm: Any) -> bool:
     arm.MasterSlaveConfig(0xFC, 0, 0, 0)
     time.sleep(0.1)
     return True
+
+
+def _try_recover(
+    backend: str,
+    arm: Any,
+    robot: Any,
+    modules: Any,
+    move_speed_percent: int,
+    enable_timeout: float,
+) -> list[str]:
+    if backend == "piper_control":
+        if robot is None or modules is None:
+            raise RuntimeError(
+                "piper_control recovery requested without a robot handle."
+            )
+
+        actions: list[str] = []
+        pi = modules.piper_interface
+        try:
+            robot.set_emergency_stop(pi.EmergencyStop.RESUME)
+            actions.append("resume emergency stop")
+        except Exception:
+            pass
+
+        modules.piper_init.enable_arm(
+            robot,
+            arm_controller=pi.ArmController.POSITION_VELOCITY,
+            move_mode=pi.MoveMode.POSITION,
+            timeout_seconds=enable_timeout,
+        )
+        actions.append("enable arm via piper_control")
+        if (
+            not robot.is_arm_enabled()
+            or robot.control_mode != pi.ControlMode.CAN_COMMAND
+        ):
+            modules.piper_init.reset_arm(
+                robot,
+                arm_controller=pi.ArmController.POSITION_VELOCITY,
+                move_mode=pi.MoveMode.POSITION,
+                timeout_seconds=enable_timeout,
+            )
+            actions.append("reset arm via piper_control")
+        modules.piper_init.reset_gripper(
+            robot,
+            timeout_seconds=enable_timeout,
+        )
+        actions.append("reset gripper via piper_control")
+        robot.set_arm_mode(
+            speed=move_speed_percent,
+            move_mode=pi.MoveMode.POSITION,
+            arm_controller=pi.ArmController.POSITION_VELOCITY,
+        )
+        actions.append("set pose mode via piper_control")
+        return actions
+
+    actions = []
+    if _resume_estop(arm):
+        actions.append("resume emergency stop")
+    if _enable_arm(arm, timeout_s=enable_timeout):
+        actions.append("enable all arm joints")
+    if _set_pose_mode(arm, move_speed_percent):
+        actions.append("set CAN pose mode")
+    return actions
 
 
 def _read_pose_m_rad(arm: Any) -> tuple[float, float, float, float, float, float]:
@@ -264,29 +344,40 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--can-port", default="can0")
     parser.add_argument(
+        "--piper-backend",
+        choices=PIPER_BACKEND_CHOICES,
+        default="auto",
+        help="PiPER control backend. 'auto' prefers piper_control when importable, else falls back to piper_sdk.",
+    )
+    parser.add_argument(
+        "--piper-control-src",
+        default=None,
+        help="Optional piper_control checkout root or src dir used when the package is not installed.",
+    )
+    parser.add_argument(
         "--judge-flag",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Pass judge_flag to piper_sdk when supported. Use --no-judge-flag for some PCIe-to-CAN adapters.",
+        help="Pass judge_flag to the underlying piper_sdk interface when supported.",
     )
     parser.add_argument(
         "--dh-is-offset",
         type=int,
         choices=(0, 1),
         default=None,
-        help="Override piper_sdk dh_is_offset when supported. 1 matches newer PiPER DH parameters.",
+        help="Override the underlying piper_sdk dh_is_offset when supported. 1 matches newer PiPER DH parameters.",
     )
     parser.add_argument(
         "--sdk-joint-limit",
         action=argparse.BooleanOptionalAction,
         default=None,
-        help="Override piper_sdk start_sdk_joint_limit when supported.",
+        help="Override the underlying piper_sdk start_sdk_joint_limit when supported.",
     )
     parser.add_argument(
         "--sdk-gripper-limit",
         action=argparse.BooleanOptionalAction,
         default=None,
-        help="Override piper_sdk start_sdk_gripper_limit when supported.",
+        help="Override the underlying piper_sdk start_sdk_gripper_limit when supported.",
     )
     parser.add_argument(
         "--force-slave-mode",
@@ -351,14 +442,16 @@ def _parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = _parse_args()
-    arm = _build_arm(
+    backend, arm, robot, modules = _build_arm(
+        args.piper_backend,
         args.can_port,
         args.judge_flag,
         args.dh_is_offset,
         args.sdk_joint_limit,
         args.sdk_gripper_limit,
+        args.piper_control_src,
     )
-    _connect_arm(arm)
+    _connect_arm(arm, backend)
     forced_slave = False
     if args.force_slave_mode:
         forced_slave = _force_slave_mode(arm)
@@ -367,11 +460,13 @@ def main() -> None:
     before = collect_piper_diagnostic_report(arm)
     if args.json:
         payload = {
+            "backend": backend,
             "before": asdict(before),
             "before_suggestions": list(suggest_piper_fixes(before)),
             "forced_slave_mode": forced_slave,
         }
     else:
+        print(f"Backend: {backend}")
         _print_report(before, "Current PiPER diagnostics")
         if args.force_slave_mode:
             print(f"Forced slave mode: {'yes' if forced_slave else 'unsupported'}")
@@ -381,13 +476,14 @@ def main() -> None:
             )
 
     if args.try_recover:
-        actions: list[str] = []
-        if _resume_estop(arm):
-            actions.append("resume emergency stop")
-        if _enable_arm(arm, timeout_s=args.enable_timeout):
-            actions.append("enable all arm joints")
-        if _set_pose_mode(arm, args.move_speed_percent):
-            actions.append("set CAN pose mode")
+        actions = _try_recover(
+            backend=backend,
+            arm=arm,
+            robot=robot,
+            modules=modules,
+            move_speed_percent=args.move_speed_percent,
+            enable_timeout=args.enable_timeout,
+        )
 
         after = collect_piper_diagnostic_report(arm)
         if args.json:
