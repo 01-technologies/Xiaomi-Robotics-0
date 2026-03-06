@@ -1402,6 +1402,15 @@ class PiperControlAdapter(PiperAdapterBase):
         installation_pos: Literal["upright", "left", "right"] = "upright",
         piper_control_src: Optional[str] = None,
     ) -> None:
+        if (
+            not judge_flag
+            or dh_is_offset is not None
+            or sdk_joint_limit is not None
+            or sdk_gripper_limit is not None
+        ):
+            LOGGER.warning(
+                "PiPER piper_control backend now uses the upstream PiperInterface constructor exactly like simple_move.py; SDK-specific constructor overrides are ignored for this backend."
+            )
         self.robot, modules = build_piper_control_interface(
             can_port=can_port,
             judge_flag=judge_flag,
@@ -1415,6 +1424,11 @@ class PiperControlAdapter(PiperAdapterBase):
         self.arm = self.robot.piper
         self.force_slave_mode = bool(force_slave_mode)
         self.installation_pos = installation_pos
+        gripper_open_m = min(float(gripper_open_m), float(self.robot.gripper_angle_max))
+        gripper_effort = min(
+            int(gripper_effort),
+            int(round(float(self.robot.gripper_effort_max) * 1000.0)),
+        )
         super().__init__(
             move_speed_percent=move_speed_percent,
             linear_step_m=linear_step_m,
@@ -1451,8 +1465,8 @@ class PiperControlAdapter(PiperAdapterBase):
                 self.robot,
                 timeout_seconds=enable_timeout_s,
             )
-            _force_enable_sdk_arm(self.arm, enable_timeout_s)
             self._set_pose_mode()
+            time.sleep(0.2)
             self._sync_targets_from_feedback()
             _ensure_arm_enabled_or_raise(self.arm, self.backend_name)
         except Exception as exc:

@@ -180,25 +180,5 @@ def build_piper_control_interface(
 ) -> tuple[Any, PiperControlModules]:
     modules = load_piper_control_modules(piper_control_src)
     piper_interface = modules.piper_interface
-
-    class PiperControlCompatInterface(piper_interface.PiperInterface):
-        def __init__(
-            self,
-            can_port: str = "can0",
-            piper_arm_type: Any = piper_interface.PiperArmType.PIPER,
-            piper_gripper_type: Any = piper_interface.PiperGripperType.V2,
-        ) -> None:
-            self.can_port = can_port
-            self._piper_arm_type = piper_arm_type
-            self._piper_gripper_type = piper_gripper_type
-            self.piper = build_piper_sdk_interface(
-                can_port=can_port,
-                judge_flag=judge_flag,
-                dh_is_offset=dh_is_offset,
-                sdk_joint_limit=sdk_joint_limit,
-                sdk_gripper_limit=sdk_gripper_limit,
-                prefer_can_name_keyword=True,
-            )
-            self.piper.ConnectPort()
-
-    return PiperControlCompatInterface(can_port=can_port), modules
+    del judge_flag, dh_is_offset, sdk_joint_limit, sdk_gripper_limit
+    return piper_interface.PiperInterface(can_port=can_port), modules
