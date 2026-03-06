@@ -35,10 +35,6 @@ def _build_arm(
     if selected_backend == "piper_control":
         robot, modules = build_piper_control_interface(
             can_port=can_port,
-            judge_flag=judge_flag,
-            dh_is_offset=dh_is_offset,
-            sdk_joint_limit=sdk_joint_limit,
-            sdk_gripper_limit=sdk_gripper_limit,
             piper_control_src=piper_control_src,
         )
         return selected_backend, robot.piper, robot, modules
@@ -147,24 +143,13 @@ def _try_recover(
         except Exception:
             pass
 
-        modules.piper_init.enable_arm(
+        modules.piper_init.reset_arm(
             robot,
             arm_controller=pi.ArmController.POSITION_VELOCITY,
-            move_mode=pi.MoveMode.POSITION,
+            move_mode=pi.MoveMode.JOINT,
             timeout_seconds=enable_timeout,
         )
-        actions.append("enable arm via piper_control")
-        if (
-            not robot.is_arm_enabled()
-            or robot.control_mode != pi.ControlMode.CAN_COMMAND
-        ):
-            modules.piper_init.reset_arm(
-                robot,
-                arm_controller=pi.ArmController.POSITION_VELOCITY,
-                move_mode=pi.MoveMode.POSITION,
-                timeout_seconds=enable_timeout,
-            )
-            actions.append("reset arm via piper_control")
+        actions.append("reset arm via piper_control")
         modules.piper_init.reset_gripper(
             robot,
             timeout_seconds=enable_timeout,
@@ -358,48 +343,48 @@ def _parse_args() -> argparse.Namespace:
         "--judge-flag",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Pass judge_flag to the underlying piper_sdk interface when supported.",
+        help="SDK backend only: pass judge_flag to piper_sdk when supported.",
     )
     parser.add_argument(
         "--dh-is-offset",
         type=int,
         choices=(0, 1),
         default=None,
-        help="Override the underlying piper_sdk dh_is_offset when supported. 1 matches newer PiPER DH parameters.",
+        help="SDK backend only: override piper_sdk dh_is_offset when supported. 1 matches newer PiPER DH parameters.",
     )
     parser.add_argument(
         "--sdk-joint-limit",
         action=argparse.BooleanOptionalAction,
         default=None,
-        help="Override the underlying piper_sdk start_sdk_joint_limit when supported.",
+        help="SDK backend only: override piper_sdk start_sdk_joint_limit when supported.",
     )
     parser.add_argument(
         "--sdk-gripper-limit",
         action=argparse.BooleanOptionalAction,
         default=None,
-        help="Override the underlying piper_sdk start_sdk_gripper_limit when supported.",
+        help="SDK backend only: override piper_sdk start_sdk_gripper_limit when supported.",
     )
     parser.add_argument(
         "--force-slave-mode",
         action="store_true",
-        help="Call MasterSlaveConfig(0xFC,0,0,0) before diagnostics when supported.",
+        help="SDK backend only: call MasterSlaveConfig(0xFC,0,0,0) before diagnostics when supported.",
     )
     parser.add_argument(
         "--try-recover",
         action="store_true",
-        help="Attempt a soft recovery: resume E-stop, enable all joints, and switch to CAN pose mode.",
+        help="Attempt a backend-specific recovery reset and switch back into pose mode.",
     )
     parser.add_argument(
         "--move-speed-percent",
         type=int,
         default=30,
-        help="Speed percent used for --try-recover and --test-cartesian-mm.",
+        help="Speed percent used for recovery mode changes and Cartesian tests.",
     )
     parser.add_argument(
         "--enable-timeout",
         type=float,
         default=5.0,
-        help="Timeout in seconds for soft-recovery joint enabling.",
+        help="Timeout in seconds for backend recovery/reset steps.",
     )
     parser.add_argument(
         "--test-cartesian-mm",
@@ -493,7 +478,7 @@ def main() -> None:
         else:
             print()
             print(f"Recovery actions: {', '.join(actions) if actions else 'none'}")
-            _print_report(after, "Diagnostics after soft recovery")
+            _print_report(after, "Diagnostics after recovery")
 
     if abs(args.test_cartesian_mm) > 1e-9:
         result = _run_cartesian_test(

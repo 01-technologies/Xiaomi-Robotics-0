@@ -130,7 +130,6 @@ def build_piper_sdk_interface(
     dh_is_offset: Optional[int] = None,
     sdk_joint_limit: Optional[bool] = None,
     sdk_gripper_limit: Optional[bool] = None,
-    prefer_can_name_keyword: bool = False,
 ) -> Any:
     interface_cls = _resolve_piper_sdk_interface_class()
     kwargs: dict[str, Any] = {"judge_flag": judge_flag}
@@ -142,21 +141,12 @@ def build_piper_sdk_interface(
         kwargs["start_sdk_gripper_limit"] = sdk_gripper_limit
 
     call_patterns: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
-    if prefer_can_name_keyword:
-        call_patterns.append(((), {"can_name": can_port, **kwargs}))
-        call_patterns.append(((can_port,), kwargs))
-    else:
-        call_patterns.append(((can_port,), kwargs))
-        call_patterns.append(((), {"can_name": can_port, **kwargs}))
-
-    call_patterns.extend(
-        [
-            (((can_port,), {"judge_flag": judge_flag})),
-            (((), {"can_name": can_port, "judge_flag": judge_flag})),
-            (((can_port,), {})),
-            (((), {"can_name": can_port})),
-        ]
-    )
+    call_patterns.append(((can_port,), kwargs))
+    call_patterns.append(((), {"can_name": can_port, **kwargs}))
+    call_patterns.append(((can_port,), {"judge_flag": judge_flag}))
+    call_patterns.append(((), {"can_name": can_port, "judge_flag": judge_flag}))
+    call_patterns.append(((can_port,), {}))
+    call_patterns.append(((), {"can_name": can_port}))
 
     last_error: Optional[Exception] = None
     for args, kw in call_patterns:
@@ -172,13 +162,8 @@ def build_piper_sdk_interface(
 
 def build_piper_control_interface(
     can_port: str,
-    judge_flag: bool = True,
-    dh_is_offset: Optional[int] = None,
-    sdk_joint_limit: Optional[bool] = None,
-    sdk_gripper_limit: Optional[bool] = None,
     piper_control_src: Optional[str] = None,
 ) -> tuple[Any, PiperControlModules]:
     modules = load_piper_control_modules(piper_control_src)
     piper_interface = modules.piper_interface
-    del judge_flag, dh_is_offset, sdk_joint_limit, sdk_gripper_limit
     return piper_interface.PiperInterface(can_port=can_port), modules

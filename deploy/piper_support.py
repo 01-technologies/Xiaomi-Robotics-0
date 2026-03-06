@@ -5,20 +5,6 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 
-def _resolve_piper_interface():
-    try:
-        from piper_sdk import C_PiperInterface_V2 as interface_cls
-    except Exception:
-        from piper_sdk import C_PiperInterface as interface_cls
-    return interface_cls
-
-
-class PiperInterface:
-    def __new__(cls, *args: Any, **kwargs: Any):
-        interface_cls = _resolve_piper_interface()
-        return interface_cls(*args, **kwargs)
-
-
 CTRL_MODE_NAMES: dict[int, str] = {
     0x00: "standby",
     0x01: "can_command",
