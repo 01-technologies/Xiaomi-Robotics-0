@@ -240,6 +240,52 @@ def _try_set_sdk_installation_pos(arm: Any, installation_pos: str) -> bool:
     return True
 
 
+def _arm_enable_feedback_ok(arm: Any) -> Optional[bool]:
+    if hasattr(arm, "GetArmEnableStatus"):
+        try:
+            enabled = arm.GetArmEnableStatus()
+        except Exception:
+            enabled = None
+        if enabled is not None and len(enabled) >= 6:
+            return all(bool(x) for x in enabled[:6])
+
+    report = collect_piper_diagnostic_report(arm)
+    if report.enable_status:
+        return all(bool(x) for x in report.enable_status[:6])
+    if report.driver_disabled:
+        return False
+    return None
+
+
+def _force_enable_sdk_arm(arm: Any, timeout_s: float) -> None:
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        if hasattr(arm, "EnableArm"):
+            try:
+                arm.EnableArm(7, 0x02)
+            except TypeError:
+                try:
+                    arm.EnableArm(7)
+                except TypeError:
+                    for joint_index in range(1, 7):
+                        arm.EnableArm(joint_index)
+        elif hasattr(arm, "EnablePiper"):
+            arm.EnablePiper()
+
+        enabled = _arm_enable_feedback_ok(arm)
+        if enabled is None:
+            time.sleep(0.25)
+            return
+        if enabled:
+            return
+        time.sleep(0.05)
+
+    raise RuntimeError(
+        "PiPER enable timeout. Check CAN wiring/power and try again.\n"
+        f"{format_piper_diagnostic_report(collect_piper_diagnostic_report(arm))}"
+    )
+
+
 def collect_piper_diagnostic_report(arm: Any) -> PiperDiagnosticReport:
     notes: list[str] = []
 
@@ -915,6 +961,8 @@ class PiperSafety:
     resync_position_threshold_m: float = 0.08
     resync_rotation_threshold_rad: float = 0.75
     resync_gripper_threshold_m: float = 0.03
+    gripper_command_epsilon_m: float = 0.002
+    gripper_retry_interval_s: float = 1.0
 
 
 class PiperAdapterBase:
@@ -952,6 +1000,8 @@ class PiperAdapterBase:
         self._target_gripper_m = self.gripper_close_m
         self._last_motion_diag_at = 0.0
         self._last_motion_diag_key: tuple[str, ...] = ()
+        self._last_gripper_command_m: Optional[float] = None
+        self._last_gripper_command_at = 0.0
 
     def connect(self, enable_timeout_s: float = 5.0) -> None:
         raise NotImplementedError
@@ -977,6 +1027,8 @@ class PiperAdapterBase:
     def _sync_targets_from_feedback(self) -> None:
         self._target_pose = self.read_end_pose_m_rad()
         self._target_gripper_m = self.read_gripper_m()
+        self._last_gripper_command_m = self._target_gripper_m
+        self._last_gripper_command_at = time.time()
 
     def _maybe_resync_targets_from_feedback(self) -> None:
         try:
@@ -1005,7 +1057,6 @@ class PiperAdapterBase:
         if (
             pos_error <= self.safety.resync_position_threshold_m
             and rot_error <= self.safety.resync_rotation_threshold_rad
-            and gripper_error <= self.safety.resync_gripper_threshold_m
         ):
             return
 
@@ -1017,7 +1068,26 @@ class PiperAdapterBase:
             gripper_error,
         )
         self._target_pose = actual_pose
-        self._target_gripper_m = float(actual_gripper)
+
+    def _should_send_gripper_command(self, gripper_m: float) -> bool:
+        now = time.time()
+        if self._last_gripper_command_m is None:
+            return True
+        if (
+            abs(float(gripper_m) - float(self._last_gripper_command_m))
+            > self.safety.gripper_command_epsilon_m
+        ):
+            return True
+        if now - self._last_gripper_command_at < self.safety.gripper_retry_interval_s:
+            return False
+        try:
+            actual_gripper = self.read_gripper_m()
+        except Exception:
+            return True
+        return (
+            abs(float(actual_gripper) - float(gripper_m))
+            > self.safety.resync_gripper_threshold_m
+        )
 
     def _maybe_warn_motion_blocked(self, motion_requested: bool) -> None:
         if not motion_requested:
@@ -1151,13 +1221,16 @@ class PiperAdapterBase:
                 f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
             ) from exc
 
-        try:
-            self._send_gripper_command(gripper_m)
-        except Exception as exc:
-            raise RuntimeError(
-                f"Failed to send PiPER {self.backend_name} gripper command.\n"
-                f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
-            ) from exc
+        if self._should_send_gripper_command(gripper_m):
+            try:
+                self._send_gripper_command(gripper_m)
+            except Exception as exc:
+                raise RuntimeError(
+                    f"Failed to send PiPER {self.backend_name} gripper command.\n"
+                    f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
+                ) from exc
+            self._last_gripper_command_m = float(gripper_m)
+            self._last_gripper_command_at = time.time()
 
     def execute_chunk(
         self, action_chunk: np.ndarray, replan_steps: int = 4, dt_s: float = 0.08
@@ -1234,32 +1307,7 @@ class PiperSDKAdapter(PiperAdapterBase):
         self._sync_targets_from_feedback()
 
     def _enable_arm(self, timeout_s: float) -> None:
-        deadline = time.time() + timeout_s
-        while time.time() < deadline:
-            if hasattr(self.arm, "EnableArm"):
-                self.arm.EnableArm(7, 0x02)
-            elif hasattr(self.arm, "EnablePiper"):
-                self.arm.EnablePiper()
-
-            enabled = None
-            if hasattr(self.arm, "GetArmEnableStatus"):
-                try:
-                    enabled = self.arm.GetArmEnableStatus()
-                except Exception:
-                    enabled = None
-
-            if enabled is None:
-                time.sleep(0.25)
-                return
-
-            if len(enabled) >= 6 and all(bool(x) for x in enabled[:6]):
-                return
-            time.sleep(0.05)
-
-        raise RuntimeError(
-            "PiPER enable timeout. Check CAN wiring/power and try again.\n"
-            f"{format_piper_diagnostic_report(self.get_diagnostic_report())}"
-        )
+        _force_enable_sdk_arm(self.arm, timeout_s)
 
     def _set_pose_mode(self) -> None:
         if hasattr(self.arm, "ModeCtrl"):
@@ -1380,6 +1428,7 @@ class PiperControlAdapter(PiperAdapterBase):
                 self.robot,
                 timeout_seconds=enable_timeout_s,
             )
+            _force_enable_sdk_arm(self.arm, enable_timeout_s)
             self._set_pose_mode()
             self._sync_targets_from_feedback()
         except Exception as exc:
