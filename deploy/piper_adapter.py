@@ -308,6 +308,35 @@ def _ensure_arm_enabled_or_raise(arm: Any, backend_name: str) -> None:
         )
 
 
+def _wait_for_piper_control_ready(
+    robot: Any, piper_interface: Any, timeout_s: float
+) -> None:
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        try:
+            arm_enabled = bool(robot.is_arm_enabled())
+            control_mode = robot.control_mode
+            arm_status = robot.arm_status
+            teach_status = robot.teach_status
+        except Exception:
+            time.sleep(0.1)
+            continue
+
+        if (
+            arm_enabled
+            and control_mode == piper_interface.ControlMode.CAN_COMMAND
+            and arm_status == piper_interface.ArmStatus.NORMAL
+            and teach_status == piper_interface.TeachStatus.OFF
+        ):
+            return
+        time.sleep(0.1)
+
+    raise RuntimeError(
+        "PiPER piper_control backend did not become ready after reset/mode switch.\n"
+        f"{format_piper_diagnostic_report(collect_piper_diagnostic_report(robot.piper))}"
+    )
+
+
 def collect_piper_diagnostic_report(arm: Any) -> PiperDiagnosticReport:
     notes: list[str] = []
 
@@ -1407,9 +1436,10 @@ class PiperControlAdapter(PiperAdapterBase):
             or dh_is_offset is not None
             or sdk_joint_limit is not None
             or sdk_gripper_limit is not None
+            or force_slave_mode
         ):
             LOGGER.warning(
-                "PiPER piper_control backend now uses the upstream PiperInterface constructor exactly like simple_move.py; SDK-specific constructor overrides are ignored for this backend."
+                "PiPER piper_control backend now uses the upstream PiperInterface constructor directly; SDK-specific constructor overrides and force-slave mode are ignored for this backend."
             )
         self.robot, modules = build_piper_control_interface(
             can_port=can_port,
@@ -1422,7 +1452,7 @@ class PiperControlAdapter(PiperAdapterBase):
         self._piper_init = modules.piper_init
         self._piper_interface = modules.piper_interface
         self.arm = self.robot.piper
-        self.force_slave_mode = bool(force_slave_mode)
+        self.force_slave_mode = False
         self.installation_pos = installation_pos
         gripper_open_m = min(float(gripper_open_m), float(self.robot.gripper_angle_max))
         gripper_effort = min(
@@ -1448,17 +1478,14 @@ class PiperControlAdapter(PiperAdapterBase):
                     self.installation_pos
                 )
             )
-            if self.force_slave_mode and hasattr(self.arm, "MasterSlaveConfig"):
-                self.arm.MasterSlaveConfig(0xFC, 0, 0, 0)
-                time.sleep(0.1)
 
             LOGGER.warning(
-                "Resetting PiPER arm/gripper via piper_control simple_move flow; the arm may depower briefly during reset_arm()."
+                "Resetting PiPER arm/gripper via piper_control reset flow; the arm may depower briefly during reset_arm()."
             )
             self._piper_init.reset_arm(
                 self.robot,
-                arm_controller=self._piper_interface.ArmController.MIT,
-                move_mode=self._piper_interface.MoveMode.MIT,
+                arm_controller=self._piper_interface.ArmController.POSITION_VELOCITY,
+                move_mode=self._piper_interface.MoveMode.JOINT,
                 timeout_seconds=enable_timeout_s,
             )
             self._piper_init.reset_gripper(
@@ -1466,7 +1493,11 @@ class PiperControlAdapter(PiperAdapterBase):
                 timeout_seconds=enable_timeout_s,
             )
             self._set_pose_mode()
-            time.sleep(0.2)
+            _wait_for_piper_control_ready(
+                self.robot,
+                self._piper_interface,
+                timeout_s=max(enable_timeout_s, 2.0),
+            )
             self._sync_targets_from_feedback()
             _ensure_arm_enabled_or_raise(self.arm, self.backend_name)
         except Exception as exc:
