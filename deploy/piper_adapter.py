@@ -41,6 +41,7 @@ from deploy.piper_backend_support import (
     PiperBackendName,
     build_piper_control_interface,
     build_piper_sdk_interface,
+    has_sdk_only_options,
     resolve_piper_backend,
 )
 from deploy.piper_support import (
@@ -508,6 +509,7 @@ class PiperAdapterBase:
         gripper_close_m: float = 0.0,
         gripper_effort: int = 1000,
         gripper_threshold: float = 0.0,
+        gripper_mode: Literal["binary", "continuous"] = "binary",
         safety: Optional[PiperSafety] = None,
     ) -> None:
         self.move_speed_percent = int(_clip(move_speed_percent, 1, 100))
@@ -522,6 +524,11 @@ class PiperAdapterBase:
         self.gripper_close_m = float(gripper_close_m)
         self.gripper_effort = int(_clip(gripper_effort, 0, 5000))
         self.gripper_threshold = float(gripper_threshold)
+        if gripper_mode not in {"binary", "continuous"}:
+            raise ValueError(
+                f"Unsupported gripper_mode '{gripper_mode}'. Expected 'binary' or 'continuous'."
+            )
+        self.gripper_mode = gripper_mode
         self.safety = safety if safety is not None else PiperSafety()
 
         self._target_pose = np.zeros(6, dtype=np.float64)
@@ -716,11 +723,20 @@ class PiperAdapterBase:
         self._target_pose[4] = _wrap_pi(self._target_pose[4])
         self._target_pose[5] = _wrap_pi(self._target_pose[5])
 
-        self._target_gripper_m = (
-            self.gripper_open_m
-            if a[6] > self.gripper_threshold
-            else self.gripper_close_m
-        )
+        if self.gripper_mode == "continuous":
+            # LIBERO convention: dim 6 is a continuous normalized gripper command
+            # in [-1, 1].  Map linearly: -1 → gripper_close_m, +1 → gripper_open_m.
+            t = (float(np.clip(a[6], -1.0, 1.0)) + 1.0) * 0.5
+            self._target_gripper_m = self.gripper_close_m + t * (
+                self.gripper_open_m - self.gripper_close_m
+            )
+        else:
+            # CALVIN convention: binarize to fully open / fully closed.
+            self._target_gripper_m = (
+                self.gripper_open_m
+                if a[6] > self.gripper_threshold
+                else self.gripper_close_m
+            )
         self._target_gripper_m = _clip(
             self._target_gripper_m,
             min(self.gripper_close_m, self.gripper_open_m),
@@ -789,6 +805,7 @@ class PiperSDKAdapter(PiperAdapterBase):
         gripper_close_m: float = 0.0,
         gripper_effort: int = 1000,
         gripper_threshold: float = 0.0,
+        gripper_mode: Literal["binary", "continuous"] = "binary",
         safety: Optional[PiperSafety] = None,
         judge_flag: bool = True,
         dh_is_offset: Optional[int] = None,
@@ -815,6 +832,7 @@ class PiperSDKAdapter(PiperAdapterBase):
             gripper_close_m=gripper_close_m,
             gripper_effort=gripper_effort,
             gripper_threshold=gripper_threshold,
+            gripper_mode=gripper_mode,
             safety=safety,
         )
 
@@ -899,6 +917,7 @@ class PiperControlAdapter(PiperAdapterBase):
         gripper_close_m: float = 0.0,
         gripper_effort: int = 1000,
         gripper_threshold: float = 0.0,
+        gripper_mode: Literal["binary", "continuous"] = "binary",
         safety: Optional[PiperSafety] = None,
         judge_flag: bool = True,
         dh_is_offset: Optional[int] = None,
@@ -908,16 +927,28 @@ class PiperControlAdapter(PiperAdapterBase):
         installation_pos: Literal["upright", "left", "right"] = "upright",
         piper_control_src: Optional[str] = None,
     ) -> None:
-        if (
-            not judge_flag
-            or dh_is_offset is not None
-            or sdk_joint_limit is not None
-            or sdk_gripper_limit is not None
-            or force_slave_mode
+        if has_sdk_only_options(
+            judge_flag=judge_flag,
+            dh_is_offset=dh_is_offset,
+            sdk_joint_limit=sdk_joint_limit,
+            sdk_gripper_limit=sdk_gripper_limit,
+            force_slave_mode=force_slave_mode,
         ):
-            LOGGER.warning(
-                "PiPER piper_control uses the upstream PiperInterface directly; "
-                "judge_flag, dh_is_offset, sdk_*_limit, and force_slave_mode are ignored for this backend."
+            unsupported = []
+            if not judge_flag:
+                unsupported.append("judge_flag=False")
+            if dh_is_offset is not None:
+                unsupported.append(f"dh_is_offset={dh_is_offset}")
+            if sdk_joint_limit is not None:
+                unsupported.append(f"sdk_joint_limit={sdk_joint_limit}")
+            if sdk_gripper_limit is not None:
+                unsupported.append(f"sdk_gripper_limit={sdk_gripper_limit}")
+            if force_slave_mode:
+                unsupported.append("force_slave_mode=True")
+            raise ValueError(
+                f"piper_control backend does not support: {', '.join(unsupported)}. "
+                "Use --piper-backend=piper_sdk or --piper-backend=auto to select a backend "
+                "that honors these options."
             )
         self.robot, modules = build_piper_control_interface(
             can_port=can_port,
@@ -941,6 +972,7 @@ class PiperControlAdapter(PiperAdapterBase):
             gripper_close_m=gripper_close_m,
             gripper_effort=gripper_effort,
             gripper_threshold=gripper_threshold,
+            gripper_mode=gripper_mode,
             safety=safety,
         )
 
@@ -1014,6 +1046,7 @@ def _build_piper_adapter(
     backend: str,
     can_port: str,
     rotation_delta_mode: Literal["euler_xyz", "axis_angle"],
+    gripper_mode: Literal["binary", "continuous"],
     judge_flag: bool,
     dh_is_offset: Optional[int],
     sdk_joint_limit: Optional[bool],
@@ -1022,11 +1055,23 @@ def _build_piper_adapter(
     installation_pos: Literal["upright", "left", "right"],
     piper_control_src: Optional[str],
 ) -> tuple[PiperBackendName, PiperAdapterBase]:
-    selected_backend = resolve_piper_backend(backend, piper_control_src)
+    sdk_only = has_sdk_only_options(
+        judge_flag=judge_flag,
+        dh_is_offset=dh_is_offset,
+        sdk_joint_limit=sdk_joint_limit,
+        sdk_gripper_limit=sdk_gripper_limit,
+        force_slave_mode=force_slave_mode,
+    )
+    selected_backend = resolve_piper_backend(
+        backend,
+        piper_control_src,
+        sdk_only_options_requested=sdk_only,
+    )
     if selected_backend == "piper_control":
         return selected_backend, PiperControlAdapter(
             can_port=can_port,
             rotation_delta_mode=rotation_delta_mode,
+            gripper_mode=gripper_mode,
             judge_flag=judge_flag,
             dh_is_offset=dh_is_offset,
             sdk_joint_limit=sdk_joint_limit,
@@ -1038,6 +1083,7 @@ def _build_piper_adapter(
     return selected_backend, PiperSDKAdapter(
         can_port=can_port,
         rotation_delta_mode=rotation_delta_mode,
+        gripper_mode=gripper_mode,
         judge_flag=judge_flag,
         dh_is_offset=dh_is_offset,
         sdk_joint_limit=sdk_joint_limit,
@@ -1133,7 +1179,7 @@ def _parse_args() -> argparse.Namespace:
         "--piper-backend",
         choices=PIPER_BACKEND_CHOICES,
         default="auto",
-        help="PiPER control backend. 'auto' prefers piper_control when importable, else falls back to piper_sdk.",
+        help="PiPER control backend. 'auto' prefers piper_sdk when SDK-only options are set, otherwise prefers piper_control when importable.",
     )
     p.add_argument(
         "--piper-control-src",
@@ -1256,10 +1302,14 @@ def main() -> None:
     rotation_delta_mode: Literal["euler_xyz", "axis_angle"] = (
         "axis_angle" if args.profile == "libero" else "euler_xyz"
     )
+    gripper_mode: Literal["binary", "continuous"] = (
+        "continuous" if args.profile == "libero" else "binary"
+    )
     selected_backend, adapter = _build_piper_adapter(
         backend=args.piper_backend,
         can_port=args.can_port,
         rotation_delta_mode=rotation_delta_mode,
+        gripper_mode=gripper_mode,
         judge_flag=args.judge_flag,
         dh_is_offset=args.dh_is_offset,
         sdk_joint_limit=args.sdk_joint_limit,
@@ -1281,6 +1331,7 @@ def main() -> None:
                 backend="piper_sdk",
                 can_port=args.can_port,
                 rotation_delta_mode=rotation_delta_mode,
+                gripper_mode=gripper_mode,
                 judge_flag=args.judge_flag,
                 dh_is_offset=args.dh_is_offset,
                 sdk_joint_limit=args.sdk_joint_limit,

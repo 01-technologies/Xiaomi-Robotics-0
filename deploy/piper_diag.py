@@ -332,7 +332,7 @@ def _parse_args() -> argparse.Namespace:
         "--piper-backend",
         choices=PIPER_BACKEND_CHOICES,
         default="auto",
-        help="PiPER control backend. 'auto' prefers piper_control when importable, else falls back to piper_sdk.",
+        help="PiPER control backend. 'auto' prefers piper_sdk when SDK-only options are set, otherwise prefers piper_control when importable.",
     )
     parser.add_argument(
         "--piper-control-src",

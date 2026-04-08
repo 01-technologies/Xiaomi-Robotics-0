@@ -33,7 +33,7 @@ Client probe options:
 
 Common adapter passthrough args (after '--'):
   --piper-backend {auto,piper_control,piper_sdk}
-                            Backend selection. Default: auto (prefers piper_control).
+                            Backend selection. Default: auto (prefers piper_sdk when SDK-only options set, else piper_control).
   --installation-pos {left,right,upright}
                             Arm mounting pose. Default: upright.
   --profile {calvin,libero}  Select state/task profile (default: calvin).
