@@ -2,6 +2,7 @@
 import pickle
 import socket
 import struct
+import sys
 import time
 import argparse
 import traceback
@@ -11,8 +12,8 @@ import torch.multiprocessing as mp
 
 mp.set_start_method("spawn", force=True)
 
-from tqdm import tqdm
-from transformers import AutoModel, AutoProcessor
+from tqdm import tqdm  # noqa: E402
+from transformers import AutoModel, AutoProcessor  # noqa: E402
 
 
 class Server(mp.Process):
@@ -22,8 +23,19 @@ class Server(mp.Process):
         self.port = port
 
         # build model
-        self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True, attn_implementation="flash_attention_2", dtype=torch.bfloat16).cuda().to(torch.bfloat16)
-        self.processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True, use_fast=False)
+        self.model = (
+            AutoModel.from_pretrained(
+                model_path,
+                trust_remote_code=True,
+                attn_implementation="flash_attention_2",
+                dtype=torch.bfloat16,
+            )
+            .cuda()
+            .to(torch.bfloat16)
+        )
+        self.processor = AutoProcessor.from_pretrained(
+            model_path, trust_remote_code=True, use_fast=False
+        )
 
     def _recv_all(self, conn, length):
         data = b""
@@ -61,7 +73,14 @@ class Server(mp.Process):
 
                             input_data = pickle.loads(data)
                             robot_type = input_data["task_id"]
-                            data = {key: (value.to(self.model.device, self.model.dtype) if isinstance(value, torch.Tensor) else value) for key, value in input_data.items()}
+                            data = {
+                                key: (
+                                    value.to(self.model.device, self.model.dtype)
+                                    if isinstance(value, torch.Tensor)
+                                    else value
+                                )
+                                for key, value in input_data.items()
+                            }
 
                             if "bridge" in robot_type or "fractal" in robot_type:
                                 instruction = data["language"]
@@ -73,7 +92,7 @@ class Server(mp.Process):
                                     return_tensors="pt",
                                 )
                             else:
-                                instruction = f"<|im_start|>user\nThe following observations are captured from multiple views.\n# Base View\n<|vision_start|><|image_pad|><|vision_end|>\n# Left-Wrist View\n<|vision_start|><|image_pad|><|vision_end|>\nGenerate robot actions for the task:\n{data["language"]} /no_cot<|im_end|>\n<|im_start|>assistant\n<cot></cot><|im_end|>\n"
+                                instruction = f"<|im_start|>user\nThe following observations are captured from multiple views.\n# Base View\n<|vision_start|><|image_pad|><|vision_end|>\n# Left-Wrist View\n<|vision_start|><|image_pad|><|vision_end|>\nGenerate robot actions for the task:\n{data['language']} /no_cot<|im_end|>\n<|im_start|>assistant\n<cot></cot><|im_end|>\n"
                                 vl_inputs = self.processor(
                                     text=[instruction],
                                     images=[data["base"], data["wrist_left"]],
@@ -84,11 +103,19 @@ class Server(mp.Process):
                             vl_inputs = vl_inputs.to(self.model.device)
 
                             data.update(vl_inputs)
-                            data["action_mask"] = self.processor.get_action_mask(robot_type).to(self.model.device, self.model.dtype)
-                            data["state"] = torch.from_numpy(data["state"]).to(self.model.device, self.model.dtype).view(1, 1, -1)
+                            data["action_mask"] = self.processor.get_action_mask(
+                                robot_type
+                            ).to(self.model.device, self.model.dtype)
+                            data["state"] = (
+                                torch.from_numpy(data["state"])
+                                .to(self.model.device, self.model.dtype)
+                                .view(1, 1, -1)
+                            )
 
                             outputs = self.model(**data)
-                            action = self.processor.decode_action(outputs.actions, robot_type=robot_type)
+                            action = self.processor.decode_action(
+                                outputs.actions, robot_type=robot_type
+                            )
 
                             response = pickle.dumps(action.cpu())
                             conn.sendall(struct.pack(">I", len(response)) + response)
@@ -140,7 +167,9 @@ if __name__ == "__main__":
         server.join()
     except OSError as e:
         if e.errno == 98:  # Address already in use
-            print(f"Error: Port {args.port} is already in use. Please choose a different port.")
+            print(
+                f"Error: Port {args.port} is already in use. Please choose a different port."
+            )
             sys.exit(1)
         else:
             raise
