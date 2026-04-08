@@ -1,15 +1,10 @@
 # Copyright (C) 2026 Xiaomi Corporation.
-import math
-import os
 import time
 import pickle
 import socket
 import struct
 
-import numpy as np
 import torch
-import torchvision.transforms.functional as F
-from PIL import Image
 
 torch.set_printoptions(3, sci_mode=False)
 
