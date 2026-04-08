@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import inspect
 import os
 import sys
 from dataclasses import dataclass
@@ -95,12 +96,33 @@ def load_piper_control_modules(
     )
 
 
+def has_sdk_only_options(
+    judge_flag: bool = True,
+    dh_is_offset: Optional[int] = None,
+    sdk_joint_limit: Optional[bool] = None,
+    sdk_gripper_limit: Optional[bool] = None,
+    force_slave_mode: bool = False,
+) -> bool:
+    """Return True when any SDK-only constructor knob is set to a non-default value."""
+    return (
+        not judge_flag
+        or dh_is_offset is not None
+        or sdk_joint_limit is not None
+        or sdk_gripper_limit is not None
+        or force_slave_mode
+    )
+
+
 def resolve_piper_backend(
     requested_backend: str,
     piper_control_src: Optional[str] = None,
+    *,
+    sdk_only_options_requested: bool = False,
 ) -> PiperBackendName:
     normalized = requested_backend.strip().lower()
     if normalized == "auto":
+        if sdk_only_options_requested:
+            return "piper_sdk"
         try:
             load_piper_control_modules(piper_control_src)
         except ImportError:
@@ -163,7 +185,22 @@ def build_piper_sdk_interface(
 def build_piper_control_interface(
     can_port: str,
     piper_control_src: Optional[str] = None,
+    **extra_kwargs: Any,
 ) -> tuple[Any, PiperControlModules]:
     modules = load_piper_control_modules(piper_control_src)
     piper_interface = modules.piper_interface
-    return piper_interface.PiperInterface(can_port=can_port), modules
+    cls = piper_interface.PiperInterface
+
+    # Determine which kwargs the installed PiperInterface accepts.
+    try:
+        sig = inspect.signature(cls.__init__)
+        supported_params = set(sig.parameters.keys()) - {"self"}
+    except (ValueError, TypeError):
+        supported_params = {"can_port"}
+
+    kwargs: dict[str, Any] = {"can_port": can_port}
+    for key, value in extra_kwargs.items():
+        if key in supported_params:
+            kwargs[key] = value
+
+    return cls(**kwargs), modules
